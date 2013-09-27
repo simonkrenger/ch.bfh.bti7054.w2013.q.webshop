@@ -1,0 +1,15 @@
+Categories
+ - Pre Defined (
+ - Standard Shape
+ - Custom Shape
+
+ 
+Options
+ - Size
+ - Moon's
+ - Sun's
+ - Rings
+ - Atmosphere
+ - Temperature Scale (Deep Frozen 0K - 100K, Frozen 100-200K, cold, warm, hot, on fire)
+ - Wather, Forest, Plants
+
