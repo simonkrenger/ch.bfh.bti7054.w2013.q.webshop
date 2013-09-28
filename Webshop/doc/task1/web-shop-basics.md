@@ -23,6 +23,7 @@ For custom planets, PlanetShop offers the following options:
 
 ## Product list
 The PlanetShop offers the following products in the webshop:
+
 Product Name | Category | Options available | Price
 --- | --- | --- | ---
 Terrestrial planet | Predefined planets | | $10'000'000.00
