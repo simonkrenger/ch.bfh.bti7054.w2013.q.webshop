@@ -1,7 +1,9 @@
 # Personas
 
 **Name:** Dr. Einstein
+
 **Age:** 250
+
 **Description:**
 Dr. Einstein is a 250-year-old scientist living on the planet Nano. He dedicated his life to science. He needs different planets to prove and improve his physics theories under different circumstances and in different environments. He is looking for rather simple, cheap and small planets that can be quickly produced, without extensive details. His only interest is the environment and physical laws on the planet. A self-explanatory interface and simple, high contrast Interface is important to him, for fast and easy ordering.
 
@@ -11,7 +13,9 @@ Dr. Einstein is a regular customer to the PlanetShop. He logs in with his user a
 ---
 
 **Name:** Sophii Summers
+
 **Age:** 22
+
 **Description:** 
 Sophii is a young it-girl from a rich family. She doesn't have a job, but her hobby is to host the fanciest parties in the galaxy. 
 
@@ -21,7 +25,9 @@ Sophii wants to order a small planet for a party she hosts in 1 month. She is co
 ---
 
 **Name:** Dictator PolPotCX
+
 **Age:** 60
+
 **Description:**
 PolPotCX is the Dictator of the Planet Woo Galaxy. He is a quite friendly and lazy dictator who likes to expand his empire by just adding new planets to his galaxy. 
 
