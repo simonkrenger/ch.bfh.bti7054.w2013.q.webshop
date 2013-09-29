@@ -28,6 +28,7 @@ Nr | Who | What
 10 | System | Send notification e-mail to customer and shop administrators
 
 ## Variants, Exceptions
+
 Nr | Who | What
 --- | --- | ---
 6.1 | Customer | Customer adds planet on sale ("Planet XXX-XXX-XXX") to shopping cart
