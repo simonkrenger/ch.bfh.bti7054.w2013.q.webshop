@@ -16,7 +16,7 @@
 
 
 | Nr | Who | What |
-| --- | --- | --- |
+| --- | --- | --- |
 | 1 | Customer | Visits main page of PlanetShop |
 | 2 | Customer | Selects "Custom planet" on the main page and is presented a list of possible planet types |
 | 3 | Customer | Selects "Terrestrial planet" and is then presented possible options (such as "size", "mass" or "surface") |
@@ -32,7 +32,7 @@
 ## Variants, Exceptions
 
 Nr | Who | What
---- | --- | ---
+--- | --- | ---
 6.1 | Customer | Customer adds planet on sale ( *Planet XXX-XXX-XXX* ) to shopping cart
 6.2 | Customer | Customer proceeds to checkout and finds the added planet on order list
 7.1 | Customer | Customer selects *Already registered*
