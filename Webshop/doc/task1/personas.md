@@ -5,7 +5,7 @@
 **Age:** 250
 
 **Description:**
-Dr. Einstein is a 250-year-old scientist living on the planet Nano. He dedicated his life to science. He needs different planets to prove and improve his physics theories under different circumstances and in different environments. He is looking for rather simple, cheap and small planets that can be quickly produced, without extensive details. His only interest is the environment and physical laws on the planet. A self-explanatory interface and simple, high contrast Interface is important to him, for fast and easy ordering.
+Dr. Einstein is a 250-year-old scientist liveing on the planet Nano. He dedicated his life to science. He needs different planets to prove and improve his physics theories under different circumstances and in different environments. He is looking for rather simple, cheap and small planets that can be quickly produced, without extensive details. His only interest is the environment and physical laws on the planet. A self-explanatory interface and simple, high contrast Interface is important to him, for fast and easy ordering.
 
 **Use case:**
 Dr. Einstein is a regular customer to the PlanetShop. He logs in with his user account, from his rather old Linux computer. Logged in, he can see his previous orders and the status of his current orders. He searches for a new planet based on environmental values, adapts the plant values so it suits his needs and then places his order. 
