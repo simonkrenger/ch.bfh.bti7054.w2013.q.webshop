@@ -5,5 +5,11 @@
 <?php
 echo "Hello World!";
 ?>
+<br/>
+There are already two pages here:
+<ul>
+<li><a href="home.html">Home page</a></li>
+<li><a href="default.html">Product page</a></li>
+</ul>
 </body>
 </html>
