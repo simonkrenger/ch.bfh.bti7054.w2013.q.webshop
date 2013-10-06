@@ -7,7 +7,7 @@ Generally, the following categories of planets are available to customers:
 * Predefined planets
 * Planets on sale
 * Custom planets
-* Natural satellites
+* Satellites
 * Accessories for planets (such as meteor fields, nebulas or planet rings)
 
 ## Options for custom planets
