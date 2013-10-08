@@ -1,0 +1,110 @@
+@CHARSET "UTF-8";
+
+* {
+	/* 	border: 2px red solid; */
+}
+
+body{
+
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "open sans", Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+	font-size: 100%;
+	color: black;
+	/*background-image: <IMAGE>; to be delivered by simon */
+	background-color: black;
+	
+}
+
+#container {
+	display:block;
+	background-color: white;
+	width: 75%;
+	margin: 0 auto;
+	padding: 10px;
+	/*height ganze seite + Scrollen*/
+	
+}
+
+#navigation{
+ display:block;
+/* /*  	position: fixed; */ */
+/*  	top:0; */
+/*  	height: 100px; */
+}
+
+#navigation div {
+
+}
+
+#logo{
+	display: inline;
+/* 	float: left; */
+}
+#companyname h1{
+	margin: 5px;
+	text-transform: uppercase;
+}
+
+
+#search{
+/*  display: inline;  */
+/* 	float:right; */
+	align: right;
+}
+
+#menu{
+	padding: 10px 5px 10px 5px;
+}
+
+.menuentry{
+/* 	float:left; */
+ 	padding: 5px 10px 5px 0px;
+	display: inline;
+	text-transform: uppercase;
+}
+
+#shoppingcart{
+/* 	float:right; */
+}
+#login {
+/* 	float:right; */
+}
+
+#breadcrumb{
+	padding: 10px 5px 10px 5px;
+}
+
+#content{
+/* 	display: block; */
+/* 	position:static; */
+	padding: 10px 5px 10px 5px;
+}
+
+#maincontent{
+
+}
+
+#marketing {
+	height: 300px;
+	background-image: url('../images/marketing_01.jpg');
+}
+
+.marketing-text {
+	float: right;
+	font-size: 3em;
+	padding: 100px 50px 0 0;
+	color: white;
+	
+}
+
+.marketing-subtext {
+	font-size: 12pt;
+}
+
+#contentarea{}
+#rightsidebar{}
+#box{}
+#footer{
+		padding: 10px 5px 10px 5px;
+	
+}
