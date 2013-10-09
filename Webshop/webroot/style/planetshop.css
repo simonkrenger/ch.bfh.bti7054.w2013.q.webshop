@@ -2,6 +2,10 @@
 
 * {
 	/* 	border: 2px red solid; */
+/* 	Size of boxes will not increase by margin and padding */
+	 -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+        box-sizing: border-box;
 }
 
 body{
@@ -9,19 +13,28 @@ body{
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "open sans", Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
 	font-size: 100%;
-	color: black;
-	/*background-image: <IMAGE>; to be delivered by simon */
-	background-color: black;
+	color: rgba(255,255,255,1);
+	background-image: url('../images/galaxy3.jpg');
+	border-radius: 20px;
+
+/* 	background-color: black; */
 	
 }
 
 #container {
 	display:block;
-	background-color: white;
-	width: 75%;
+	background-color:rgba(0,0,0,0.6);
+	width: 80%;
 	margin: 0 auto;
 	padding: 10px;
 	/*height ganze seite + Scrollen*/
+	border-radius: 20px;
+	
+}
+#loggedIn{
+	display:: inline-block;
+	float: right;
+	top: 0;
 	
 }
 
@@ -81,7 +94,24 @@ body{
 }
 
 #maincontent{
+	margin-top: 5%;
+	vertical-align: middle;
+ 
+}
 
+.categorytile{
+    display: inline-block;
+	border: 2px solid;
+	border-color: rgba(255,255,255,0.6);
+	border-radius:10px;
+	background-color: rgba(0,0,0,1);
+	height: 150px;
+	width: 150px;
+	margin: 20px;
+	padding: 10px;
+	text-transform: uppercase;
+	text-align: center;
+	vertical-align: middle;
 }
 
 #marketing {
@@ -101,9 +131,27 @@ body{
 	font-size: 12pt;
 }
 
-#contentarea{}
-#rightsidebar{}
-#box{}
+#contentarea{
+	display: inline-block;
+	border: 2px solid;
+	border-color: rgba(255,255,255,0.6);
+	border-radius:10px;
+}
+
+#rightsidebar{
+	border: 2px solid;
+	border-color: rgba(255,255,255,0.6);
+	border-radius:10px;
+	height: 600px;
+	width: 200px;
+	display: inline-block;
+	float:right;
+}
+.box{
+	border: 2px solid;
+	border-color: rgba(255,255,255,0.6);
+	border-radius:10px;
+}
 #footer{
 		padding: 10px 5px 10px 5px;
 	
