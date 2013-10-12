@@ -51,11 +51,13 @@ body{
 
 #logo{
 	display: inline;
+	padding: 10px 5px 10px 5px;	
 /* 	float: left; */
 }
-#companyname h1{
-	margin: 5px;
-	text-transform: uppercase;
+
+#companyname a{
+	/* Hide the text (HACK!) */
+    color: transparent;
 }
 
 
