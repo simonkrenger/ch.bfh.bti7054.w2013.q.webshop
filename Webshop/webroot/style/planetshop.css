@@ -132,6 +132,20 @@ body{
 .marketing-subtext {
 	font-size: 12pt;
 }
+.planetlist{
+	    display: inline-block;
+	border: 2px solid;
+	border-color: rgba(255,255,255,0.6);
+	border-radius:10px;
+	background-color: rgba(0,0,0,1);
+	height: 150px;
+	width: 150px;
+	margin: 20px;
+	padding: 10px;
+	text-transform: uppercase;
+	text-align: center;
+	vertical-align: middle;
+}
 
 #contentarea{
 	display: inline-block;
@@ -158,3 +172,14 @@ body{
 		padding: 10px 5px 10px 5px;
 	
 }
+
+#footerblock{
+		padding: 10px 5px 50px 0px;
+	
+}
+
+.footerrow{
+	display: block;
+	padding: 10px 5px 10px 5px;
+}
+
