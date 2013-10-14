@@ -2,111 +2,107 @@
 
 * {
 	/* 	border: 2px red solid; */
-/* 	Size of boxes will not increase by margin and padding */
-	 -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-        box-sizing: border-box;
+	/* 	Size of boxes will not increase by margin and padding */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-body{
-
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "open sans", Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, "open sans", Arial, "Lucida Grande",
+		sans-serif;
+	font-weight: 300;
 	font-size: 100%;
-	color: rgba(255,255,255,1);
+	color: rgba(255, 255, 255, 1);
 	background-image: url('../images/galaxy3.jpg');
 	border-radius: 20px;
 
-/* 	background-color: black; */
-	
+	/* 	background-color: black; */
 }
 
 #container {
-	display:block;
-	background-color:rgba(0,0,0,0.6);
+	display: block;
+	background-color: rgba(0, 0, 0, 0.6);
 	width: 80%;
 	margin: 0 auto;
 	padding: 10px;
 	/*height ganze seite + Scrollen*/
 	border-radius: 20px;
-	
-}
-#loggedIn{
-	display:: inline-block;
-	float: right;
-	top: 0;
-	
 }
 
-#navigation{
- display:block;
-/* /*  	position: fixed; */ */
-/*  	top:0; */
-/*  	height: 100px; */
+#loggedIn {
+	display: : inline-block;
+	float: right;
+	top: 0;
+}
+
+#navigation {
+	display: block;
 }
 
 #navigation div {
-
+	
 }
 
-#logo{
+#logo {
 	display: inline;
-	padding: 10px 5px 10px 5px;	
-/* 	float: left; */
+	padding: 10px 5px 10px 5px;
+	/* 	float: left; */
 }
 
-#companyname a{
+#companyname a {
 	/* Hide the text (HACK!) */
-    color: transparent;
+	color: transparent;
 }
 
-
-#search{
-/*  display: inline;  */
-/* 	float:right; */
+#search {
+	/*  display: inline;  */
+	/* 	float:right; */
 	align: right;
 }
 
-#menu{
+#menu {
 	padding: 10px 5px 10px 5px;
 }
 
-.menuentry{
-/* 	float:left; */
- 	padding: 5px 10px 5px 0px;
+.menuentry {
+	/* 	float:left; */
+	padding: 5px 10px 5px 0px;
 	display: inline;
 	text-transform: uppercase;
 }
 
-#shoppingcart{
-/* 	float:right; */
+#shoppingcart {
+	/* 	float:right; */
+	
 }
+
 #login {
-/* 	float:right; */
+	/* 	float:right; */
+	
 }
 
-#breadcrumb{
+#breadcrumb {
 	padding: 10px 5px 10px 5px;
 }
 
-#content{
-/* 	display: block; */
-/* 	position:static; */
+#content {
+	/* 	display: block; */
+	/* 	position:static; */
 	padding: 10px 5px 10px 5px;
 }
 
-#maincontent{
-	margin-top: 5%;
+#maincontent {
 	vertical-align: middle;
- 
 }
 
-.categorytile{
-    display: inline-block;
+.categorytile {
+	display: inline-block;
 	border: 2px solid;
-	border-color: rgba(255,255,255,0.6);
-	border-radius:10px;
-	background-color: rgba(0,0,0,1);
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 1);
 	height: 150px;
 	width: 150px;
 	margin: 20px;
@@ -126,18 +122,18 @@ body{
 	font-size: 3em;
 	padding: 100px 50px 0 0;
 	color: white;
-	
 }
 
 .marketing-subtext {
 	font-size: 12pt;
 }
-.planetlist{
-	    display: inline-block;
+
+.planetlist {
+	display: inline-block;
 	border: 2px solid;
-	border-color: rgba(255,255,255,0.6);
-	border-radius:10px;
-	background-color: rgba(0,0,0,1);
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 1);
 	height: 150px;
 	width: 150px;
 	margin: 20px;
@@ -147,39 +143,46 @@ body{
 	vertical-align: middle;
 }
 
-#contentarea{
-	display: inline-block;
+#contentarea {
 	border: 2px solid;
-	border-color: rgba(255,255,255,0.6);
-	border-radius:10px;
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	height: 100%;
+	margin: 0 auto;
+	width: 77%;
+	float: left;
 }
 
-#rightsidebar{
-	border: 2px solid;
-	border-color: rgba(255,255,255,0.6);
-	border-radius:10px;
-	height: 600px;
-	width: 200px;
-	display: inline-block;
-	float:right;
+#rightsidebar {
+	height: 100%;
+	margin: 0 auto;
+	width: 22%;
+	float: right;
 }
-.box{
+
+.box {
 	border: 2px solid;
-	border-color: rgba(255,255,255,0.6);
-	border-radius:10px;
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	margin-bottom: 20px;
+	padding: 10px 10px 10px 10px;
 }
-#footer{
-		padding: 10px 5px 10px 5px;
+
+.boxtitle {
 	
 }
 
-#footerblock{
-		padding: 10px 5px 50px 0px;
-	
-}
-
-.footerrow{
-	display: block;
+#footer {
+	clear: both;
 	padding: 10px 5px 10px 5px;
 }
 
+ul#footerlinks {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul#footerlinks li {
+	display: inline;
+}
