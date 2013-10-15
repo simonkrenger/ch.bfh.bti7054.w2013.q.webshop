@@ -29,37 +29,3 @@
 
 
 		</div>
-		<div id="content">
-			<div id="marketing">
-				<div class="marketing-text">
-					Planets on sale!
-					<div class="marketing-subtext">
-						... because noone else wanted them. <a href="default.html">Find
-							out more</a>
-					</div>
-				</div>
-			</div>
-
-			<!-- 			Ab hier Fränzi  -->
-			<div id="maincontent">
-				<div class="categorytile">Predefined</div>
-				<div class="categorytile">On Sale</div>
-				<div class="categorytile">Custom</div>
-				<div class="categorytile">Satellites</div>
-				<div class="categorytile">Accesories</div>
-			</div>
-		</div>
-		<div id="footer">
-
-			<ul id="footerlinks">
-				<li><a href="/">AGB</a></li>
-				<li><a href="/">Delivery service</a></li>
-				<li><a href="/">Contact</a></li>
-			</ul>
-
-			Copyleft 2013, Fränzi u Simu
-		</div>
-	</div>
-
-</body>
-</html>
