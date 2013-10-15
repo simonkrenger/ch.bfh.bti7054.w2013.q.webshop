@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 
 * {
 	/* 	border: 2px red solid; */
@@ -14,6 +14,7 @@ body {
 		sans-serif;
 	font-weight: 300;
 	font-size: 100%;
+	color: rgb(255, 255, 255);
 	color: rgba(255, 255, 255, 1);
 	background-image: url('../images/galaxy3.jpg');
 	border-radius: 20px;
@@ -23,6 +24,7 @@ body {
 
 #container {
 	display: block;
+	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.6);
 	width: 80%;
 	margin: 0 auto;
@@ -32,7 +34,7 @@ body {
 }
 
 #loggedIn {
-	display: : inline-block;
+	display:inline-block;
 	float: right;
 	top: 0;
 }
@@ -57,9 +59,6 @@ body {
 }
 
 #search {
-	/*  display: inline;  */
-	/* 	float:right; */
-	align: right;
 }
 
 #menu {
@@ -100,8 +99,10 @@ body {
 .categorytile {
 	display: inline-block;
 	border: 2px solid;
+	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
+	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 1);
 	height: 150px;
 	width: 150px;
@@ -131,8 +132,10 @@ body {
 .planetlist {
 	display: inline-block;
 	border: 2px solid;
+	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
+	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 1);
 	height: 150px;
 	width: 150px;
@@ -145,6 +148,7 @@ body {
 
 #contentarea {
 	border: 2px solid;
+	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
 	height: 100%;
@@ -162,6 +166,7 @@ body {
 
 .box {
 	border: 2px solid;
+	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
 	margin-bottom: 20px;
