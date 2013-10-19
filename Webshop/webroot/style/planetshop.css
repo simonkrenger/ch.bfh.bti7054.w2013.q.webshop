@@ -53,11 +53,6 @@ body {
 	/* 	float: left; */
 }
 
-#companyname a {
-	/* Hide the text (HACK!) */
-	color: transparent;
-}
-
 #search {
 	
 }
@@ -75,6 +70,7 @@ body {
 
 /* Links */
 .menuentry a {
+	color: white;
 	text-decoration: none;
 }
 
