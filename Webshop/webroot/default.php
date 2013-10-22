@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+
 		<div id="content">
 			<div id="maincontent">
 				<div id="contentarea">
@@ -12,4 +12,3 @@
 				</div>
 				<?php include('sidebar.php'); ?>
 			</div>
-<?php include('footer.php'); ?>

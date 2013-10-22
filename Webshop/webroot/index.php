@@ -1,22 +1,25 @@
 <?php include('header.php'); ?>
-		<div id="content">
-			<div id="marketing">
-				<div class="marketing-text">
-					Planets on sale!
-					<div class="marketing-subtext">
-						... because noone else wanted them. <a href="default.php">Find
-							out more</a>
-					</div>
-				</div>
-			</div>
 
-			<!-- 			Ab hier Fränzi  -->
-			<div id="maincontent">
-				<div class="categorytile">Predefined</div>
-				<div class="categorytile">On Sale</div>
-				<div class="categorytile">Custom</div>
-				<div class="categorytile">Satellites</div>
-				<div class="categorytile">Accesories</div>
-			</div>
-		</div>
+<?php 
+
+
+if($_GET['site'] != null) {
+	$file = file ( "menu.txt" );
+	foreach ( $file as $line ) {
+		$valid_site = explode ( ',', $line );
+		
+		if($valid_site[0] == $_GET['site']) {
+			$selected_site = trim($valid_site[2]);
+		}
+	}
+	if($selected_site != null) {
+		include($selected_site);
+	} else {
+		include('home.php');
+	}
+} else {
+	include('home.php');
+}
+
+?>
 <?php include('footer.php'); ?>
