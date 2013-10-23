@@ -53,6 +53,13 @@ body {
 	/* 	float: left; */
 }
 
+#language {
+	display: inline;
+	float: right;
+	position: top;
+	
+}
+
 #search {
 	
 }

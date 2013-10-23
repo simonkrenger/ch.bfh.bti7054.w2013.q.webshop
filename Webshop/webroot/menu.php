@@ -1,5 +1,5 @@
 <?php
-$file = file ( "menu.txt" ); // $file is an array 
+$file = file ( "menu.txt" ); 
 
 $menu = array();
 foreach ( $file as $line ) {
