@@ -1,0 +1,9 @@
+home,home.php
+predefined,default.php
+onsale,default.php
+custom,default.php
+satellites,default.php
+accessories,default.php
+shoppingcart,minimal.php
+login,minimal.php
+detail,detail.php

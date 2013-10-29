@@ -18,11 +18,11 @@ function get_safe_content_include($site_id) {
 	$DEFAULT_SITE = 'home.php';
 	
 	if ($site_id != null) {
-		$file = file ( "menu.txt" );
+		$file = file ( "mapping.txt" );
 		foreach ( $file as $line ) {
 			$valid_site = explode ( ',', $line );
 			if ($valid_site [0] == $site_id) {
-				return trim ( $valid_site [2] );
+				return trim ( $valid_site [1] );
 			}
 		}
 	}
