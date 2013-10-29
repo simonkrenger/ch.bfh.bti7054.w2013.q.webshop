@@ -1,6 +1,7 @@
 <?php
-include_once('db/ez_sql_mysqli.php');
 include_once('db/ez_sql_core.php');
+include_once('db/ez_sql_mysqli.php');
+
 
 class shopdb {
 	
