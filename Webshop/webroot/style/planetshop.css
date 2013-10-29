@@ -57,7 +57,6 @@ body {
 	display: inline;
 	float: right;
 	position: top;
-	
 }
 
 #search {
@@ -109,6 +108,8 @@ body {
 
 #maincontent {
 	vertical-align: middle;
+	float:left;
+	width:76%;
 }
 
 .categorytile {
@@ -190,6 +191,14 @@ body {
 
 .boxtitle {
 	
+}
+
+.separator {
+	border-bottom: 1px solid #EFEFEF;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 4px;
+	margin-top: 10px;
 }
 
 #footer {

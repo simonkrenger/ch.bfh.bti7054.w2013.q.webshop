@@ -41,6 +41,7 @@
 		var $cache_queries    = false;
 		var $cache_inserts    = false;
 		var $use_disk_cache   = false;
+		var $from_disk_cache  = false;
 		var $cache_timeout    = 24; // hours
 		var $timers           = array();
 		var $total_query_time = 0;

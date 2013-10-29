@@ -2,9 +2,11 @@
 function require_db() {
 	global $shopdb;
 	
-	require_once( ABSPATH . '/modules/shopdb.php');
+	include_once('db/ez_sql_core.php');
+	include_once('db/ez_sql_mysqli.php');
 	
 	if (! isset ( $shopdb )) {
+		// The DB_* values were set in 'config.php'
 		$shopdb = new ezSQL_mysqli(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
 	}
 }

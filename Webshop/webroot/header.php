@@ -1,6 +1,9 @@
+<?php include('config.php'); // First order of business, load config ?>
 <?php include('modules/functions.php'); ?>
-<?php include('modules/shopdb.php'); ?>
+
+<?php require_db(); ?>
 <?php //setLanguae();?>
+
 <!DOCTYPE html>
 <html>
 <head>

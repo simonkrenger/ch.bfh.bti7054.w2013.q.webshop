@@ -7,3 +7,4 @@ accessories,default.php
 shoppingcart,minimal.php
 login,minimal.php
 detail,detail.php
+products,products.php

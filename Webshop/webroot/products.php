@@ -4,9 +4,10 @@
 				
 				<?php 
 				/** Dummy query */
-					$users = $shopdb->get_results('SELECT user_id FROM user');
-					foreach($users as $user) {
-						echo $user->user_id;
+					$products = $shopdb->get_results("SELECT name, product_picture, price, inventory_quantity FROM product");
+					foreach($products as $product) {
+						echo '<div class="product-listing-header">' . $product->name . '</div>';
+						echo '<div class="separator"></div>';
 					}
 				?>
 				
