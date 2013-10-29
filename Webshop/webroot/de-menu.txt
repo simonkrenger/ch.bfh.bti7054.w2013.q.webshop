@@ -1,0 +1,8 @@
+home,Dahei,home.php
+predefined,Vordefiniert,default.php
+onsale,Aktion, default.php
+custom,Maasgschniideret,default.php
+satellites,Satelite,default.php
+accessories,Zuebehör,default.php
+shoppingcart,Chörbli,minimal.php
+login,Iilogge,minimal.php	

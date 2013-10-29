@@ -1,4 +1,16 @@
+
+<?php function setLanguae() {
+	if ($_GET ['language'] != null)
+		$language = 'en';
+	else
+		$lagnguage = $_GET ['language'];
+}
+setLanguae();
+
+
+ ?>
 <?php include('header.php'); ?>
+
 
 <?php 
 
