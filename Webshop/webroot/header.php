@@ -1,3 +1,5 @@
+<?php include('modules/functions.php'); ?>
+<?php include('modules/shopdb.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,5 +19,4 @@
 
 			<!-- 			<div id="search"></div> -->
 				<?php include('menu.php'); ?>
->
 		</div>
