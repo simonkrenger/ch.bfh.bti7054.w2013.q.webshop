@@ -8,7 +8,7 @@
 // }
 
 $menu = array();
-$file = "en-menu.txt";
+$file = file ("en-menu.txt"); 
 foreach ( $file as $line ) {
 	array_push ( $menu, explode ( ',', $line ) );
 
@@ -22,8 +22,7 @@ foreach ( $file as $line ) {
 				
 				$url = $_SERVER['PHP_SELF'];
 				foreach ($menu as $menuentry){
-					echo "bla";
-					echo "<div class=\"menuentry\" id=\"".$menuentry[0]."\"> <a href=\"". $url . "?site=" . $menuentry[0] . "\"> " . $menuentry[1] . "</a></div>"; 
+					echo "<div class=\"menuentry\" id=\"".$menuentry[0]."\"><a href=\"index.php?site=" . $menuentry[0] . "\"> " . $menuentry[1] . "</a></div>"; 
 				}
 
 					
