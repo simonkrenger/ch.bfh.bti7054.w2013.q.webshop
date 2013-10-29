@@ -1,3 +1,5 @@
+<?php include('modules/functions.php'); ?>
+<?php include('modules/shopdb.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,4 +33,6 @@ echo "<a href=\"". $url . "?language=en\">EN</a>";
 			</div>
 			<!-- 			<div id="search"></div> -->
 				<?php include('menu.php'); ?>
-</div>
+
+		</div>
+
