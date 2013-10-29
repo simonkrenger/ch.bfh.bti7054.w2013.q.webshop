@@ -8,8 +8,6 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- 			Ab hier Fränzi  -->
 			<div id="maincontent">
 				<div class="categorytile">Predefined</div>
 				<div class="categorytile">On Sale</div>

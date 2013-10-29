@@ -1,26 +1,23 @@
 <?php
+include_once('db/ez_sql_mysqli.php');
+include_once('db/ez_sql_core.php');
 
 class shopdb {
 	
-	private $dbusername;
-	private $dbpassword;
-	private $dbname;
 	private $dbhost = 'localhost';
 	
 	private $ready = false;
 	
+	private $db;
+	
 	function __construct( $dbuser, $dbpassword, $dbname) {
-		$this->dbusername = $dbuser;
-		$this->dbpassword = $dbpassword;
-		$this->dbname = $dbname;
-		
-		$this->db_connect();
+		if (!isset($db)) {
+			$db = new ezSQL_mysqli($dbuser, $dbpassword, $dbname, $dbhost);
+		}
+		return $db;
 	}
 	
-	function db_connect() {
-		
-		$this->ready = true;
-	}
+	
 	
 	function get_row(){}
 	

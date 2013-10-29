@@ -2,8 +2,10 @@
 function require_db() {
 	global $shopdb;
 	
+	require_once( ABSPATH . '/modules/shopdb.php');
+	
 	if (! isset ( $shopdb )) {
-		$shopdb = new shopdb ( $username, $password, $dbname );
+		$shopdb = new ezSQL_mysqli(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
 	}
 }
 
