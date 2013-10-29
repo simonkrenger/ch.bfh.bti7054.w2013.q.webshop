@@ -1,5 +1,6 @@
 <?php include('modules/functions.php'); ?>
 <?php include('modules/shopdb.php'); ?>
+<?php //setLanguae();?>
 <!DOCTYPE html>
 <html>
 <head>

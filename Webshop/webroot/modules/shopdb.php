@@ -22,7 +22,7 @@ class shopdb {
 		$this->ready = true;
 	}
 	
-	function get_row
+	function get_row(){}
 	
 }
 

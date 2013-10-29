@@ -27,4 +27,13 @@ function get_safe_content_include($site_id) {
 	return $DEFAULT_SITE;
 }
 
+
+function setLanguae() {
+	if ($_GET ['language'] != null)
+		$language = 'en';
+	else
+		$lagnguage = $_GET ['language'];
+}
+
+
 ?>
