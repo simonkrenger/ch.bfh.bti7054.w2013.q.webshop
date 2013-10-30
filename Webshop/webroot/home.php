@@ -1,10 +1,9 @@
 		<div id="content">
 			<div id="marketing">
 				<div class="marketing-text">
-					Planets on sale!
+					<?php echo get_translation("MARKETING_CLAIM_BIG"); ?>
 					<div class="marketing-subtext">
-						... because noone else wanted them. <a href="default.php">Find
-							out more</a>
+						<?php echo get_translation("MARKETING_CLAIM_SUBTEXT"); ?> <a href="<?php echo get_href("products","&category=2") ?>"><?php echo get_translation("MARKETING_FIND_OUT_MORE"); ?></a>
 					</div>
 				</div>
 			</div>

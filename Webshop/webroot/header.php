@@ -19,7 +19,7 @@
 
 			<div id="logo">
 				<div id="companyname">
-					<a href="/"><img src="images/logo-white.png" alt="Logo" /></a>
+					<a href="<?php echo get_href("home"); ?>"><img src="images/logo-white.png" alt="Logo" /></a>
 				</div>
 
 			</div>
