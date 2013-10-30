@@ -2,7 +2,7 @@
 <?php include('modules/functions.php'); ?>
 
 <?php require_db(); ?>
-<?php //setLanguae();?>
+<?php require_lang();?>
 
 <!DOCTYPE html>
 <html>
