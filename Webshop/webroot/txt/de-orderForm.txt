@@ -1,0 +1,10 @@
+firstname, Vorname
+lastname, Nachname
+address, Adresse
+number, Nummer
+areacode, PLZ
+city,Stadt
+state, Kanton/Bezirk
+country, Land
+planet, Planet
+galaxy, Galaxie

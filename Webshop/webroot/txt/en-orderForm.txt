@@ -1,0 +1,10 @@
+firstname, Firstname,text,50,100
+lastname, Lastname,text,50,100
+address, Address,text,50,100
+number, Number,text,5,5
+areacode, Area Code,text,10,10
+city,City,text,50,100
+state, State,text,50,100
+country, Country,text,50,100
+planet, Planet,text,50,100
+galaxy, Galaxy,text,50,100
