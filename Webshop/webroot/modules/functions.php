@@ -16,7 +16,7 @@ function get_safe_content_include($site_id) {
 	$DEFAULT_SITE = 'home.php';
 	
 	if ($site_id != null) {
-		$file = file ( "mapping.txt" );
+		$file = file ( "txt/mapping.txt" );
 		foreach ( $file as $line ) {
 			$valid_site = explode ( ',', $line );
 			if ($valid_site [0] == $site_id) {
@@ -28,12 +28,33 @@ function get_safe_content_include($site_id) {
 }
 
 
-function setLanguae() {
-	if ($_GET ['language'] != null)
-		$language = 'en';
-	else
-		$lagnguage = $_GET ['language'];
+function get_param($name, $default) {
+	if (isset($_GET[$name])) {
+		return urldecode($_GET[$name]);
+	}
+	else{
+		return $default;
+	}
 }
+
+function add_param($url, $name, $value, $sep="&") {
+	$new_url = $url.$sep.$name."=".urlencode($value);
+	return $new_url;
+}
+
+
+
+
+// function setLanguae($language) {
+	
+// 	function language() {
+// 		$url = $_SERVER['PHP_SELF'];
+// 		$url = add_param($url, "id", get_param("id", 0), "?");
+// 	if ($_GET ['language'] != null)
+// 		$language = 'en';
+// 	else
+// 		$lagnguage = $_GET ['language'];
+// }
 
 
 ?>

@@ -1,14 +1,15 @@
 <?php
 
-// if ($language == de){
-// $file = file ( "de-menu.txt" ); 
-// }
-// else {
-// 	$file = file ( "en-menu.txt" );
-// }
+$language = get_param("language", "en");
+
+if ($language == de){
+$file = file("txt/de-menu.txt"); 
+ }
+ else {
+ 	$file = file ("txt/en-menu.txt");
+ }
 
 $menu = array();
-$file = file ("en-menu.txt"); 
 foreach ( $file as $line ) {
 	array_push ( $menu, explode ( ',', $line ) );
 
@@ -19,12 +20,16 @@ foreach ( $file as $line ) {
 <div id="menu">
 	<!-- <div class="menuentry" id="home"><a href="/index.html">Home</a></div> -->
 				<?php
-				
-				$url = $_SERVER['PHP_SELF'];
+
 				foreach ($menu as $menuentry){
-					echo "<div class=\"menuentry\" id=\"".$menuentry[0]."\"><a href=\"index.php?site=" . $menuentry[0] . "\"> " . $menuentry[1] . "</a></div>"; 
+					echo "<div class=\"menuentry\" id=\"".$menuentry[0]."\"><a href=\"index.php?site=" . $menuentry[0] . "&language=".$language .  "\"> " . $menuentry[1] . "</a></div>"; 
 				}
 
 					
 				?>
+				
+				
+				
 			</div>
+			
+			

@@ -24,16 +24,22 @@
 			<div id="language">
 			
 			<?php
-			$url = $_SERVER['PHP_SELF'];
+						
+			function language() {
+				$url = $_SERVER['PHP_SELF'];
+				$url = add_param($url, "site", get_param("site", "home"), "?");
+				echo "<a href=\"".add_param($url,"language","de")."\">DE</a> | ";
+				echo "<a href=\"".add_param($url,"language","en")."\">EN</a> ";
+			}
 			
-echo "<a href=\"". $url . "?language=de\">DE</a> | ";
-echo "<a href=\"". $url . "?language=en\">EN</a>";
+			language();
+			
 			?>
 		
 			
 			</div>
 			<!-- 			<div id="search"></div> -->
 				<?php include('menu.php'); ?>
-
+				<?php include('forms/orderForm.php'); ?>
 		</div>
 

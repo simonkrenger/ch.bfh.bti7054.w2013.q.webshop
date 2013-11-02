@@ -18,9 +18,23 @@ body {
 	color: rgba(255, 255, 255, 1);
 	background-image: url('../images/galaxy3.jpg');
 	border-radius: 20px;
+}
+body a {
+	color: white;
+	text-decoration: none;
+}
+
+body a:visited {
+	color: white;
+}
+
+body a:hover {
+	text-decoration: underline;
+}
+
 
 	/* 	background-color: black; */
-}
+
 
 #container {
 	display: block;
@@ -40,21 +54,19 @@ body {
 }
 
 #navigation {
-	display: block;
-}
-
-#navigation div {
+	display: inline-block;
 	
 }
 
 #logo {
-	display: inline;
+	width: 50%;
 	padding: 10px 5px 10px 5px;
-	/* 	float: left; */
+	
+	
 }
 
 #language {
-	display: inline;
+	
 	float: right;
 	position: top;
 	
@@ -195,6 +207,18 @@ body {
 #footer {
 	clear: both;
 	padding: 10px 5px 10px 5px;
+}
+
+#orderFormField {
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.6);
+	color: white;
+}
+
+#orderFormField input{
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.6);
+	color: white;
 }
 
 ul#footerlinks {
