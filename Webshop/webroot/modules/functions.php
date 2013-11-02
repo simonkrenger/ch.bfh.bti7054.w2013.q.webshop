@@ -27,7 +27,12 @@ function get_safe_content_include($site_id) {
 	return $DEFAULT_SITE;
 }
 
-
+/**
+ * Function to get a Parameter form $_GET Array.
+ * @param unknown $name
+ * @param unknown $default
+ * @return string|unknown
+ */
 function get_param($name, $default) {
 	if (isset($_GET[$name])) {
 		return urldecode($_GET[$name]);
@@ -37,6 +42,14 @@ function get_param($name, $default) {
 	}
 }
 
+/**
+ * Function to add a parameter to $_GET Array
+ * @param unknown $url
+ * @param unknown $name
+ * @param unknown $value
+ * @param string $sep
+ * @return string
+ */
 function add_param($url, $name, $value, $sep="&") {
 	$new_url = $url.$sep.$name."=".urlencode($value);
 	return $new_url;
@@ -44,17 +57,6 @@ function add_param($url, $name, $value, $sep="&") {
 
 
 
-
-// function setLanguae($language) {
-	
-// 	function language() {
-// 		$url = $_SERVER['PHP_SELF'];
-// 		$url = add_param($url, "id", get_param("id", 0), "?");
-// 	if ($_GET ['language'] != null)
-// 		$language = 'en';
-// 	else
-// 		$lagnguage = $_GET ['language'];
-// }
 
 
 ?>

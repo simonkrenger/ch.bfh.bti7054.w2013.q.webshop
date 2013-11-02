@@ -1,4 +1,4 @@
-<form name="orederForm" action="sendOrder.php" method="post"
+<form class= form name="orederForm" action="sendOrder.php" method="post"
 	onsubmit="submitOrderForm()" onreset="resetOrderForm()">
 
 <?php

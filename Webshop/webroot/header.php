@@ -1,6 +1,5 @@
 <?php include('modules/functions.php'); ?>
 <?php include('modules/shopdb.php'); ?>
-<?php //setLanguae();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +39,6 @@
 			</div>
 			<!-- 			<div id="search"></div> -->
 				<?php include('menu.php'); ?>
-				<?php include('forms/orderForm.php'); ?>
+				
 		</div>
 
