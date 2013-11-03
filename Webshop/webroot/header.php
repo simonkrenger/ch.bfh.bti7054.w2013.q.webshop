@@ -1,5 +1,10 @@
+<?php include('config.php'); // First order of business, load config ?>
 <?php include('modules/functions.php'); ?>
 <?php include('modules/shopdb.php'); ?>
+
+<?php require_db(); ?>
+<?php require_lang();?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +20,7 @@
 
 			<div id="logo">
 				<div id="companyname">
-					<a href="/"><img src="images/logo-white.png" alt="Logo" /></a>
+					<a href="<?php echo get_href("home"); ?>"><img src="images/logo-white.png" alt="Logo" /></a>
 				</div>
 
 			</div>

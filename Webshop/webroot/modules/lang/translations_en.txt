@@ -1,0 +1,11 @@
+MENU_HOME,Home
+MENU_PREDEFINED,Predefined
+MENU_ON_SALE,On Sale
+MENU_CUSTOM,Custom
+MENU_SATELLITES,Satellites
+MENU_ACCESSORIES,Accessories
+MENU_SHOPPINGCART,Shopping Cart
+MENU_LOGIN,Login
+MARKETING_CLAIM_BIG,Planets on sale!
+MARKETING_CLAIM_SUBTEXT,... because noone else wanted them.
+MARKETING_FIND_OUT_MORE,Find out more
