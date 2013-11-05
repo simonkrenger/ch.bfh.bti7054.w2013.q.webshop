@@ -1,4 +1,3 @@
-
 <?php
 
 $language = get_param("language", "en");
@@ -17,7 +16,20 @@ foreach ( $file as $line ) {
 }
 
 ?>
-<div id="menu">
-				<?php print_menu(); ?>
-			</div>
 
+<div id="menu">
+	<!-- <div class="menuentry" id="home"><a href="/index.html">Home</a></div> -->
+				<?php
+
+				foreach ($menu as $menuentry){
+					echo "<div class=\"menuentry\" id=\"".$menuentry[0]."\"><a href=\"index.php?site=" . $menuentry[0] . "&language=".$language .  "\"> " . $menuentry[1] . "</a></div>"; 
+				}
+
+					
+				?>
+				
+				
+				
+			</div>
+			
+			

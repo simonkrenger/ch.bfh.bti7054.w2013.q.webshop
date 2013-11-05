@@ -69,11 +69,8 @@ body a:hover {
 	
 	float: right;
 	position: top;
-<<<<<<< HEAD
 	padding: 10px 5px 10px 5px;
 	
-=======
->>>>>>> refs/remotes/origin/simon-branch
 }
 
 #search {
@@ -127,13 +124,7 @@ body a:hover {
 }
 
 #maincontent {
-<<<<<<< HEAD
 /* 	vertical-align: middle; */
-=======
-	vertical-align: middle;
-	float:left;
-	width:76%;
->>>>>>> refs/remotes/origin/simon-branch
 }
 
 #category {
@@ -227,14 +218,6 @@ body a:hover {
 
 .boxtitle {
 	
-}
-
-.separator {
-	border-bottom: 1px solid #EFEFEF;
-	margin-bottom: 10px;
-	margin-left: 0px;
-	margin-right: 4px;
-	margin-top: 10px;
 }
 
 #footer {
