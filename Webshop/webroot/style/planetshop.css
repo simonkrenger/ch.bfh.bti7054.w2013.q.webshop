@@ -18,10 +18,22 @@ body {
 	color: rgba(255, 255, 255, 1);
 	background-image: url('../images/galaxy3.jpg');
 	border-radius: 20px;
-
-	/* 	background-color: black; */
 }
 
+body a {
+	color: white;
+	text-decoration: none;
+}
+
+body a:visited {
+	color: white;
+}
+
+body a:hover {
+	text-decoration: underline;
+}
+
+/* 	background-color: black; */
 #container {
 	display: block;
 	background-color: rgb(0, 0, 0);
@@ -40,23 +52,18 @@ body {
 }
 
 #navigation {
-	display: block;
-}
-
-#navigation div {
 	
 }
 
 #logo {
-	display: inline;
+	width: 50%;
 	padding: 10px 5px 10px 5px;
-	/* 	float: left; */
 }
 
 #language {
-	display: inline;
 	float: right;
 	position: top;
+	padding: 10px 5px 10px 5px;
 }
 
 #search {
@@ -104,12 +111,21 @@ body {
 	/* 	display: block; */
 	/* 	position:static; */
 	padding: 10px 5px 10px 5px;
+	margin-top: 30px;
 }
 
 #maincontent {
+/* 	float: left; */
+/* 	width:76%; */
+	
+}
+
+#category {
+	text-align: center;
 	vertical-align: middle;
-	float:left;
-	width:76%;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .categorytile {
@@ -121,12 +137,13 @@ body {
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 1);
 	height: 150px;
-	width: 150px;
-	margin: 20px;
-	padding: 10px;
+	width: 15%;
+	margin: 2%;
+	padding-top: 60px;
 	text-transform: uppercase;
 	text-align: center;
-	vertical-align: middle;
+	word-wrap: break-word;
+	vertical-align: inherit;
 }
 
 #marketing {
@@ -187,6 +204,7 @@ body {
 	border-radius: 10px;
 	margin-bottom: 20px;
 	padding: 10px 10px 10px 10px;
+	background-color: rgb(0, 0, 0);
 }
 
 .boxtitle {
@@ -204,6 +222,59 @@ body {
 #footer {
 	clear: both;
 	padding: 10px 5px 10px 5px;
+	margin-top: 50px;
+}
+
+#orderSummary {
+	margin-left: 20px;
+	margin-bottom: 30px;
+}
+
+.form {
+	display: inline-block;
+	margin-left: 20px;
+	width: 70%;
+	margin-top: 40px;
+}
+
+#orderForm {
+	
+}
+
+#heading {
+	font-size: 20px;
+	text-transform: uppercase;
+	margin-left: 20px;
+}
+
+.orderFormField {
+	background-color: rgb(0, 0, 0);
+	color: white;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	border: 2px solid;
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.orderFormField label {
+	border-right: 2px solid;
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, 0.6);
+	margin-left: 20px;
+	width: 15%;
+	display: inline-table;
+}
+
+.orderFormField input {
+	background-color: rgb(0, 0, 0);
+	border: none;
+	font-style: italic;
+	display: inline-table;
+	margin-left: 20px;
 }
 
 ul#footerlinks {
