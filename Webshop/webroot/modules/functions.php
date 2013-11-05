@@ -50,23 +50,4 @@ function get_href($site, $suffix=null) {
 	return "index.php?site=" . $site . $suffix;
 }
 
-function print_menu() {
-
-	global $shopdb;
-	
-	// Home link
-	echo "<div class=\"menuentry\" id=\"home\"><a href=\"". get_href("") ."\">" . get_translation ( "MENU_HOME" ) . "</a></div>";
-	
-	$categories = $shopdb->get_results ( "SELECT category_id,translation_string FROM product_category ORDER BY category_id" );
-	foreach ( $categories as $category ) {
-		echo "<div class=\"menuentry\" id=\"" . $category->translation_string . "\"><a href=\"". get_href("products", "&category=" . $category->category_id) . "\">" . get_translation ( $category->translation_string ) . "</a></div>";
-	}
-	
-	// Shopping cart
-	echo "<div class=\"menuentry\" id=\"shoppingcart\"><a href=\"". get_href("shoppingcart") . "\">" . get_translation ( "MENU_SHOPPINGCART") . "</a></div>";
-
-	// Login
-	echo "<div class=\"menuentry\" id=\"login\"><a href=\"". get_href("login") . "\">" . get_translation ( "MENU_LOGIN" ) . "</a></div>";
-}
-
 ?>
