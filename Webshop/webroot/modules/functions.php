@@ -50,4 +50,32 @@ function get_href($site, $suffix=null) {
 	return "index.php?site=" . $site . $suffix;
 }
 
+/**
+ * Function to get a Parameter form $_GET Array.
+ * @param unknown $name
+ * @param unknown $default
+ * @return string|unknown
+ */
+function get_param($name, $default) {
+	if (isset($_GET[$name])) {
+		return urldecode($_GET[$name]);
+	}
+	else{
+		return $default;
+	}
+}
+
+/**
+ * Function to add a parameter to $_GET Array
+ * @param unknown $url
+ * @param unknown $name
+ * @param unknown $value
+ * @param string $sep
+ * @return string
+ */
+function add_param($url, $name, $value, $sep="&") {
+	$new_url = $url.$sep.$name."=".urlencode($value);
+	return $new_url;
+}
+
 ?>

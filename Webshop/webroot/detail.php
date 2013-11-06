@@ -2,13 +2,14 @@
 <div id="content">
 	<div id="maincontent">
 	
-		<div id="planetPicture"></div>
+		<div class= "box" id="planetPicture"></div>
 
-		<div id="planetDescription"></div>
+		<div class= "box" id="planetDescription"></div>
 		
-		<div id="planetAttributes"></div>
+		<div class= "box" id="planetAttributes"></div>
 		
-		<div id="planetButtons"></div>
+		<div class= "box" id="planetButtons">
+		<a href="/index.php?site=order">BuyNow</a>
 		
 		
 		

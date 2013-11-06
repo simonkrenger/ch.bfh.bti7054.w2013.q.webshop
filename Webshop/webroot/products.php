@@ -14,7 +14,8 @@
 				}
 				
 				foreach($products as $product) {
-					echo '<div class="product-listing-header">' . $product->name . '</div>';
+					//TODO: Make this link dynamic!
+					echo '<div class="product-listing-header"><a href="/index.php?site=detail">' . $product->name . '</a></div>';
 					echo '<div class="separator"></div>';
 				}
 				?>
