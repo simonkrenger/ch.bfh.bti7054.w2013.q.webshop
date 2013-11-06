@@ -18,7 +18,7 @@ foreach ( $orderFormFile as $line ) {
 ?>
 
 
-<div id="orderForm">
+<div class="form">
 
 		<?php
 		foreach ( $orderForm as $entry ) {

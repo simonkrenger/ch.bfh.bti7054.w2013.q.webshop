@@ -1,6 +1,7 @@
 <?php include('header.php'); ?>
 <!-- END header -->
 
+<?php breadcrumb() ?>
 <!-- START main content -->
 <?php 
 if(isset($_GET['site'])) {

@@ -1,7 +1,7 @@
 
 		<div id="content">
 			<div id="maincontent">
-				
+				<div id="contentarea">
 				<?php 
 				/** Dummy query */
 				if(isset($_GET['category'])) {
@@ -20,6 +20,7 @@
 				}
 				?>
 				
+			</div>
 			</div>
 			<?php include('sidebar.php'); ?>
 		</div>

@@ -15,10 +15,11 @@
  * frontpage javascript buttons
  * buton > link javascript
  * css refactor
+ * breadcrumb
  
 
 ### Simon ab Freitag 08.11.2013 behold
- *  Link zu default.php mit übergabe ID 
+ *  Link zu detail.php mit übergabe ID 
  *  anpassen default.php mit werten db.
  *  javascript before send (order summary)
  *  front page categorys dynamic

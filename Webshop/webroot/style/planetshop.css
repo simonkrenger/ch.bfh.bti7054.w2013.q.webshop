@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 * {
-	/* 	border: 2px red solid; */
-	/* 	Size of boxes will not increase by margin and padding */
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -33,15 +31,13 @@ body a:hover {
 	text-decoration: underline;
 }
 
-/* 	background-color: black; */
+
 #container {
-	display: block;
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.6);
 	width: 80%;
 	margin: 0 auto;
 	padding: 10px;
-	/*height ganze seite + Scrollen*/
 	border-radius: 20px;
 }
 
@@ -52,7 +48,7 @@ body a:hover {
 }
 
 #navigation {
-	
+	/* surrounds logo, language,search and menu*/
 }
 
 #logo {
@@ -67,7 +63,7 @@ body a:hover {
 }
 
 #search {
-	
+	/*to be implemented*/
 }
 
 #menu {
@@ -75,32 +71,18 @@ body a:hover {
 }
 
 .menuentry {
-	/* 	float:left; */
 	padding: 5px 10px 5px 0px;
 	display: inline;
 	text-transform: uppercase;
 }
 
-/* Links */
-.menuentry a {
-	color: white;
-	text-decoration: none;
-}
-
-.menuentry a:visited {
-	color: white;
-}
-
-.menuentry a:hover {
-	text-decoration: underline;
-}
 
 #shoppingcart {
-	
+		/*to be implemented*/
 }
 
 #login {
-	
+		/*to be implemented*/
 }
 
 #breadcrumb {
@@ -115,8 +97,7 @@ body a:hover {
 }
 
 #maincontent {
-/* 	float: left; */
-/* 	width:76%; */
+
 	
 }
 
@@ -180,7 +161,7 @@ body a:hover {
 }
 
 #contentarea {
-	border: 2px solid;
+		border: 2px solid;
 	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
@@ -188,6 +169,7 @@ body a:hover {
 	margin: 0 auto;
 	width: 77%;
 	float: left;
+
 }
 
 #rightsidebar {
@@ -231,23 +213,20 @@ body a:hover {
 }
 
 .form {
-	display: inline-block;
-	margin-left: 20px;
-	width: 70%;
 	margin-top: 40px;
 }
 
 #orderForm {
-	
+	margin-left: 20px;
 }
 
 #heading {
 	font-size: 20px;
 	text-transform: uppercase;
-	margin-left: 20px;
 }
 
 .orderFormField {
+	display : block;
 	background-color: rgb(0, 0, 0);
 	color: white;
 	margin-right: 20px;
@@ -266,14 +245,14 @@ body a:hover {
 	border-color: rgba(255, 255, 255, 0.6);
 	margin-left: 20px;
 	width: 15%;
-	display: inline-table;
+	display: inline-block;
 }
 
 .orderFormField input {
 	background-color: rgb(0, 0, 0);
 	border: none;
 	font-style: italic;
-	display: inline-table;
+	display: inline-block;
 	margin-left: 20px;
 }
 

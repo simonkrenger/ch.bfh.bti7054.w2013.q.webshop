@@ -20,6 +20,24 @@ function require_lang() {
 	}
 }
 
+function breadcrumb($setCrumb, $addCrumb){
+	/*if no crumb is set, set to empty string*/
+	if ($addCrumb == NULL) {
+		$addCrumb = "";
+	}
+	/*return breadcrumb according to actual breadCrumb*/
+	if ($setCrumb == NULL)
+		return $addCrumb;
+	else if (strpos($setCrumb, $addCrumb) !== false){
+		return strstr($setCrumb, $addCrumb, true).">" . $addCrumb;
+	}
+	else {
+		return $setCrumb.">".$addCrumb;
+}
+		
+		
+}
+
 /**
  * Function to check if requested $_GET['site'] is an allowed site.
  *
