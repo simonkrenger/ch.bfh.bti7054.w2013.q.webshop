@@ -10,3 +10,4 @@ detail,detail.php
 products,products.php
 order,order.php
 orderForm,orderForm.php
+sendOrder,sendOrder.php

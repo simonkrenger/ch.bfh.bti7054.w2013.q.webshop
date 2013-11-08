@@ -2,11 +2,11 @@
 <div id="content">
 	<div id="maincontent">
 	<dic id="contentarea">
-		<div class= "box" id="planetPicture"></div>
+		<div class= "box" id="planetPicture">[picture of Planet]</div>
 
-		<div class= "box" id="planetDescription"></div>
+		<div class= "box" id="planetDescription">[planet description here]</div>
 		
-		<div class= "box" id="planetAttributes"></div>
+		<div class= "box" id="planetAttributes">[atributes]</div>
 		
 		<div class= "box" id="planetButtons">
 		<a href="/index.php?site=order">BuyNow</a>

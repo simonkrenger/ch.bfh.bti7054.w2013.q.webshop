@@ -1,5 +1,7 @@
-<form class= form name="orederForm" action="sendOrder.php" method="post"
+<form class= form name="orederForm" action= "<?php echo get_href("sendOrder")?>" method="post"
 	onsubmit="submitOrderForm()" onreset="resetOrderForm()">
+	
+	<?php echo ABSPATH . get_href("sendOrder")?>
 
 <?php
 if (get_param ( "language", "en" ) == "de") {

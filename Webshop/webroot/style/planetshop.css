@@ -161,16 +161,30 @@ body a:hover {
 }
 
 #contentarea {
-		border: 2px solid;
+	border: 2px solid;
 	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
 	height: 100%;
-	margin: 0 auto;
+	padding: 5px 5px 5px 5px;
+/* 	margin: 0 auto; */
 	width: 77%;
 	float: left;
 
 }
+
+#planetPicture{
+width: 49%;
+display: inline-block;
+}
+
+#planetDescription{
+margin-left: 10px;
+display: inline-block;
+width: 49%;
+	
+}
+
 
 #rightsidebar {
 	height: 100%;
@@ -208,19 +222,21 @@ body a:hover {
 }
 
 #orderSummary {
+	margin-top: 20px;
 	margin-left: 20px;
 	margin-bottom: 30px;
 }
 
 .form {
-	margin-top: 40px;
+;
 }
 
 #orderForm {
-	margin-left: 20px;
+		margin-left: 20px
 }
 
 #heading {
+	margin-bottom: 30px;
 	font-size: 20px;
 	text-transform: uppercase;
 }
