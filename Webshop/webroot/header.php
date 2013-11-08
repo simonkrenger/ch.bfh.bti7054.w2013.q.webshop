@@ -27,10 +27,15 @@
 			<div id="language">
 			
 			<?php
-			$url = $_SERVER['PHP_SELF'];
 			
-echo "<a href=\"". $url . "?language=de\">DE</a> | ";
-echo "<a href=\"". $url . "?language=en\">EN</a>";
+			if(isset($_GET["site"])) {
+				$cur_site = $_GET["site"];
+			} else {
+				$cur_site = "home";
+			}
+			
+			echo "<a href=\"". get_href($cur_site, array("language" => "de")) . "\">DE</a> | ";
+			echo "<a href=\"". get_href($cur_site, array("language" => "en")) . "\">EN</a>";
 			?>
 		
 			

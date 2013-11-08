@@ -6,11 +6,11 @@
 				global $shopdb;
 				
 				// Home link
-				echo "<div class=\"menuentry\" id=\"home\"><a href=\"". get_href("") ."\">" . get_translation ( "MENU_HOME" ) . "</a></div>";
+				echo "<div class=\"menuentry\" id=\"home\"><a href=\"". get_href("home") ."\">" . get_translation ( "MENU_HOME" ) . "</a></div>";
 				
 				$categories = $shopdb->get_results ( "SELECT category_id,translation_string FROM product_category ORDER BY category_id" );
 				foreach ( $categories as $category ) {
-					echo "<div class=\"menuentry\" id=\"" . $category->translation_string . "\"><a href=\"". get_href("products", "&category=" . $category->category_id) . "\">" . get_translation ( $category->translation_string ) . "</a></div>";
+					echo "<div class=\"menuentry\" id=\"" . $category->translation_string . "\"><a href=\"". get_href("products", array("category" => $category->category_id)) . "\">" . get_translation ( $category->translation_string ) . "</a></div>";
 				}
 				
 				// Shopping cart

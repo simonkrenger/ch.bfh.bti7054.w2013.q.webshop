@@ -15,7 +15,7 @@
 				
 				foreach($products as $product) {
 					// Calculate suffix (including 
-					$prod_suffix = '&product_id=' . $product->product_id;
+					$prod_suffix = array('product_id' => $product->product_id);
 					
 					echo '<div class="product-listing-header"><a href="' . get_href('detail', $prod_suffix) . '">' . $product->name . '</a></div>';
 					echo '<div class="separator"></div>';

@@ -26,7 +26,7 @@ if (isset ( $_GET ['product_id'] )) {
 
 			<div class="box" id="planetButtons">
 				<a href="<?php
-				$suffix = '&product_id=' . $product_id;
+				$suffix = array("product_id" => $product_id);
 				echo get_href("order", $suffix); ?>">Buy Now!</a>
 
 			</div>

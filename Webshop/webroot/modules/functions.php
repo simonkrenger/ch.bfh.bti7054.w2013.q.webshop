@@ -60,25 +60,10 @@ function get_safe_content_include($site_id) {
 }
 
 function get_href($site, $suffix=null) {
+	$params = array_merge($_GET, $suffix);
 	
-	
-	/*
-	  
-	   $params = array_merge($_GET, array("test" => "testvalue"));
-	   $new_query_string = http_build_query($params);
-	  
-	 
-	
-	$params = array_merge($_GET, array("test" => "testvalue"));
-	return "index.php" . http_build_query($params);
-	
-	*/
-	
-	if(isset($_GET['language'])) {
-		return "index.php?site=" . $site . "&language=" . $_GET['language'] . $suffix;
-	}
-	
-	return "index.php?site=" . $site . $suffix;
+	$params = array_replace($params, array("site" => $site));
+	return "index.php?" . http_build_query($params);
 }
 
 /**
