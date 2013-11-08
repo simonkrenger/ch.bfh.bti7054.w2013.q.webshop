@@ -9,7 +9,7 @@
 		<div class= "box" id="planetAttributes">[atributes]</div>
 		
 		<div class= "box" id="planetButtons">
-		<a href="/index.php?site=order">BuyNow</a>
+		<a href="<?php echo get_href("order"); ?>">BuyNow</a>
 		
 			</div>
 		

@@ -15,7 +15,7 @@
  * frontpage javascript buttons
  * buton > link javascript
  * css refactor
- * breadcrumb
+ * breadcrumb javascript
  
 
 ### Simon ab Freitag 08.11.2013 behold
