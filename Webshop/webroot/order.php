@@ -18,7 +18,7 @@ if (isset ( $_GET ['product_id'] )) {
 				<div class="box"> The Planet you order: <?php echo $product_info->name; ?></div>
 			</div>
 
-			<div id="orderForm">
+			<div id="orderFormDiv">
 
 				<div id="heading">order form</div>
 				<?php include(ABSPATH . 'modules/order/orderForm.php'); ?>

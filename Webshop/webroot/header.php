@@ -10,6 +10,8 @@
 <meta charset="UTF-8">
 <title>PlanetShop</title>
 <link rel="stylesheet" type="text/css" href="style/planetshop.css" />
+<script type="text/javascript" src="/js/planetshop.js"></script>
+<noscript>...</noscript>
 </head>
 <body>
 	<div id="container">

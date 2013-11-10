@@ -19,8 +19,8 @@
  
 
 ### Simon ab Freitag 08.11.2013 behold
- *  Link zu detail.php mit übergabe ID 
- *  anpassen default.php mit werten db.
- *  javascript before send (order summary)
- *  front page categorys dynamic
+ *  Link zu detail.php mit übergabe ID (DONE) 
+ *  anpassen default.php mit werten db (DONE)
+ *  javascript before send (order summary) (DONE)
+ *  front page categorys dynamic (DONE)
  *  login page
