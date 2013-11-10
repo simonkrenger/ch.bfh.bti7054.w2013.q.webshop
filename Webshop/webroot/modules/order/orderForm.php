@@ -1,4 +1,4 @@
-<form class= form name="orederForm" action= "<?php echo get_href("sendOrder")?>" method="post"
+<form class="form" name="orderForm" action="<?php echo get_href("sendOrder"); ?>" method="post"
 	onsubmit="submitOrderForm()" onreset="resetOrderForm()">
 	
 
@@ -37,7 +37,7 @@ foreach ( $orderFormFile as $line ) {
 			RadioButton <input type="radio">
 		</div>
 		<div>
-			<input type="submit" name="submitted" value="Send">
+			<input type="submit" name="submitted" value="Order now!">
 		</div>
 </div>
 </form>

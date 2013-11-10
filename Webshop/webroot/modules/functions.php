@@ -59,7 +59,7 @@ function get_safe_content_include($site_id) {
 	return $DEFAULT_SITE;
 }
 
-function get_href($site, $suffix=null) {
+function get_href($site, $suffix=array()) {
 	$params = array_merge($_GET, $suffix);
 	
 	$params = array_replace($params, array("site" => $site));
