@@ -5,7 +5,7 @@ custom,default.php
 satellites,default.php
 accessories,default.php
 shoppingcart,minimal.php
-login,minimal.php
+login,login.php
 detail,detail.php
 products,products.php
 order,order.php

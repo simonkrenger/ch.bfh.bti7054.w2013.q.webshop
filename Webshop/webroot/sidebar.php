@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="box">
-		<div class="boxtitle">Login</div>
-		<div id="login">Login here</div>
+		<div class="boxtitle"><?php echo get_translation("MENU_LOGIN"); ?></div>
+		<div id="login"><?php include(ABSPATH . '/modules/login/loginform.php'); ?></div>
 	</div>
 </div>
