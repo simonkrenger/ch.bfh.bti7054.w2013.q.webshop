@@ -8,10 +8,13 @@
 				</div>
 			</div>
 			<div id="maincontent">
-				<div class="categorytile">Predefined</div>
-				<div class="categorytile">On Sale</div>
-				<div class="categorytile">Custom</div>
-				<div class="categorytile">Satellites</div>
-				<div class="categorytile">Accesories</div>
+			<?php 
+			
+			$categories = $shopdb->get_results ( "SELECT category_id,translation_string FROM product_category ORDER BY category_id" );
+			foreach ( $categories as $category ) {
+				echo "<div class=\"categorytile\"><a href=\"". get_href("products", array("category" => $category->category_id)) . "\">" . get_translation ( $category->translation_string ) . "</a></div>";
+			}
+			
+			?>
 			</div>
 		</div>
