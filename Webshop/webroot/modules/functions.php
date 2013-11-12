@@ -16,7 +16,8 @@ function require_lang() {
 	
 	require_once('language.php');
 	if (! isset ( $language )) {
-		$language = get_language();
+		$language = get_language(); // Fränzi: Replace me!
+		// Further reading: Read browser agent language (optional)
 	}
 }
 
