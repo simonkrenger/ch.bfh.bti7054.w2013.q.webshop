@@ -14,8 +14,10 @@ $state= $_POST['state'];
 $country= $_POST['country'];
 $planet= $_POST['planet'];
 $galaxy= $_POST['galaxy'];
+$phone= $_POST['phone'];
+$email= $_POST['email'];
 
-echo "$first $last - $address $number $city $state $country $planet $galaxy";
+echo "$first $last - $address $number $city $state $country $planet $galaxy $phone $email";
 ?>
 
 
