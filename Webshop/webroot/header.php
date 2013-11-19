@@ -12,7 +12,7 @@
 <title>PlanetShop</title>
 <link rel="stylesheet" type="text/css" href="style/planetshop.css" />
 <script type="text/javascript" src="/js/planetshop.js"></script>
-<noscript>...</noscript>
+<noscript>This site needs JavaScript!</noscript>
 </head>
 <body>
 	<div id="container">
@@ -40,11 +40,10 @@
 			echo "<a href=\"". get_href($cur_site, array("language" => "de")) . "\">DE</a> | ";
 			echo "<a href=\"". get_href($cur_site, array("language" => "en")) . "\">EN</a>";
 			?>
-		
 			
 			</div>
 			<!-- 			<div id="search"></div> -->
 				<?php include('menu.php'); ?>
 
 		</div>
-
+<?php include('modules/breadcrumb.php') ?>

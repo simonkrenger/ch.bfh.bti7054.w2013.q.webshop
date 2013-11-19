@@ -1,7 +1,6 @@
 <div id="menu">
 	<!-- <div class="menuentry" id="home"><a href="/index.html">Home</a></div> -->
-				<?php 
-
+				<?php
 
 				global $shopdb;
 				
@@ -17,8 +16,10 @@
 				echo "<div class=\"menuentry\" id=\"shoppingcart\"><a href=\"". get_href("shoppingcart") . "\">" . get_translation ( "MENU_SHOPPINGCART") . "</a></div>";
 				
 				// Login
-				echo "<div class=\"menuentry\" id=\"login\"><a href=\"". get_href("login") . "\">" . get_translation ( "MENU_LOGIN" ) . "</a></div>";
-				
-				
+				if(is_logged_in()) {
+					echo "<div class=\"menuentry\" id=\"login\"><a href=\"". get_href("login", array("logout" => "true")) . "\">" . get_translation ( "MENU_LOGOUT" ) . "</a></div>";
+				} else {
+					echo "<div class=\"menuentry\" id=\"login\"><a href=\"". get_href("login") . "\">" . get_translation ( "MENU_LOGIN" ) . "</a></div>";
+				}
 				?>
 			</div>

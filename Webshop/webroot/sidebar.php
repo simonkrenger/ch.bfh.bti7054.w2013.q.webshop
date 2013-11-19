@@ -16,7 +16,7 @@
 			<div id="login"><?php include(ABSPATH . '/modules/login/loginform.php'); ?></div>
 		<?php } else {?>
 			<div id="login">
-				<p><?php echo "Welcome back " . $SESSION["username"] . "!"; ?></p>
+				<p><?php echo "Welcome back " . $_SESSION["first_name"] . "!"; ?></p>
 				<p><a href="<?php echo get_href("login", array("logout" => "true")); ?>">Logout</a></p>
 			</div>
 		<?php }?>

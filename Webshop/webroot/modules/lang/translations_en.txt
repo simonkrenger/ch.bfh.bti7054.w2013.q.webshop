@@ -6,6 +6,7 @@ MENU_SATELLITES,Satellites
 MENU_ACCESSORIES,Accessories
 MENU_SHOPPINGCART,Shopping Cart
 MENU_LOGIN,Login
+MENU_LOGOUT,Logout
 MARKETING_CLAIM_BIG,Planets on sale!
 MARKETING_CLAIM_SUBTEXT,... because noone else wanted them.
 MARKETING_FIND_OUT_MORE,Find out more
