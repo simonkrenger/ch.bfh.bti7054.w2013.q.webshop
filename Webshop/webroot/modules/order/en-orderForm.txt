@@ -8,3 +8,5 @@ state, State,text,50,100
 country, Country,text,50,100
 planet, Planet,text,50,100
 galaxy, Galaxy,text,50,100
+phone, Phone Number,text,14,14
+email, E-Mail,text,20,100
