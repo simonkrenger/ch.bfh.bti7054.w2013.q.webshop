@@ -11,86 +11,126 @@ function displayOrderConfirmation() {
 	}
 }
 
+function visitPage($link){
+    window.location= $link;
+  }
+
+
+function isAllNumbers($value){
+	var numbers = "/^[0-9]+$/";
+	return ($value.match(numbers));
+	
+}
+
+function isAllLetters($value){
+	var letters = "/^[a-zA-Z]+$/";
+	return ($value.match(letters));
+	
+}
+
+function isAlphanumeric($value){
+	var alphanumeric = "/^[0-9a-zA-Z]+$/";
+	return ($value.match(alphanumeric));
+	
+}
+
+function isPhoneNumber($value){
+	//TODO: Change Regex for real Phone Numbers
+	var digits = "/^[0-9]+$/";
+	return($value.match(digits));
+}
+
+function isEmail($value){
+	var mailformat = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
+	return($value.match(mailformat));
+}
+
+function isLength($value, $min, $max){
+	return ($value.length > $min && $value < $max);
+}
+
+function isName($value){
+	return(isAllletters($value) && isLength($value, 1,100));
+}
+
+
 function verifyOrderForm() {
-
-	var numbers = /^[0-9]+$/;  
-	var letters = /^[a-zA-Z]+$/;  
-	var alphanumeric = /^[0-9a-zA-Z]+$/;  
-	var digits = /^[0-9]+$/;
-	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-
-	var first = document.getElementById("firstname").value;
-	if (first = null || !first.match(letters) || first.length > 100 || first.length < 1) {
-		alert("The ufirst must be 1-100 characters");
+	
+	var $first = document.getElementById("firstname").value;
+	if (!isName($first)) {
+		alert("The firstname must be 1-100 letters");
 		document.getElementById("fistname").select();
 		return false;
 	}
-	var last = document.getElementById("lastname").value;
-	if (last = null || !last.match(letters)|| last.length > 100 || last.length < 1) {
-		alert("The user name must be 1-100 characters");
+	
+	var $last = document.getElementById("lastname").value;
+	if (!isName($last)) {
+		alert("The lastname must be 1-100 letters");
 		document.getElementById("lastname").select();
 		return false;
 	}
-	var add = document.getElementById("address").value;
-	if (add = null || !add.match(letters)|| add.length > 100 || add.length < 1) {
-		alert("The address must be 1-100 characters");
+	
+	var $add = document.getElementById("address").value;
+	if (!isName($add)) {
+		alert("The address must be 1-100 letters");
 		document.getElementById("address").select();
 		return false;
 	}
-	var nr = document.getElementById("number").value;
-	if (nr = null || !nr.match(numbers)|| nr < 1 || nr > 99999) {
-		alert("The house number must be a number from 1-99999");
+	
+	var $nr = document.getElementById("number").value;
+	if (!isAllNumbers($nr) && !isLength($nr,1,5)) {
+		alert("The house number must be a number from 1 - 99999");
 		document.getElementById("number").select();
 		return false;
 	}
-	var ac = document.getElementById("areacode").value;
-	if (ac = null || !ac.match(numbers)|| ac < 1 || ac > 9999999999) {
-		alert("The area code must be a number from 1-9999999999");
+	var $ac = document.getElementById("areacode").value;
+	if (!isAllNumbers($ac) && !isLength($ac,1,7)) {
+		alert("The house number must be a number from 1 - 9999999");
 		document.getElementById("areacode").select();
 		return false;
 	}
-	var city = document.getElementById("city").value;
-	if (city = null || !city.match(letters) || city.lenght < 1 || city.lenght > 100) {
-		alert("The city name must be 1-100 characters");
+	var $city = document.getElementById("city").value;
+	if (!isName($city)) {
+		alert("The city name must be 1-100 letters");
 		document.getElementById("city").select();
 		return false;
 	}
-	var state = document.getElementById("state").value;
-	if (state = null || !state.match(letters) || state.lenght < 1 || state.lenght > 100) {
-		alert("The state name must be 1-100 characters");
-		document.getElementById("state").select();
+	var $st = document.getElementById("state").value;
+	if (!isName($st)) {
+		alert("The state name must be 1-100 letters");
+		document.etElementById("state").select();
 		return false;
 	}
-	var ct = document.getElementById("country").value;
-	if (ct = null || !ct.match(letters) || ct.lenght < 1 || ct.lenght > 100) {
-		alert("The country name must be 1-100 characters");
-		document.getElementById("country").select();
+	var $ct = document.getElementById("country").value;
+	if (!isName($ct)) {
+		alert("The country name must be 1-100 letters");
+		document.etElementById("country").select();
 		return false;
 	}
-	var pt = document.getElementById("planet").value;
-	if (pt = null || !pt.match(letters)|| pt.lenght < 1 || pt.lenght > 100) {
-		alert("The planet name must be 1-100 characters");
-		document.getElementById("planet").select();
+	var $pt = document.getElementById("planet").value;
+	if (!isName($pt)){
+		alert("The planet name must be 1-100 letters");
+		document.etElementById("state").select();
 		return false;
 	}
-	var gx = document.getElementById("galaxy").value;
-	if (gx = null || !gx.match(alphanumeric)|| gx.lenght < 1 || gx.lenght > 100) {
-		alert("The galxy name must be 1-100 characters");
-		document.getElementById("galaxy").select();
+	var $gx = document.getElementById("planet").value;
+	if (!isName($gx)){
+		alert("The country name must be 1-100 letters");
+		document.etElementById("galaxy").select();
 		return false;
 	}
 	
-	var phone = document.getElementById("phone").value;
-	if (phone = null || !phone.match(digits)|| phone.lenght < 4 || phone.lenght > 14) {
+	var $phone = document.getElementById("phone").value;
+	if (!isPhoneNumber($phone) && !isLength($phone, 4, 14)) {
 		alert("Please enter a valid phone number");
 		document.getElementById("phone").select();
 		return false;
 	}
 	
-	var mail = document.getElementById("email").value;
-	if (mail = null || !mail.match(mailformat)|| mail.lenght < 5 || mail.lenght > 100) {
-		alert("Please enter a valid e-mail address");
-		document.getElementById("phone").select();
+	var $mail = document.getElementById("mail").value;
+	if (!isEmail($mail) && !isLength($mail, 5, 254)) {
+		alert("Please enter a valid E-Mail address");
+		document.getElementById("mail").select();
 		return false;
 	}
 
