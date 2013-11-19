@@ -11,6 +11,11 @@ function displayOrderConfirmation() {
 	}
 }
 
+function visitPage($link){
+    window.location= $link;
+  }
+
+
 function isAllNumbers($value){
 	var numbers = "/^[0-9]+$/";
 	return ($value.match(numbers));
