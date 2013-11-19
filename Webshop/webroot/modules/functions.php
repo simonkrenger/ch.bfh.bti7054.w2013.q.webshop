@@ -30,7 +30,7 @@ function require_login() {
 			$_SESSION["logged_in"] = true;
 			$_SESSION = array_merge($_SESSION, get_object_vars($login_user));
 		} else {
-			
+			header('Location: ' . get_href("login", array("login_failed" => 1)));
 		}
 	}
 	
@@ -38,15 +38,15 @@ function require_login() {
 	if(isset($_GET["logout"]) && is_logged_in()) {
 		session_unset();
 		session_destroy();
-		header('Location: /index.php');
+		header('Location: ' . get_href($_GET["site"], array(), true));
 	}
 }
 
 function require_secure() {
 	session_start();
 	
-	if (!isset($_SESSION["islogged_in"])) {
-		header('Location: /index.php');
+	if (!is_logged_in()) {
+		header('Location: ' . get_href("login"));
 	}
 }
 
@@ -106,8 +106,12 @@ function get_safe_content_include($site_id) {
 	return $DEFAULT_SITE;
 }
 
-function get_href($site, $suffix=array()) {
-	$params = array_merge($_GET, $suffix);
+function get_href($site, $suffix=array(), $preserve=false) {
+	$params = $suffix;
+	
+	if($preserve) {
+		$params = array_merge($_GET, $params);
+	}
 	
 	$params = array_replace($params, array("site" => $site));
 	return "index.php?" . http_build_query($params);
