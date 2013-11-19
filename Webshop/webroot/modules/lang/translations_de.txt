@@ -10,3 +10,5 @@ MARKETING_CLAIM_BIG,Planetä im Usverchouf!
 MARKETING_CLAIM_SUBTEXT,... wüu se niemer het wöue.
 MARKETING_FIND_OUT_MORE,Hie klickä
 ALL_PRODUCTS,Aui Produkt
+LOGIN_FAILED,Iilogge isch nid gange!
+LOGIN_SUCCESSFUL,Iilogge isch guet gange, willkomme zrügg!

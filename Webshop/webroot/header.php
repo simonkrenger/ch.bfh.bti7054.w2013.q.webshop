@@ -2,6 +2,7 @@
 <?php include('modules/functions.php'); ?>
 
 <?php require_db(); ?>
+<?php require_login(); ?>
 <?php require_lang();?>
 
 <!DOCTYPE html>

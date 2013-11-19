@@ -11,6 +11,32 @@ function require_db() {
 	}
 }
 
+function require_login() {
+	session_start();
+	
+	if(isset($_GET["logout"]) && isset($_SESSION["islogged_in"])) {
+		session_destroy();
+		header('Location: /index.php');
+		exit();
+	}
+}
+
+function require_secure() {
+	session_start();
+	
+	if (!isset($_SESSION["islogged_in"])) {
+		header('Location: /index.php');
+		exit();
+	}
+}
+
+function is_logged_in() {
+	if (isset($_SESSION["logged_in"])) {
+		return true;
+	}
+	return false;
+}
+
 function require_lang() {
 	global $language;
 	
