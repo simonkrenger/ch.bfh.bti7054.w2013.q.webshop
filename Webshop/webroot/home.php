@@ -12,7 +12,7 @@
 			
 			$categories = $shopdb->get_results ( "SELECT category_id,translation_string FROM product_category ORDER BY category_id" );
 			foreach ( $categories as $category ) {
-				echo "<div class=\"categorytile\"><a href=\"". get_href("products", array("category" => $category->category_id)) . "\">" . get_translation ( $category->translation_string ) . "</a></div>";
+				echo "<button class=\"categorytile\"><a href=\"". get_href("products", array("category" => $category->category_id)) . "\">" . get_translation ( $category->translation_string ) . "</a></button>";
 			}
 			
 			?>
