@@ -11,6 +11,52 @@ function require_db() {
 	}
 }
 
+function require_login() {
+	
+	require_lang();
+	session_start();
+	
+	// Login code
+	if (isset ( $_POST ["islogin"] ) && isset ( $_POST ["username"] ) && isset ( $_POST ["password"] )) {
+		global $shopdb;
+	
+		$cleaned_username = $shopdb->escape($_POST["username"]);
+		$cleaned_password = $shopdb->escape($_POST["password"]);
+	
+		$query = sprintf("SELECT user_id, username, email, first_name, last_name, role_id FROM user WHERE username='%s' AND password=md5('%s') LIMIT 1", $cleaned_username, $cleaned_password);
+		$login_user = $shopdb->get_row($query);
+	
+		if($login_user != NULL) {
+			$_SESSION["logged_in"] = true;
+			$_SESSION = array_merge($_SESSION, get_object_vars($login_user));
+		} else {
+			
+		}
+	}
+	
+	// Logout code
+	if(isset($_GET["logout"]) && is_logged_in()) {
+		session_unset();
+		session_destroy();
+		header('Location: /index.php');
+	}
+}
+
+function require_secure() {
+	session_start();
+	
+	if (!isset($_SESSION["islogged_in"])) {
+		header('Location: /index.php');
+	}
+}
+
+function is_logged_in() {
+	if (isset($_SESSION["logged_in"])) {
+		return true;
+	}
+	return false;
+}
+
 function require_lang() {
 	global $language;
 	
@@ -21,7 +67,7 @@ function require_lang() {
 	}
 }
 
-function breadcrumb($setCrumb, $addCrumb){
+function breadcrumb($setCrumb=NULL, $addCrumb=NULL){
 	/*if no crumb is set, set to empty string*/
 	if ($addCrumb == NULL) {
 		$addCrumb = "";
