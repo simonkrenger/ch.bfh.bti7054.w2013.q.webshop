@@ -17,7 +17,7 @@
 		<?php } else {?>
 			<div id="login">
 				<p><?php echo "Welcome back " . $_SESSION["first_name"] . "!"; ?></p>
-				<p><a href="<?php echo get_href("login", array("logout" => "true")); ?>">Logout</a></p>
+				<p><a href="<?php echo get_href($_GET["site"] , array("logout" => "true"), true); ?>">Logout</a></p>
 			</div>
 		<?php }?>
 	</div>

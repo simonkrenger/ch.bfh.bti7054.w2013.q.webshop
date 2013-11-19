@@ -22,7 +22,7 @@
 
 			<div id="logo">
 				<div id="companyname">
-					<a href="<?php echo get_href("home"); ?>"><img src="images/logo-white.png" alt="Logo" /></a>
+					<a href="<?php echo get_href("home", array()); ?>"><img src="images/logo-white.png" alt="Logo" /></a>
 				</div>
 
 			</div>
