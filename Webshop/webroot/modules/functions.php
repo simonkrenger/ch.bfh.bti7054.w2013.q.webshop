@@ -30,7 +30,7 @@ function require_login() {
 			$_SESSION["logged_in"] = true;
 			$_SESSION = array_merge($_SESSION, get_object_vars($login_user));
 		} else {
-			
+			header('Location: ' . get_href("login", array("login_failed" => 1)));
 		}
 	}
 	
@@ -38,7 +38,7 @@ function require_login() {
 	if(isset($_GET["logout"]) && is_logged_in()) {
 		session_unset();
 		session_destroy();
-		header('Location: /index.php');
+		header('Location: ' . get_href("home"));
 	}
 }
 

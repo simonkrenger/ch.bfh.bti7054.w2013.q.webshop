@@ -3,6 +3,9 @@
 		<div id="contentarea">
 			<h2><?php echo get_translation("MENU_LOGIN"); ?></h2>
 			<?php if(!is_logged_in()) {
+				if(isset($_GET["login_failed"])) {
+					echo '<div id="warn">Login failed! Please retry.</div>';
+				}
 				include(ABSPATH . '/modules/login/loginform.php');
 			} else { ?>
 				<p><?php echo "Welcome " . $_SESSION["first_name"] . " " . $_SESSION["last_name"] . "!"; ?></p>
