@@ -2,8 +2,7 @@
 
 ## Brainstorming
  
-  * // multilanguage with cookies 
-
+ * css refactor
 
 ## ToD
 
@@ -14,9 +13,7 @@
  * detail.php und category.php design (ersetzten default.php) [check]
  * order Form, buy now, sendOrder, summary [check]
  * check order form with javascript. make generic. [check]
- * frontpage javascript buttons
- * buton > link javascript
- * css refactor
+ * frontpage javascript buttons[check]
  * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php
  * Task 9.1 Shopping Cart in OO
  * Formular Benutzerregistration 

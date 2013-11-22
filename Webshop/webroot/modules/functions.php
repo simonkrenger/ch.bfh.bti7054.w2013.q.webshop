@@ -58,6 +58,7 @@ function is_logged_in() {
 }
 
 function require_lang() {
+
 	global $language;
 	
 	require_once('language.php');
