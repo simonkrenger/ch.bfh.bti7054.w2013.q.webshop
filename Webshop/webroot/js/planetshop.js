@@ -12,7 +12,7 @@ function displayOrderConfirmation() {
 }
 
 function visitPage($link){
-    window.location= $link;
+    window.location=  $link;
   }
 
 
