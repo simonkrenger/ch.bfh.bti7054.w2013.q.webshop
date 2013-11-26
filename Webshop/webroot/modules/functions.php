@@ -72,9 +72,11 @@ function is_logged_in() {
 }
 
 function require_lang() {
+
 	global $language;
-	
+
 	require_once('language.php');
+		
 	if (! isset ( $language )) {
 		$language = get_language(); // Fränzi: Replace me!
 		// Further reading: Read browser agent language (optional)

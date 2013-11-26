@@ -9,11 +9,16 @@ if(file_exists('config.php')) {
 include('modules/functions.php');
 ?>
 
+
+		
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
 <?php require_user(); ?>
 <?php require_shoppingcart(); ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -47,8 +52,11 @@ include('modules/functions.php');
 				$cur_site = "home";
 			}
 			
-			echo "<a href=\"". get_href($cur_site, array("language" => "de")) . "\">DE</a> | ";
-			echo "<a href=\"". get_href($cur_site, array("language" => "en")) . "\">EN</a>";
+			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "de")) . "\" >DE</a> |";
+			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "en")) . "\" >EN</a>";
+			
+			//onclick=\"setLanguage('de')\"
+			//onclick=\"setLanguage('en')\"
 			?>
 			
 			</div>
