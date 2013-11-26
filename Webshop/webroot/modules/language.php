@@ -2,14 +2,17 @@
 function get_language() {
 	
 	if (isset ($_GET["switch_lang"])){
-		$_COOKIE ["language"] = $_GET["switch_lang"];
+		 setcookie("language", $_GET["switch_lang"]);
+		 return $_GET["switch_lang"];
 	}
 	
 	if (!isset ( $_COOKIE ["language"] )) {
-		 $_COOKIE ["language"] = "en";
-		
-	}
+		// Default value is 'en'
+		setcookie("language", "en");
+		return "en";
+	} else {
 		return $_COOKIE ["language"];
+	}
 }
 
 

@@ -1,7 +1,6 @@
 <?php include('config.php'); // First order of business, load config ?>
 <?php include('modules/functions.php'); ?>
 
-
 		
 <?php require_db(); ?>
 <?php require_login(); ?>
@@ -42,11 +41,9 @@
 				$cur_site = "home";
 			}
 			
-			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "de")) . "\" >DE</a> |";
-			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "en")) . "\" >EN</a>";
+			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "de"), true) . "\" >DE</a> |";
+			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "en"), true) . "\" >EN</a>";
 			
-			//onclick=\"setLanguage('de')\"
-			//onclick=\"setLanguage('en')\"
 			?>
 			
 			</div>
