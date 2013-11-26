@@ -15,11 +15,7 @@ function visitPage($link){
     window.location=  $link;
   }
 
-//function set_language($lng) {
-//	$_COOKIE ["language"] = $lng;
-//	alert($_COOKIE["language"]);
-//	//get_href($cur_site);
-//}
+
 
 function isAllNumbers($value){
 	var numbers = "/^[0-9]+$/";
