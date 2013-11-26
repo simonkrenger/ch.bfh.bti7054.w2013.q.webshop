@@ -14,8 +14,8 @@
  * order Form, buy now, sendOrder, summary [check]
  * check order form with javascript. make generic. [check]
  * frontpage javascript buttons[check]
- * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php
- * Task 9.1 Shopping Cart in OO
+ * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
+ * Task 9.1 Shopping Cart in Object-Oriented PHP (see slides!)
  * Formular Benutzerregistration 
  * Formulare "placeholder" anstatt "value" (loginform.php)
 
