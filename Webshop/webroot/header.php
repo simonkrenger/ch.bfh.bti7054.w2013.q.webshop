@@ -1,12 +1,15 @@
 <?php include('config.php'); // First order of business, load config ?>
 <?php include('modules/functions.php'); ?>
 
-
+<?php if (!isset($_COOKIE["language"])){
+		setcookie('language', 'en');}?>
+		
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
 
-<?php setcookie('language', $language); ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -39,9 +42,12 @@
 			} else {
 				$cur_site = "home";
 			}
-
-			echo "<a href=\"". get_href($cur_site) . "\" onclick=\"setLanguage('de')\" >DE</a> | ";
-			echo "<a href=\"". get_href($cur_site) . "\" onclick=\"setLanguage('en')\">EN</a>";
+		
+			echo "<a href=\"". get_href($cur_site) . "\" >DE</a> |";
+			echo "<a href=\"". get_href($cur_site) . "\" >EN</a>";
+			
+			//onclick=\"setLanguage('de')\"
+			//onclick=\"setLanguage('en')\"
 			?>
 			
 			</div>
