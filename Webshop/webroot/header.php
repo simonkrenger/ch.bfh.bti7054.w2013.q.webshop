@@ -1,8 +1,7 @@
 <?php include('config.php'); // First order of business, load config ?>
 <?php include('modules/functions.php'); ?>
 
-<?php if (!isset($_COOKIE["language"])){
-		setcookie('language', 'en');}?>
+
 		
 <?php require_db(); ?>
 <?php require_login(); ?>
@@ -42,9 +41,9 @@
 			} else {
 				$cur_site = "home";
 			}
-		
-			echo "<a href=\"". get_href($cur_site) . "\" >DE</a> |";
-			echo "<a href=\"". get_href($cur_site) . "\" >EN</a>";
+			
+			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "de")) . "\" >DE</a> |";
+			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "en")) . "\" >EN</a>";
 			
 			//onclick=\"setLanguage('de')\"
 			//onclick=\"setLanguage('en')\"
