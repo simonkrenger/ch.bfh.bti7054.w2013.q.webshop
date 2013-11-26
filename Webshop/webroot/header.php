@@ -1,9 +1,19 @@
-<?php include('config.php'); // First order of business, load config ?>
-<?php include('modules/functions.php'); ?>
+<?php 
+if(file_exists('config.php')) {
+	include('config.php'); // First order of business, load config
+} else {
+	// No config.php found, break
+	echo "ERROR: No config.php found, exiting";
+	exit(1);
+}
+include('modules/functions.php');
+?>
 
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
+<?php require_user(); ?>
+<?php require_shoppingcart(); ?>
 
 <!DOCTYPE html>
 <html>

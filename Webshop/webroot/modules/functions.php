@@ -50,6 +50,20 @@ function require_secure() {
 	}
 }
 
+function require_shoppingcart() {
+	
+}
+
+function require_user() {
+	global $shopuser;
+	
+	include(ABSPATH . "/modules/user/shopuser.class.php");
+	
+	if ((! isset ( $shopuser )) && is_logged_in()) {
+		$shopuser = ShopUser($_SESSION);
+	}
+}
+
 function is_logged_in() {
 	if (isset($_SESSION["logged_in"])) {
 		return true;
