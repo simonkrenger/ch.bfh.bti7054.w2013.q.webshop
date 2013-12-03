@@ -8,10 +8,14 @@ if(file_exists('config.php')) {
 }
 include('modules/functions.php');
 ?>
-<?php include('modules/classes/ShoppingCart.php'); ?>
 
-<?php session_start(); //TODO Simon: move me ?>
+<?php // Load classes ?>
+<?php include('modules/classes/ShoppingCart.php'); ?>
+<?php include('modules/classes/ShopUser.class.php'); ?>
+
+<?php // Prepare environment ?>
 <?php require_db(); ?>
+<?php require_session(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
 <?php require_user(); ?>

@@ -11,8 +11,13 @@ function require_db() {
 	}
 }
 
+function require_session() {
+	session_start();
+}
+
 function require_login() {
 
+	require_session();
 	require_lang();
 
 	
@@ -43,7 +48,7 @@ function require_login() {
 }
 
 function require_secure() {
-	session_start();
+	require_session();
 	
 	if (!is_logged_in()) {
 		header('Location: ' . get_href("login"));
@@ -51,6 +56,8 @@ function require_secure() {
 }
 
 function require_shoppingcart() {
+	require_session();
+	
 	if (! isset ( $_SESSION ["cart"] ))
 		$_SESSION ["cart"] = new ShoppingCart ();
 	
@@ -80,6 +87,7 @@ function require_user() {
 }
 
 function is_logged_in() {
+	require_session();
 	if (isset($_SESSION["logged_in"])) {
 		return true;
 	}
