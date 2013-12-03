@@ -21,6 +21,13 @@
 				global $shopuser;
 				echo "Welcome back " . $shopuser->first_name . "!";
 				?></p>
+				
+				<?php if(is_admin_user()) {
+					// If user is an admin, display admin link
+					echo '<p><a href="' . get_href("admin") .'">Admin</a></p>';
+				}
+				?>
+				
 				<p><a href="<?php echo get_href($_GET["site"] , array("logout" => "true"), true); ?>">Logout</a></p>
 			</div>
 		<?php }?>
