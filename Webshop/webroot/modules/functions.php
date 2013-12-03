@@ -17,7 +17,6 @@ function require_session() {
 
 function require_login() {
 
-	require_session();
 	require_lang();
 
 	
@@ -48,7 +47,6 @@ function require_login() {
 }
 
 function require_secure() {
-	require_session();
 	
 	if (!is_logged_in()) {
 		header('Location: ' . get_href("login"));
@@ -56,10 +54,9 @@ function require_secure() {
 }
 
 function require_shoppingcart() {
-	require_session();
 	
 	if (! isset ( $_SESSION ["cart"] ))
-		$_SESSION ["cart"] = new ShoppingCart ();
+		$_SESSION ["cart"] = new ShoppingCart();
 	
 	if (isset ($_GET["action"])){
 	
@@ -79,15 +76,12 @@ function require_shoppingcart() {
 function require_user() {
 	global $shopuser;
 	
-	include(ABSPATH . "/modules/user/shopuser.class.php");
-	
 	if ((! isset ( $shopuser )) && is_logged_in()) {
-		$shopuser = ShopUser($_SESSION);
+		$shopuser = new ShopUser($_SESSION);
 	}
 }
 
 function is_logged_in() {
-	require_session();
 	if (isset($_SESSION["logged_in"])) {
 		return true;
 	}

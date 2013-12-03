@@ -9,9 +9,13 @@ if(file_exists('config.php')) {
 include('modules/functions.php');
 ?>
 
-<?php // Load classes ?>
-<?php include('modules/classes/ShoppingCart.php'); ?>
-<?php include('modules/classes/ShopUser.class.php'); ?>
+<?php 
+
+function __autoload($classname) {
+	$filename = $classname .".class.php";
+	include_once(ABSPATH . "modules/classes/" . $filename);
+}
+?>
 
 <?php // Prepare environment ?>
 <?php require_db(); ?>

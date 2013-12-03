@@ -17,6 +17,7 @@
 				
 				// Login
 				if(is_logged_in()) {
+					var_dump($_GET);
 					echo "<div class=\"menuentry\" id=\"login\"><a href=\"". get_href($_GET["site"], array("logout" => "true"), true) . "\">" . get_translation ( "MENU_LOGOUT" ) . "</a></div>";
 				} else {
 					echo "<div class=\"menuentry\" id=\"login\"><a href=\"". get_href("login") . "\">" . get_translation ( "MENU_LOGIN" ) . "</a></div>";
