@@ -12,9 +12,9 @@ function require_db() {
 }
 
 function require_login() {
-	
+
 	require_lang();
-	session_start();
+
 	
 	// Login code
 	if (isset ( $_POST ["islogin"] ) && isset ( $_POST ["username"] ) && isset ( $_POST ["password"] )) {

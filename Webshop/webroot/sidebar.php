@@ -3,7 +3,8 @@
 		<div class="boxtitle"><h4>Shopping List</h4></div>
 		<div id="shoppinglist">
 			<ul>
-<?php $_SESSION["cart"]->display(); ?>>
+			<!-- TODO: change to displaySmall when function is implemented -->
+<?php $_SESSION["cart"]->displayFull(); ?> 
 			</ul>
 			<a href="shoppinglist.html">Checkout</a>
 		</div>

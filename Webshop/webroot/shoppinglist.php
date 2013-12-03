@@ -2,13 +2,18 @@
 <?php
 
 if (! isset ( $_SESSION ["cart"] ))
-	$_SESSION ["cart"] = new Cart ();
+	$_SESSION ["cart"] = new ShoppingCart ();
+
 if (isset ( $_GET ["product_id"] ))
+	echo "product id ". $_GET ["product_id"] ;
 	if ($_GET["product_id"] == 0 ){
+		echo "product id is zero";
 	$_SESSION ["cart"]->clear();
 	}
 	else {
-	$_SESSION ["cart"]->addItem ( $_GET ["art"], $_GET ["num"] );}
+		echo "product id is not zero";
+	$_SESSION ["cart"]->addItem ( $_GET ["product_id"],1);
+	}
 	
 ?>
 
@@ -16,7 +21,7 @@ if (isset ( $_GET ["product_id"] ))
 	<div id="maincontent">
 		<div id="contentarea">
 		
-		<?php $_SESSION["cart"]->display(); ?>
+		<?php $_SESSION["cart"]->displayFull(); ?>
 		
 		</div>
 			

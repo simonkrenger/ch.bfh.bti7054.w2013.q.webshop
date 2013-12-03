@@ -25,6 +25,15 @@ if (isset ( $_GET ['product_id'] )) {
 			<div class="box" id="planetAttributes">[atributes]</div>
 
 			<div class="box" id="planetButtons">
+			
+			
+
+			</div>
+			
+			<a href="<?php
+				$suffix = array("product_id" => $product_id);
+				echo get_href("shoppinglist", $suffix); ?>">Add to shopping Cart</a>
+			
 				<a href="<?php
 				$suffix = array("product_id" => $product_id);
 				echo get_href("order", $suffix); ?>">Buy Now!</a>
