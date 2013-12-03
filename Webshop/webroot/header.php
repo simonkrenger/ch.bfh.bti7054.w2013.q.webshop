@@ -9,7 +9,8 @@ if(file_exists('config.php')) {
 include('modules/functions.php');
 ?>
 
-		
+<?php include ("ShoppingCart.php"); ?>
+
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
