@@ -5,8 +5,8 @@ class ShoppingCart {
 	public function addItem($art, $num) {
 		if (! isset ( $this->items [$art] )) {
 			$this->items [$art] = 0;
-			$this->items [$art] += $num;
 		}
+		$this->items [$art] += $num;
 	}
 	
 	public function removeItem($art, $num) {

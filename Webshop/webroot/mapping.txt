@@ -11,4 +11,4 @@ products,products.php
 order,order.php
 orderForm,orderForm.php
 sendOrder,sendOrder.php
-shoppinglist, shoppinglist.php
+shoppingCart, shoppingCart.php

@@ -6,7 +6,7 @@
 			<!-- TODO: change to displaySmall when function is implemented -->
 <?php $_SESSION["cart"]->displayFull(); ?> 
 			</ul>
-			<a href="shoppinglist.html">Checkout</a>
+			<a href="<?php echo get_href("checkout"); ?>">Checkout</a>
 		</div>
 	</div>
 
