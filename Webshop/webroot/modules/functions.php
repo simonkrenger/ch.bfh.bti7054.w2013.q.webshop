@@ -88,6 +88,17 @@ function is_logged_in() {
 	return false;
 }
 
+function is_admin_user() {
+	require_user();
+	
+	global $shopuser;
+	if($shopuser->role_id == 1) {
+		// Role ID 1 equals an admin role
+		return true;
+	}
+	return false;
+}
+
 function require_lang() {
 
 	global $language;
