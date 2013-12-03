@@ -3,8 +3,7 @@
 		<div class="boxtitle"><h4>Shopping List</h4></div>
 		<div id="shoppinglist">
 			<ul>
-				<li>Planet1</li>
-				<li>Planet4</li>
+<?php $_SESSION["cart"]->display(); ?>>
 			</ul>
 			<a href="shoppinglist.html">Checkout</a>
 		</div>

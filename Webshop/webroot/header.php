@@ -1,7 +1,8 @@
 <?php include('config.php'); // First order of business, load config ?>
 <?php include('modules/functions.php'); ?>
 
-		
+<?php include ("ShoppingCart.php"); ?>
+
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
