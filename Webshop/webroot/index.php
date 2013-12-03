@@ -6,7 +6,10 @@ if(file_exists('config.php')) {
 	echo "ERROR: No config.php found, exiting";
 	exit(1);
 }
+
+// This includes the most basic functions
 include('modules/functions.php');
+
 ?>
 
 <?php 
@@ -17,9 +20,8 @@ function __autoload($classname) {
 }
 ?>
 
-<?php // Prepare environment ?>
-<?php require_db(); ?>
 <?php require_session(); ?>
+<?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
 <?php require_user(); ?>
