@@ -25,7 +25,7 @@ foreach ( $orderFormFile as $line ) {
 		foreach ( $orderForm as $entry ) {
 
 			
-			echo "<div class=\"orderFormField\"> <label for =\"" . $entry[0] . "\">" . $entry[1] . "</label><input type=\"" . $entry [2] . "\" name=\"" . $entry[0] . "\" size=\"" . $entry[3] . "\" maxlength=\"" . $entry[4] . "\" id=\"" . $entry[0] . "\" value =\"" . $entry[0] . "\"></div>";
+			echo "<div class=\"orderFormField\"> <label for =\"" . $entry[0] . "\">" . $entry[1] . "</label><input type=\"" . $entry [2] . "\" name=\"" . $entry[0] . "\" size=\"" . $entry[3] . "\" maxlength=\"" . $entry[4] . "\" id=\"" . $entry[0] . "\" placeholder =\"" . $entry[0] . "\"></div>";
 		}
 		
 		?>

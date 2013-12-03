@@ -24,7 +24,20 @@ if (isset ($_GET["action"])){
 	<div id="maincontent">
 		<div id="contentarea">
 		
+		<h1>Shopping Cart</h1>
+		
+		<table class="cartFull">
+		
+		<tr>
+		<td>Name</td>
+		<td>Description</td>
+		
+		</tr>";
+		
+		</table>
 		<?php $_SESSION["cart"]->displayFull(); ?>
+		
+		
 		
 		<a href="<?php
 				$suffix = array( "action" => "clear");
