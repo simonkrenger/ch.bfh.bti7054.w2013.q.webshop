@@ -7,6 +7,7 @@
 ## ToD
 
  * breadcrumb javascript
+ * 
 
 ### Fränzi
  * CSS/ design alle seiten gleich [check]
@@ -17,7 +18,8 @@
  * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
  * Task 9.1 Shopping Cart in OO [check]
  * Formular Benutzerregistration 
- * Formulare "placeholder" anstatt "value" (loginform.php)
+ * Formulare "placeholder" anstatt "value" (loginform.php) [check]
+ * SOAP current starTime, 
 
 
  
