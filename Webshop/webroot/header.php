@@ -1,15 +1,3 @@
-<?php include('config.php'); // First order of business, load config ?>
-<?php include('modules/functions.php'); ?>
-<?php include ('ShoppingCart.php'); ?>
-
-<?php session_start();?>
-<?php require_db(); ?>
-<?php require_login(); ?>
-<?php require_lang();?>
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>

@@ -31,8 +31,9 @@ if (isset ( $_GET ['product_id'] )) {
 			</div>
 			
 			<a href="<?php
-				$suffix = array("product_id" => $product_id);
-				echo get_href("shoppinglist", $suffix); ?>">Add to shopping Cart</a>
+				$suffix = array("product_id" => $product_id, "action" => "add");
+				echo get_href("shoppingCart", $suffix); ?>">Add to shopping Cart</a>
+			
 			
 				<a href="<?php
 				$suffix = array("product_id" => $product_id);

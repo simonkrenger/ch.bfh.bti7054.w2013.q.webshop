@@ -14,8 +14,8 @@
  * order Form, buy now, sendOrder, summary [check]
  * check order form with javascript. make generic. [check]
  * frontpage javascript buttons[check]
- * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php
- * Task 9.1 Shopping Cart in OO
+ * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
+ * Task 9.1 Shopping Cart in OO [check]
  * Formular Benutzerregistration 
  * Formulare "placeholder" anstatt "value" (loginform.php)
 
@@ -27,8 +27,8 @@
  *  javascript before send (order summary) (DONE)
  *  front page categorys dynamic (DONE)
  *  login page (DONE)
- *  Task 8.2, 8.3
- *  Task 9.2 Product List in OO
- *  Task 9.3 User in OO
-
+ *  Task 8.2, 8.3 (DONE)
+ *  Task 9.2 Product List in OO (DONE)
+ *  Task 9.3 User in OO (WIP)
+ *  Task 10.* Administration View
 
