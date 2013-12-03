@@ -33,8 +33,6 @@ class ShoppingCart {
 		$prod_info->name;
 		
 		
-
-		
 		//echo "<div class=\"cartField\"> <label for =\"name\">ProductName</label><input type=\"" . $entry [2] . "\" name=\"" . $entry[0] . "\" size=\"" . $entry[3] . "\" maxlength=\"" . $entry[4] . "\" id=\"" . $entry[0] . "\" placeholder =\"" . $entry[0] . "\"></div>";
 	
 
