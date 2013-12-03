@@ -11,6 +11,10 @@ function require_db() {
 	}
 }
 
+function require_session() {
+	session_start();
+}
+
 function require_login() {
 
 	require_lang();
@@ -43,10 +47,37 @@ function require_login() {
 }
 
 function require_secure() {
-	session_start();
 	
 	if (!is_logged_in()) {
 		header('Location: ' . get_href("login"));
+	}
+}
+
+function require_shoppingcart() {
+	
+	if (! isset ( $_SESSION ["cart"] ))
+		$_SESSION ["cart"] = new ShoppingCart();
+	
+	if (isset ($_GET["action"])){
+	
+		switch ($_GET["action"]){
+			case "add":
+				if (isset ( $_GET ["product_id"] )){
+					$_SESSION ["cart"]->addItem ( $_GET ["product_id"],1);
+				}
+				break;
+			case "clear":
+				$_SESSION ["cart"]->clear();
+				break;
+		}
+	}
+}
+
+function require_user() {
+	global $shopuser;
+	
+	if ((! isset ( $shopuser )) && is_logged_in()) {
+		$shopuser = new ShopUser($_SESSION);
 	}
 }
 
