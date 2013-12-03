@@ -131,7 +131,7 @@ function get_safe_content_include($site_id) {
 		$file = file ( "mapping.txt" );
 		foreach ( $file as $line ) {
 			$valid_site = explode ( ',', $line );
-			if ($valid_site [0] == $site_id) {
+			if (strtolower($valid_site[0]) == $site_id) {
 				return trim ( $valid_site [1] );
 			}
 		}
@@ -146,7 +146,7 @@ function get_href($site, $suffix=array(), $preserve=false) {
 		$params = array_merge($_GET, $params);
 	}
 	
-	$params = array_replace($params, array("site" => $site));
+	$params = array_replace($params, array("site" => strtolower($site)));
 	return "index.php?" . http_build_query($params);
 }
 
