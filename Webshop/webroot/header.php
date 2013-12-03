@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
 if(file_exists('config.php')) {
 	include('config.php'); // First order of business, load config
@@ -9,8 +10,9 @@ if(file_exists('config.php')) {
 include('modules/functions.php');
 ?>
 
-<?php include ("ShoppingCart.php"); ?>
+<?php include ('ShoppingCart.php'); ?>
 
+<?php session_start();?>
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
