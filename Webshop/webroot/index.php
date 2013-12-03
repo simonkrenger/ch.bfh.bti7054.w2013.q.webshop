@@ -14,6 +14,8 @@ include('modules/functions.php');
 <?php require_db(); ?>
 <?php require_login(); ?>
 <?php require_lang();?>
+<?php require_user(); ?>
+<?php require_shoppingcart(); ?>
 
 <?php include('header.php'); ?>
 <!-- END header -->
