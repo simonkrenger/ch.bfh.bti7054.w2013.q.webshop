@@ -92,6 +92,28 @@ body a:visited {
 		/*to be implemented*/
 }
 
+.cartFull{
+	border: 2px solid;
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	margin-bottom: 20px;
+	padding: 10px 10px 10px 10px;
+	background-color: rgb(0, 0, 0);
+	
+}
+
+.cartField{
+	border: 2px solid;
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	margin-bottom: 20px;
+	padding: 10px 10px 10px 10px;
+	background-color: rgb(0, 0, 0);
+	
+}
+
 #login {
 		/*to be implemented*/
 }

@@ -9,6 +9,8 @@ class ShoppingCart {
 		$this->items [$art] += $num;
 	}
 	
+
+	
 	public function removeItem($art, $num) {
 		if (isset ( $this->items [$art] ) && $this->items [$art] >= $num) {
 			$this->items [$art] -= $num;
@@ -20,33 +22,41 @@ class ShoppingCart {
 	}
 	
 	public function displayFull() {
-		//ToDo db abfrage für product details
-		
-		echo "<table border=\"1\">";
-		echo "<tr><th>Article</th><th>Items</th></tr>";
-		foreach ( $this->items as $art => $num ) ;
-			
-		echo "<tr><td>$art</td><td>$num</td></tr>";
-		echo "</table>";
-		
+		if (!empty($this->items)){
+		foreach ( $this->items as $art => $num ) {
 		$prod_info = $this->getProductInformation($art);
-		echo $prod_info->name;
-		
-		
-		//echo "<div class=\"cartField\"> <label for =\"name\">ProductName</label><input type=\"" . $entry [2] . "\" name=\"" . $entry[0] . "\" size=\"" . $entry[3] . "\" maxlength=\"" . $entry[4] . "\" id=\"" . $entry[0] . "\" placeholder =\"" . $entry[0] . "\"></div>";
+		echo "<tr>";
+		echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
+		echo "<td class=\"cartField\">" . $prod_info->description . "</td>";
+		echo "<td class=\"cartField\">" . $prod_info->price . "</td>";
+		echo "<td class=\"cartField\">" . $num . "</td>";
+		echo "<td class=\"cartField\">" . $num * $prod_info->price . "</td>";
+		echo "</tr>";
+		}
+		}
+
 	
+	}
 	
+
+	
+	public function displaySmall(){
+		if (!empty($this->items)){
+		foreach ( $this->items as $art => $num ) {
+		$prod_info = $this->getProductInformation($art);
+		echo "<tr><li>";
+		echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
+		echo "<td class=\"cartField\">" . $num . "</td>";
+		echo "</tr>";
+		}
+		}
 	}
 	
 	private function getProductInformation($id){
 		global $shopdb;
 		$product_id = $shopdb->escape($id);
-		$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $id );
+		$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $product_id  );
 		return $shopdb->get_row( $query );
-	}
-	
-	public function displaySmall(){
-		//TODO Displya funktion for sidebar
 	}
 	
 	

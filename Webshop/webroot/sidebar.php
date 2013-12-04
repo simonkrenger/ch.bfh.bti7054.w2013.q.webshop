@@ -4,7 +4,7 @@
 		<div id="shoppinglist">
 			<ul>
 			<!-- TODO: change to displaySmall when function is implemented -->
-<?php $_SESSION["cart"]->displayFull(); ?> 
+<?php $_SESSION["cart"]->displaySmall(); ?> 
 			</ul>
 			<a href="<?php echo get_href("checkout"); ?>">Checkout</a>
 		</div>
