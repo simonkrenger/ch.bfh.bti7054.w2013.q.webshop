@@ -14,7 +14,7 @@ if(is_logged_in() && is_admin_user()) {
 		case "doadd":
 			admin_add($_GET["type"]);
 		case "dodelete":
-			admin_delete($_GET["type"], $_POST["dodelete"]);
+			admin_delete($_GET["type"]);
 		case "list":
 		default:
 			admin_list($_GET["type"]);
@@ -26,7 +26,7 @@ if(is_logged_in() && is_admin_user()) {
 				admin_show_form($_GET["type"]);
 			break;
 		case "delete":
-			
+				admin_show_delete_form($_GET["type"], $_GET["id"]);
 			break;
 	}
 } else {

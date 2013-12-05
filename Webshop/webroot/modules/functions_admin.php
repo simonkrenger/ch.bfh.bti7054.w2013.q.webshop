@@ -1,7 +1,7 @@
 <?php
 
 function admin_get_types() {
-	return array("user", "planet", "galaxy");
+	return array("user", "product_category", "product", "planet", "galaxy");
 }
 
 function admin_list($type=null) {
@@ -24,19 +24,23 @@ function admin_list_print_type($typename) {
 	$id_attribute_name = get_id($attributes);
 		
 	// Print header
-	echo "<table><tr><th></th>";
+	echo "<table><tr>";
 	foreach ( $attributes as $attribute_name ) {
 		echo "<th>$attribute_name</th>";
 	}
+	echo "<th>Action</th>";
 	echo "</tr>";
 		
 	// Print content
 	foreach($all_items as $item) {
 		echo "<tr>";
-		echo '<td><a href="' . get_href("admin", array("action" => "delete", "type" => $typename, "id" => $item->$id_attribute_name)) . '">[-]</a></td>';
 		foreach ( $attributes as $attribute_name ) {
 			echo "<td>" . $item->$attribute_name . "</td>";
 		}
+		echo '<td>';
+		echo '<a href="' . get_href("admin", array("action" => "delete", "type" => $typename, "id" => $item->$id_attribute_name)) . '">[delete]</a>';
+		echo '<a href="' . get_href("admin", array("action" => "edit", "type" => $typename, "id" => $item->$id_attribute_name)) . '">[edit]</a>';
+		echo '</td>';
 		echo "</tr>";
 	}
 		
@@ -87,6 +91,22 @@ function admin_show_form($type=null, $id=null) {
 	}
 }
 
+function admin_show_delete_form($type=null, $id=null) {
+	if(isset($type) && isset($id)) {
+		echo '<form action="' . get_href("admin", array("action" => "dodelete", "type" => $type)) . '" method="post">';
+		
+		echo "Are you sure you want to delete the following item:<br/><br/>";
+		
+		echo "Type: $type<br/>";
+		echo "ID: $id<br/>";
+		
+		echo '<input type="hidden" name="delete_id" value="' . $id . '" />';
+		
+		echo '<input type="submit" value="Delete">';
+		echo '</form>';
+	}
+}
+
 function admin_add($type) {
 	if(isset($type)) {
 		global $shopdb;
@@ -130,14 +150,49 @@ function admin_add($type) {
 		$query .= ')';
 		
 		$shopdb->query($query);
+		// TODO: Error handling
 		
-		$shopdb->vardump();
 	} else {
 		echo "Error: No type provided";
 	}
 }
 
+function admin_update($type) {
+	if(isset($type)) {
+		// TODO
+	} else {
+		echo "Error: No type provided";
+	}
+}
+
+function admin_delete($type) {
+	if(isset($type) && isset($_POST["delete_id"])) {
+		global $shopdb;
+
+		// Dummy query to only get table metadata
+		$dummy = $shopdb->get_results("SELECT * FROM $shopdb->escape($type) WHERE 0=1");
+		$attributes = $shopdb->get_col_info("name");
+
+		$id_attribute_name = get_id($attributes);
+		
+		$query = "DELETE FROM ";
+		$query .= $shopdb->escape($type);
+		$query .= " WHERE $id_attribute_name = ";
+		$query .= $shopdb->escape($_POST['delete_id']);
+		
+		$shopdb->query($query);
+		// TODO: Error handling
+		
+		echo 'Deleted ' . $type . ' with ID ' . $_POST["delete_id"];
+		
+	} else {
+		echo "Error: No type or DELETE_ID set";
+	}
+}
+
+
 function get_id($attributes) {
+	global $shopdb;
 	// Try to evaluate which is the ID of the type
 	foreach ( $attributes as $attribute_name ) {
 		if(preg_match("/.*\_id$/", $attribute_name) == 1) {
