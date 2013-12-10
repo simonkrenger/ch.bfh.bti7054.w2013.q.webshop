@@ -19,45 +19,68 @@ function visitPage($link){
 
 function isAllNumbers($value){
 	var numbers = "/^[0-9]+$/";
-	return ($value.match(numbers));
+	if($value.match(numbers)){
+		return true;
+	}else{
+		alert($value + "is not all numbers");
+		return false;
+	}
 	
 }
 
 function isAllLetters($value){
-	var letters = "/^[a-zA-Z]+$/";
-	return ($value.match(letters));
+	var $letters = "/[^A-Za-z]+$/";
+	if($value.match("/[A-Za-z]+$/")){
+		return true;
+	}else{
+		alert($value + " is not all letters");
+		return false;
+	}
 	
 }
 
 function isAlphanumeric($value){
 	var alphanumeric = "/^[0-9a-zA-Z]+$/";
-	return ($value.match(alphanumeric));
+	if($value.match(alphanumeric)){
+		return true;
+	}else{
+		alert($value + "is not alphanumeric");
+		return false;
+	}
 	
 }
 
 function isPhoneNumber($value){
 	//TODO: Change Regex for real Phone Numbers
 	var digits = "/^[0-9]+$/";
-	return($value.match(digits));
+	if($value.match(digits)){
+		return true;
+	}else{
+		alert($value + "is not all digits");
+		return false;
+	}
 }
 
 function isEmail($value){
 	var mailformat = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
-	return($value.match(mailformat));
+	return mailformat.test($value);
 }
 
 function isLength($value, $min, $max){
-	return ($value.length > $min && $value < $max);
+	alert("has Lenght " + $value);
+	return ($value.length > $min && $value.length < $max);
 }
 
 function isName($value){
-	return(isAllletters($value) && isLength($value, 1,100));
+	alert("isName " + $value);
+	return(isAllLetters($value) && isLength($value,1,100));
 }
 
 
 function verifyOrderForm() {
 	
 	var $first = document.getElementById("firstname").value;
+	alert("TEST " + $first);
 	if (!isName($first)) {
 		alert("The firstname must be 1-100 letters");
 		document.getElementById("fistname").select();

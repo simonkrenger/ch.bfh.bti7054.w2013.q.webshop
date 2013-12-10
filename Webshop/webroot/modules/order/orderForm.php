@@ -3,7 +3,8 @@
 	
 
 <?php
-if (get_param ( "language", "en" ) == "de") {
+global $language;
+if ($language == "de") {
 	$orderFormFile = file (ABSPATH .  "modules/order/de-orderForm.txt" );
 } else {
 	$orderFormFile = file (ABSPATH . "modules/order/en-orderForm.txt" );
@@ -25,7 +26,8 @@ foreach ( $orderFormFile as $line ) {
 		foreach ( $orderForm as $entry ) {
 
 			
-			echo "<div class=\"orderFormField\"> <label for =\"" . $entry[0] . "\">" . $entry[1] . "</label><input type=\"" . $entry [2] . "\" name=\"" . $entry[0] . "\" size=\"" . $entry[3] . "\" maxlength=\"" . $entry[4] . "\" id=\"" . $entry[0] . "\" placeholder =\"" . $entry[0] . "\"></div>";
+			echo "<div class=\"orderFormField\"> <label for =\"" . $entry[0] . "\">" . $entry[1] . "</label>
+			<input type=\"" . $entry [2] . "\" name=\"" . $entry[0] . "\" size=\"" . $entry[3] . "\" maxlength=\"" . $entry[4] . "\" id=\"" . $entry[0] . "\" placeholder =\"" . $entry[0] .  "\" ></input></div>";
 		}
 		
 		?>
