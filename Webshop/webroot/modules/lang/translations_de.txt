@@ -12,4 +12,12 @@ MARKETING_CLAIM_SUBTEXT,... wüu se niemer het wöue.
 MARKETING_FIND_OUT_MORE,Hie klickä
 ALL_PRODUCTS,Aui Produkt
 LOGIN_FAILED,Iilogge isch nid gange!
-LOGIN_SUCCESSFUL,Iilogge isch guet gange, willkomme zrügg!
+LOGIN_SUCCESSFUL,Iilogge isch guet gange, willkomme zrügg %s!
+SHOPPINGCART_NAME,Produktnamä
+SHOPPINGCART_DESCRIPTION,Beschribig
+SHOPPINGCART_PRICE,Priis
+SHOPPINGCART_QUANTITY,Ahzau
+SHOPPINGCART_TOTAL,Totau
+SHOPPINGCART_CLEAR_CART,Chörbli lääre
+SHOPPINGCART_EMPTY,Ds Chörbli isch läär
+SHOPPINGCART_CHECKOUT,Tscheggout

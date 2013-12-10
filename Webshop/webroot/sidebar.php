@@ -1,12 +1,17 @@
 <div id="rightsidebar">
 	<div class="box">
-		<div class="boxtitle"><h4>Shopping List</h4></div>
+		<div class="boxtitle"><h4><?php echo get_translation("MENU_SHOPPINGCART"); ?></h4></div>
 		<div id="shoppinglist">
-			<ul>
-			<!-- TODO: change to displaySmall when function is implemented -->
-<?php $_SESSION["cart"]->displaySmall(); ?> 
-			</ul>
-			<a href="<?php echo get_href("checkout"); ?>">Checkout</a>
+			<?php
+			$cart = $_SESSION["cart"];
+			
+			$cart->displaySmall();
+			
+			if(!$cart->is_empty()) {
+				echo '<a href="' . get_href("checkout") . '">';
+				echo get_translation("SHOPPINGCART_CHECKOUT");
+				echo '</a>';
+			}?> 
 		</div>
 	</div>
 

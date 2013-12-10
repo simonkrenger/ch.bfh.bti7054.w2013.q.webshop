@@ -1,5 +1,6 @@
 <?php
 class ShoppingCart {
+	
 	private $items = array ();
 	
 	public function addItem($art, $num) {
@@ -22,33 +23,53 @@ class ShoppingCart {
 	}
 	
 	public function displayFull() {
-		if (!empty($this->items)){
-		foreach ( $this->items as $art => $num ) {
-		$prod_info = $this->getProductInformation($art);
-		echo "<tr>";
-		echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
-		echo "<td class=\"cartField\">" . $prod_info->description . "</td>";
-		echo "<td class=\"cartField\">" . $prod_info->price . "</td>";
-		echo "<td class=\"cartField\">" . $num . "</td>";
-		echo "<td class=\"cartField\">" . $num * $prod_info->price . "</td>";
-		echo "</tr>";
+		require_lang();
+		
+		if (!empty($this->items)) {
+			
+			echo '<table class="cartFull">';
+			echo '<tr>';
+			echo '<th class="cartField">' . get_translation("SHOPPINGCART_NAME") . '</th>';
+			echo '<th class="cartField">' . get_translation("SHOPPINGCART_DESCRIPTION") . '</th>';
+			echo '<th class="cartField">' . get_translation("SHOPPINGCART_PRICE") . '</th>';
+			echo '<th class="cartField">' . get_translation("SHOPPINGCART_QUANTITY") . '</th>';
+			echo '<th class="cartField">' . get_translation("SHOPPINGCART_TOTAL") . '</th>';
+			echo '</tr>';
+			
+			foreach ( $this->items as $art => $num ) {
+				$prod_info = $this->getProductInformation($art);
+				echo "<tr>";
+				echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
+				echo "<td class=\"cartField\">" . $prod_info->description . "</td>";
+				echo "<td class=\"cartField\">" . $prod_info->price . "</td>";
+				echo "<td class=\"cartField\">" . $num . "</td>";
+				echo "<td class=\"cartField\">" . $num * $prod_info->price . "</td>";
+				echo "</tr>";
+			}
+			
+			echo '</table>';
+		} else {
+			echo get_translation("SHOPPINGCART_EMPTY");
 		}
-		}
-
-	
 	}
 	
 
 	
 	public function displaySmall(){
+		require_lang();
+		
 		if (!empty($this->items)){
-		foreach ( $this->items as $art => $num ) {
-		$prod_info = $this->getProductInformation($art);
-		echo "<tr><li>";
-		echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
-		echo "<td class=\"cartField\">" . $num . "</td>";
-		echo "</tr>";
-		}
+			echo "<ul>";
+			foreach ( $this->items as $art => $num ) {
+				$prod_info = $this->getProductInformation($art);
+				echo "<tr><li>";
+				echo "<td class=\"cartField\">" . $num . "x </td>";
+				echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
+				echo "</li></tr>";
+			}
+			echo "</ul>";
+		} else {
+			echo get_translation("SHOPPINGCART_EMPTY");
 		}
 	}
 	
@@ -62,6 +83,10 @@ class ShoppingCart {
 	
 	public function clear() {
 		unset ( $this->items );
+	}
+	
+	public function is_empty() {
+		return empty($this->items);
 	}
 }
 ?>
