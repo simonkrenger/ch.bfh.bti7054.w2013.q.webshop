@@ -19,12 +19,12 @@ body {
 }
 
 body a {
-	color: white;
+	color: rgb(255, 255, 255);
 	text-decoration: none;
 }
 
 body a:visited {
-	color: white;
+		color: rgb(255, 255, 255);
 }
 
 
@@ -61,7 +61,7 @@ body a:visited {
 }
 
 #language a:HOVER{
-    color: black;
+    	color: rgb(0, 0, 0);
 	background-color: white;
 }
 
@@ -80,7 +80,7 @@ body a:visited {
 	text-transform: uppercase;
 }
 .menuentry a:HOVER{
-    color: black;
+    	color: rgb(0, 0, 0);
 	background-color: white;
 }
 
