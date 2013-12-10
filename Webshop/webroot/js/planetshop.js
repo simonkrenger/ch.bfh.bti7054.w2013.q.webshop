@@ -15,8 +15,6 @@ function visitPage($link){
     window.location=  $link;
   }
 
-
-
 function isAllNumbers($value){
 	var numbers = "/^[0-9]+$/";
 	return ($value.match(numbers));
@@ -58,6 +56,7 @@ function isName($value){
 function verifyOrderForm() {
 	
 	var $first = document.getElementById("firstname").value;
+	alert("TEST " + $first);
 	if (!isName($first)) {
 		alert("The firstname must be 1-100 letters");
 		document.getElementById("fistname").select();

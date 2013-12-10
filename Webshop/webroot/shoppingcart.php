@@ -7,13 +7,17 @@
 		<table class="cartFull">
 		
 		<tr>
-		<td>Name</td>
-		<td>Description</td>
+		<td class="cartField">Name</td>
+		<td class="cartField">Description</td>
+		<td class="cartField">Price</td>
+		<td class="cartField">Quantity</td>
+		<td class="cartField">Total</td>
+		</tr>
 		
-		</tr>";
+		<?php $_SESSION["cart"]->displayFull(); ?>
 		
 		</table>
-		<?php $_SESSION["cart"]->displayFull(); ?>
+
 		
 		
 		
