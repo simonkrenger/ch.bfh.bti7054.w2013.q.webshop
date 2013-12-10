@@ -19,7 +19,8 @@
  * Task 9.1 Shopping Cart in OO [check]
  * Formular Benutzerregistration 
  * Formulare "placeholder" anstatt "value" (loginform.php) [check]
- * SOAP current starTime, 
+ * SOAP current starTime,
+ * Order confirmation as PDF
 
 
  
@@ -33,4 +34,6 @@
  *  Task 9.2 Product List in OO (DONE)
  *  Task 9.3 User in OO (WIP)
  *  Task 10.* Administration View
+ *  Slider Custom Planet in AJAX
+ *  
 
