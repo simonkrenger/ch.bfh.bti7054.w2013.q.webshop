@@ -31,7 +31,9 @@ TODO | TODO | TODO
 
 ## Howto: Add a new page
 
+## Howto: Query the database
 
+## Howto: TODO
 
 ## Other references
 

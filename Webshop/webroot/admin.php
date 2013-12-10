@@ -10,11 +10,17 @@ if(is_logged_in() && is_admin_user()) {
 	
 	switch($_GET["action"])  {
 		case "doedit":
-			admin_update($_GET["type"]);
+			admin_update($_GET["type"], $_GET["id"]);
+			admin_list($_GET["type"]);
+			break;
 		case "doadd":
 			admin_add($_GET["type"]);
+			admin_list($_GET["type"]);
+			break;
 		case "dodelete":
 			admin_delete($_GET["type"]);
+			admin_list($_GET["type"]);
+			break;
 		case "list":
 		default:
 			admin_list($_GET["type"]);

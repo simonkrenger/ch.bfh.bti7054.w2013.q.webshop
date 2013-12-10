@@ -66,7 +66,7 @@ function admin_show_form($type=null, $id=null) {
 		}
 
 		if(isset($edit_values)) {
-			echo '<form action="' . get_href("admin", array("action" => "doedit", "type" => $type)) . '" method="post">';
+			echo '<form action="' . get_href("admin", array("action" => "doedit", "type" => $type, "id" => $id)) . '" method="post">';
 		} else {
 			echo '<form action="' . get_href("admin", array("action" => "doadd", "type" => $type)) . '" method="post">';
 		}
@@ -121,47 +121,66 @@ function admin_add($type) {
 		$query = 'INSERT INTO ' . $shopdb->escape($type) . ' ';
 		$query .= '(';
 		
-		$comma=false;
 		foreach ( $attributes as $attribute_name ) {
 			if(! ($attribute_name == $id_attribute_name)) {
-				if($comma) {
-					$query .= ', ';
-				} else {
-					$comma = true;
-				}
-				$query .= $shopdb->escape($attribute_name);
+				$query .= "," . $shopdb->escape($attribute_name);
 			}
 		}
 		
 		$query .= ') VALUES (';
 		
-		$comma=false;
 		foreach ( $attributes as $attribute_name ) {
 			if(! ($attribute_name == $id_attribute_name)) {
-				if($comma) {
-					$query .= ', ';
-				} else {
-					$comma = true;
-				}
-				$query .= "'" . $shopdb->escape($_POST[$attribute_name]) . "'";
+				$query .= ",'" . $shopdb->escape($_POST[$attribute_name]) . "'";
 			}
 		}
 		
 		$query .= ')';
 		
+		// Fix syntax
+		$query = str_replace("(,", "(", $query);
+		
 		$shopdb->query($query);
 		// TODO: Error handling
+		
+		echo $type . ' inserted.';
 		
 	} else {
 		echo "Error: No type provided";
 	}
 }
 
-function admin_update($type) {
-	if(isset($type)) {
-		// TODO
+function admin_update($type=null, $id=null) {
+	if(isset($type) && isset($id)) {
+		global $shopdb;
+		
+		// Dummy query to only get table metadata
+		$dummy = $shopdb->get_results("SELECT * FROM $shopdb->escape($type) WHERE 0=1");
+		$attributes = $shopdb->get_col_info("name");
+		
+		$id_attribute_name = get_id($attributes);
+		
+		// Assemble query
+		$query = 'UPDATE ' . $shopdb->escape($type) . ' SET ';
+		
+		foreach ( $attributes as $attribute_name ) {
+			if(! ($attribute_name == $id_attribute_name)) {
+				$query .= $attribute_name . "='" . $shopdb->escape($_POST[$attribute_name]) . "',";
+			}
+		}
+		
+		$query .= "WHERE $id_attribute_name=$shopdb->escape($id)";
+		
+		// Fix syntax (remove last comma)
+		$query = str_replace(",WHERE", " WHERE", $query);
+		
+		$shopdb->query($query);
+		// TODO: Error handling
+		
+		echo 'Updated ' . $type . ' with ID ' . $id . '.';
+		
 	} else {
-		echo "Error: No type provided";
+		echo "Error: No type or id provided";
 	}
 }
 

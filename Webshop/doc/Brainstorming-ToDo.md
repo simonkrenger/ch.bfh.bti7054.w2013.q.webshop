@@ -32,8 +32,8 @@
  *  login page (DONE)
  *  Task 8.2, 8.3 (DONE)
  *  Task 9.2 Product List in OO (DONE)
- *  Task 9.3 User in OO (WIP)
- *  Task 10.* Administration View
+ *  Task 9.3 User in OO (DONE)
+ *  Task 10.* Administration View (WIP)
  *  Slider Custom Planet in AJAX
  *  
 
