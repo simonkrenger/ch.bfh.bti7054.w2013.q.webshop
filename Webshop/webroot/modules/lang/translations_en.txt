@@ -27,6 +27,7 @@ FORM_REG_PHONE, Telephone
 FORM_REG_BIRTHDATE, Birthdate
 FORM_REG_USER, Username
 FORM_REG_PASS, Password
+FORM_REG_REG, Register
 LOGIN_SUCCESSFUL,Login successful, welcome back %s!
 SHOPPINGCART_NAME,Product name
 SHOPPINGCART_DESCRIPTION,Description

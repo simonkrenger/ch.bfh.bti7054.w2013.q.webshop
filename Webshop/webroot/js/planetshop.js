@@ -53,6 +53,21 @@ function isName(value){
 }
 
 
+function verifyForm() {
+	
+	var inputs, index;
+
+	inputs = document.getElementsByTagName('input');
+	for (index = 0; index < inputs.length; ++index) {
+	    if (inputs[index].type == text ) {
+	    	 if (!isAlphanumeric(inputs[index].value) && isLength(value, 1, 100))
+	    		 alert(inputs[index].name + "must be alphanumeric");
+	    	 	inputs[index].select();
+	    }
+	    
+		
+	}
+}
 function verifyOrderForm() {
 	
 	var first = document.getElementById("firstname").value;

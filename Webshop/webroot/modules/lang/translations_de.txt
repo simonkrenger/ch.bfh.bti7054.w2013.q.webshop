@@ -27,6 +27,7 @@ FORM_REG_PHONE, Telephon
 FORM_REG_BIRTHDATE, Geburtsdatum
 FORM_REG_USER, Benutzername
 FORM_REG_PASS, Passwort
+FORM_REG_REG, Registrieren
 LOGIN_SUCCESSFUL,Iilogge isch guet gange, willkomme zrügg %s!
 SHOPPINGCART_NAME,Produktnamä
 SHOPPINGCART_DESCRIPTION,Beschribig

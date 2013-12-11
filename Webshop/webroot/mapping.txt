@@ -12,3 +12,4 @@ order,order.php
 orderForm,orderForm.php
 sendOrder,sendOrder.php
 admin,admin.php
+reg, registration.php
