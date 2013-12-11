@@ -19,7 +19,7 @@
  * Task 9.1 Shopping Cart in OO [check]
  * Formular Benutzerregistration 
  * Formulare "placeholder" anstatt "value" (loginform.php) [check]
- * SOAP/REST  current starTime,
+ * SOAP current starTime,
  * Order confirmation as PDF
 
 
