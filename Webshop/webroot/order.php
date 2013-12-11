@@ -21,7 +21,7 @@ if (isset ( $_GET ['product_id'] )) {
 			<div id="orderFormDiv">
 
 				<div id="heading">order form</div>
-				<?php include(ABSPATH . 'modules/order/orderForm.php'); ?>
+				<?php include(ABSPATH . 'orderForm.php'); ?>
 				
 			</div>
 
