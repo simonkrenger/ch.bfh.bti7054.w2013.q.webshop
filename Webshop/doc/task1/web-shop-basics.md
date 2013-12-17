@@ -38,7 +38,7 @@ Planet #000-029-203 | Planets on sale | | $9'660'000
 Custom terrestrial planet | Custom planets | Size, Volume, Mass, Surface, Axial tilt, temperature | Depends on options
 Custom ocean planet | Custom planets | Size, Volume, Mass, Axial tilt, temperature | Depends on options
 Custom gas planet | Custom planets | Size, Volume, Mass, Surface, Axial tilt, temperature | Depends on options
-Regualr moon | Natural satellites | | $2'000'000
+Regular moon | Natural satellites | | $2'000'000
 Asteroid moon | Natural satellites | | $1'000'000
 Ice moon | Natural satellites | | $1'500'000
 Trojan| Natural satellites | | $200'000

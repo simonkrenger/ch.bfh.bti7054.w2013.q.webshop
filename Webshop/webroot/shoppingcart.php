@@ -7,11 +7,13 @@
 		<?php $_SESSION["cart"]->displayFull(); ?>
 		
 		<div class="separator"></div>
-		<a href="<?php
-				$suffix = array( "action" => "clear");
-				echo get_href("shoppingCart", $suffix); ?>"><?php echo get_translation("SHOPPINGCART_CLEAR_CART")?>
-		</a>
-		
+		<?php if( ! $_SESSION["cart"]->is_empty() ) { ?>
+			<a href="<?php
+					$suffix = array( "action" => "clear");
+					echo get_href("shoppingCart", $suffix); ?>">
+					<?php echo get_translation("SHOPPINGCART_CLEAR_CART")?>
+			</a>
+		<?php } ?>
 		</div>
 			
 			<?php include('sidebar.php'); ?>

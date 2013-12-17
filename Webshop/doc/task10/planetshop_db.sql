@@ -269,7 +269,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `planetshop_db`;
-INSERT INTO `planetshop_db`.`user` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `last_login`, `role_id`, `address_id`) VALUES (1, 'simon', 'f25f87f9fc1cfc152f9508f5b9a6854a', 'simon@krenger.ch', 'Simon', 'Krenger', NULL, 1, NULL);
+INSERT INTO `planetshop_db`.`user` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `last_login`, `role_id`, `address_id`) VALUES (1, 'simon', '43b90920409618f188bfc6923f16b9fa', 'simon@krenger.ch', 'Simon', 'Krenger', NULL, 1, NULL);
 INSERT INTO `planetshop_db`.`user` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `last_login`, `role_id`, `address_id`) VALUES (2, 'fraenzi', '609d83e477224ce84d757e25c3001acc', 'fraenzi@blah.com', 'Fränzi', 'Corradi', NULL, 1, NULL);
 INSERT INTO `planetshop_db`.`user` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `last_login`, `role_id`, `address_id`) VALUES (3, 'dr.einstein', '37a08ed30093a133b1bb4ae0b8f3601f', 'einstein@nano.universe', 'Albert', 'Einstein', NULL, NULL, NULL);
 INSERT INTO `planetshop_db`.`user` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `last_login`, `role_id`, `address_id`) VALUES (4, 'sophii', 'c0bd97dba5751dc2c7797b66fca9280c', 'sophii@summers.universe', 'Sophii', 'Summers', NULL, NULL, NULL);
@@ -295,7 +295,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `planetshop_db`;
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (1, 'Predefined planets');
+INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (1, 'Predefined');
 INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (2, 'Custom planet - Terrestrial');
 INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (3, 'Custom planet - Fluid');
 INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (4, 'Nebulae');
@@ -320,6 +320,16 @@ INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_ca
 INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (11, 2, 3, 'Custom terrestrial planet', 'The planet just for you!', NULL, NULL, 10, 100);
 INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (12, 3, 3, 'Custom ocean planet', 'Made just for you!', NULL, NULL, 10, 100);
 INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (13, 3, 3, 'Custom gas planet', 'Tailored', NULL, NULL, 10, 100);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (14, 1, 4, 'Regular moon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel hendrerit lorem. Cras malesuada, justo a ultrices ullamcorper, dui lorem tempor lacus, eu aliquet dui metus at diam. Nulla scelerisque ullamcorper hendrerit. Curabitur ante nisi, vehicula vitae tincidunt non, molestie convallis libero. Sed quis velit sapien. Sed pulvinar turpis vel turpis ornare vehicula. Nullam et ante vel magna pellentesque posuere. Maecenas lacus enim, facilisis at tincidunt in, lobortis eleifend neque. Aliquam massa libero, mattis vitae dui nec, tincidunt feugiat nisl.\n\nUt vel lobortis enim. Donec vehicula libero vitae libero congue, a imperdiet odio tempor. Morbi sagittis nulla in nisl vestibulum tempus ut sit amet elit. Vivamus feugiat tortor nisl. Suspendisse ornare viverra est tempus dictum. Duis nec purus mi. Aenean.', NULL, 2000000, 5, 10);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (15, 1, 4, 'Asteroid moon', 'An awesome asteroid moon. But to be honest, we do not exactly know the difference between this asteroid moon and the regular moon. We guess this one is just a little bit fancier or something. At least it costs a bit more...', NULL, 3000000, 4, 11);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (16, 1, 4, 'Ice moon', 'A really cold moon for those that like it cool.', NULL, 1500000, 5, 4);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (17, 1, 4, 'Trojan', 'Also with this one, we have no freaking idea what this is', NULL, 200000, 10, 10);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (18, 1, 5, 'Meteor field', 'A simple meteor field', NULL, 500000, 5, 16);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (19, 4, 5, 'Nebula', 'A nebulous nebula, available in multiple colors.', NULL, 15000000, 19, 2);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (20, 5, 5, 'Planet ring', 'Planetary rings available in multiple sizes', NULL, 1000000, 5, 10);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (21, 1, 5, 'Meteorite insurance', 'Insurance against meteorite showers', NULL, 50000000, 5, 1000);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (22, 1, 5, 'Supernova', 'Big Boom! But takes 5 weeks to deliver', NULL, 500000000, 25, 2);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (23, 1, 5, 'Comet', 'A comet that may or may not stay within orbit around a planet', NULL, 100000, 2, 493);
 
 COMMIT;
 
