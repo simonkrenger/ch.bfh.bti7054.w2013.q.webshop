@@ -7,7 +7,7 @@ function require_db() {
 	
 	if (! isset ( $shopdb )) {
 		// The DB_* values were set in 'config.php'
-		$shopdb = new ezSQL_mysqli ( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST );
+		$shopdb = new ezSQL_mysqli ( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, 'utf8');
 	}
 }
 
