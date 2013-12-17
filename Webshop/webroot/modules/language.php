@@ -29,7 +29,7 @@ function get_translation($translation_key) {
 	
 	$file = file ( ABSPATH . "/modules/lang/translations_" . $language . ".txt" );
 	foreach ( $file as $line ) {
-		$translation = explode ( ',', $line );
+		$translation = explode ( ',', $line, 2 );
 		if ($translation [0] == $translation_key)
 			return $translation [1];
 	}

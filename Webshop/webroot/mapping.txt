@@ -4,11 +4,12 @@ onsale,default.php
 custom,default.php
 satellites,default.php
 accessories,default.php
-shoppingcart,minimal.php
+shoppingcart,shoppingcart.php
 login,login.php
 detail,detail.php
 products,products.php
 order,order.php
 orderForm,orderForm.php
 sendOrder,sendOrder.php
-shoppingCart, shoppingCart.php
+admin,admin.php
+reg, registration.php

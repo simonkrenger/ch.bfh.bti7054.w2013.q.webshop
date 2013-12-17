@@ -6,7 +6,7 @@
 
 ## ToD
 
- * breadcrumb javascript
+ * confirmation Mail
 
 ### Fränzi
  * CSS/ design alle seiten gleich [check]
@@ -17,8 +17,11 @@
  * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
  * Task 9.1 Shopping Cart in OO [check]
  * Formular Benutzerregistration 
- * Formulare "placeholder" anstatt "value" (loginform.php)
-
+ * Formulare "placeholder" anstatt "value" (loginform.php) [check]
+ * SOAP current starTime,
+ * Order confirmation as PDF
+ * delete Breadcrumb
+ * change order form for 
 
  
 ### Simon ab Freitag 08.11.2013 behold
@@ -30,5 +33,8 @@
  *  Task 8.2, 8.3 (DONE)
  *  Task 9.2 Product List in OO (DONE)
  *  Task 9.3 User in OO (WIP)
- *  Task 10.* Administration View
+ *  Task 10.* Administration View (Done)
+ *  Slider Custom Planet in AJAX 
+ *  complete Product details and products
+ *  checkout process
 

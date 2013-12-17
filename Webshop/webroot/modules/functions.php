@@ -7,7 +7,7 @@ function require_db() {
 	
 	if (! isset ( $shopdb )) {
 		// The DB_* values were set in 'config.php'
-		$shopdb = new ezSQL_mysqli ( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST );
+		$shopdb = new ezSQL_mysqli ( DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, 'utf8');
 	}
 }
 
@@ -27,12 +27,12 @@ function require_login() {
 		$cleaned_username = $shopdb->escape($_POST["username"]);
 		$cleaned_password = $shopdb->escape($_POST["password"]);
 	
-		$query = sprintf("SELECT user_id, username, email, first_name, last_name, role_id FROM user WHERE username='%s' AND password=md5('%s') LIMIT 1", $cleaned_username, $cleaned_password);
+		$query = sprintf("SELECT user_id FROM user WHERE username='%s' AND password=md5('%s') LIMIT 1", $cleaned_username, $cleaned_password);
 		$login_user = $shopdb->get_row($query);
 	
-		if($login_user != NULL) {
+		if($login_user != NULL && isset($login_user->user_id)) {
 			$_SESSION["logged_in"] = true;
-			$_SESSION = array_merge($_SESSION, get_object_vars($login_user));
+			$_SESSION["user_id"] = $login_user->user_id;
 		} else {
 			header('Location: ' . get_href("login", array("login_failed" => 1)));
 		}
@@ -77,12 +77,23 @@ function require_user() {
 	global $shopuser;
 	
 	if ((! isset ( $shopuser )) && is_logged_in()) {
-		$shopuser = new ShopUser($_SESSION);
+		$shopuser = new ShopUser($_SESSION["user_id"]);
 	}
 }
 
 function is_logged_in() {
-	if (isset($_SESSION["logged_in"])) {
+	if (isset($_SESSION["logged_in"]) && isset($_SESSION["user_id"])) {
+		return true;
+	}
+	return false;
+}
+
+function is_admin_user() {
+	require_user();
+	
+	global $shopuser;
+	if($shopuser->role_id == 1) {
+		// Role ID 1 equals an admin role
 		return true;
 	}
 	return false;
@@ -131,7 +142,7 @@ function get_safe_content_include($site_id) {
 		$file = file ( "mapping.txt" );
 		foreach ( $file as $line ) {
 			$valid_site = explode ( ',', $line );
-			if ($valid_site [0] == $site_id) {
+			if (strtolower($valid_site[0]) == $site_id) {
 				return trim ( $valid_site [1] );
 			}
 		}
@@ -146,7 +157,7 @@ function get_href($site, $suffix=array(), $preserve=false) {
 		$params = array_merge($_GET, $params);
 	}
 	
-	$params = array_replace($params, array("site" => $site));
+	$params = array_replace($params, array("site" => strtolower($site)));
 	return "index.php?" . http_build_query($params);
 }
 
