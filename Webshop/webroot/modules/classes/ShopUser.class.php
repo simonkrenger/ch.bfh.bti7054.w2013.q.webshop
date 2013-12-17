@@ -2,6 +2,8 @@
 class ShopUser {
 	
 	public $address;
+	public $username;
+	
 	
 	// Variables are bound dynamically
 	
@@ -21,7 +23,6 @@ class ShopUser {
 		
 		// Get address
 		$this->address = new ShopUserAddress($this->address_id);
-		var_dump($this);
 	}
 }
 
