@@ -32,7 +32,7 @@ if (isset ( $_GET ['product_id'] )) {
 			
 			<a href="<?php
 				$suffix = array("product_id" => $product_id, "action" => "add");
-				echo get_href("shoppingCart", $suffix); ?>">Add to shopping Cart</a>
+				echo get_href("shoppingCart", $suffix); ?>">Add to shopping Cart</a><br>
 			
 			
 				<a href="<?php
