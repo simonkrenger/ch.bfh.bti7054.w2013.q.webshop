@@ -300,6 +300,7 @@ INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (2, 'Custo
 INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (3, 'Custom planet - Fluid');
 INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (4, 'Nebulae');
 INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (5, 'Planet Ring');
+INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (6, 'Other');
 
 COMMIT;
 
@@ -327,9 +328,9 @@ INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_ca
 INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (18, 1, 5, 'Meteor field', 'A simple meteor field', NULL, 500000, 5, 16);
 INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (19, 4, 5, 'Nebula', 'A nebulous nebula, available in multiple colors.', NULL, 15000000, 19, 2);
 INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (20, 5, 5, 'Planet ring', 'Planetary rings available in multiple sizes', NULL, 1000000, 5, 10);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (21, 1, 5, 'Meteorite insurance', 'Insurance against meteorite showers', NULL, 50000000, 5, 1000);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (22, 1, 5, 'Supernova', 'Big Boom! But takes 5 weeks to deliver', NULL, 500000000, 25, 2);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (23, 1, 5, 'Comet', 'A comet that may or may not stay within orbit around a planet', NULL, 100000, 2, 493);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (21, 6, 5, 'Meteorite insurance', 'Insurance against meteorite showers', NULL, 50000000, 5, 1000);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (22, 6, 5, 'Supernova', 'Big Boom! But takes 5 weeks to deliver', NULL, 500000000, 25, 2);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (23, 6, 5, 'Comet', 'A comet that may or may not stay within orbit around a planet', NULL, 100000, 2, 493);
 
 COMMIT;
 
