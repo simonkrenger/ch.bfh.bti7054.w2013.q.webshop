@@ -1,19 +1,28 @@
 		<div id="footer">
 
-			<ul id="footerlinks">
-			
+			<table id="footerlinks">
+			<tr>
+				<td>
 			<?php 
 			
 			echo "<a href=\"" . get_href(reg) . "\">" . get_translation("FORM_REG_REG") . "</a>"
 			
 			?>
 			
+				<td>
 
-
-				<li><a href="/">AGB</a></li>
-				<li><a href="/">Delivery service</a></li>
-				<li><a href="/">Contact</a></li>
-			</ul>
+				<td><a href="/">AGB</a></td>
+				</tr>
+				
+				<tr>
+				
+				<td><a href="/">Delivery service</a></td>
+				<td><a href="/">Contact</a></td>
+				
+				
+				
+				</tr>
+			</table>
 
 			Copyleft 2013, Fränzi u Simu
 		</div>
