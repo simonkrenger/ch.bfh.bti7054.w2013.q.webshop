@@ -1,0 +1,12 @@
+firstname, FORM_FIRSTNAME, 50,100
+lastname, FORM_LASTNAME, 50, 100
+street, FORM_STREET, 50,100
+number, FORM_NR, 5,10
+areacode, FORM_AREACODE, 5,10
+city,FORM_CITY,50,100
+state, FORM_STATE
+country, FORM_COUNTRY, 50,100
+planet, FORM_PLANET, 50, 100
+galaxy, FORM_GALAXY, 50,100
+email, FORM_EMAIL, 50,100
+phone, FORM_PHONE,4,15
