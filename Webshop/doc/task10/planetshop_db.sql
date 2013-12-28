@@ -107,21 +107,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `planetshop_db`.`product_type`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product_type` (
-  `type_id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`type_id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `planetshop_db`.`product`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product` (
   `product_id` INT NOT NULL AUTO_INCREMENT ,
-  `product_type` INT NULL ,
   `product_category` INT NULL ,
   `name` VARCHAR(50) NOT NULL ,
   `description` TEXT NULL ,
@@ -131,15 +120,9 @@ CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product` (
   `inventory_quantity` INT NULL DEFAULT 0 ,
   PRIMARY KEY (`product_id`) ,
   INDEX `fk_product_category_idx` (`product_category` ASC) ,
-  INDEX `fk_product_type_idx` (`product_type` ASC) ,
   CONSTRAINT `fk_product_category`
     FOREIGN KEY (`product_category` )
     REFERENCES `planetshop_db`.`product_category` (`category_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_product_type`
-    FOREIGN KEY (`product_type` )
-    REFERENCES `planetshop_db`.`product_type` (`type_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -150,17 +133,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product_attribute` (
   `attribute_id` INT NOT NULL AUTO_INCREMENT ,
-  `product_type_id` INT NULL ,
-  `name` VARCHAR(45) NOT NULL ,
+  `name` VARCHAR(100) NOT NULL ,
   `description` TEXT NULL ,
-  `value_range` VARCHAR(45) NULL ,
-  PRIMARY KEY (`attribute_id`) ,
-  INDEX `fk_product_type_idx` (`product_type_id` ASC) ,
-  CONSTRAINT `fk_attr_product_type`
-    FOREIGN KEY (`product_type_id` )
-    REFERENCES `planetshop_db`.`product_type` (`type_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `value_range` VARCHAR(100) NULL ,
+  PRIMARY KEY (`attribute_id`) )
 ENGINE = InnoDB;
 
 
@@ -218,9 +194,33 @@ CREATE  TABLE IF NOT EXISTS `planetshop_db`.`order_detail` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `planetshop_db`.`product_attribute_value`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product_attribute_value` (
+  `attribute_value_id` INT NOT NULL AUTO_INCREMENT ,
+  `product_id` INT NOT NULL ,
+  `product_attribute_id` INT NOT NULL ,
+  `value` VARCHAR(50) NULL ,
+  PRIMARY KEY (`attribute_value_id`) ,
+  INDEX `fk_prod_attr_val_prod_idx` (`product_id` ASC) ,
+  UNIQUE INDEX `uq_prod_attr` (`product_id` ASC, `product_attribute_id` ASC) ,
+  CONSTRAINT `fk_prod_attr_val_prod`
+    FOREIGN KEY (`product_id` )
+    REFERENCES `planetshop_db`.`product` (`product_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prod_attr`
+    FOREIGN KEY (`product_attribute_id` )
+    REFERENCES `planetshop_db`.`product_attribute` (`attribute_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 USE `planetshop_db` ;
 
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `planetshop_db`.* TO 'planetshop_user';
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `planetshop_db`.* TO 'planetshop_user'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -291,46 +291,32 @@ INSERT INTO `planetshop_db`.`product_category` (`category_id`, `name`, `translat
 COMMIT;
 
 -- -----------------------------------------------------
--- Data for table `planetshop_db`.`product_type`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `planetshop_db`;
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (1, 'Predefined');
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (2, 'Custom planet - Terrestrial');
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (3, 'Custom planet - Fluid');
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (4, 'Nebulae');
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (5, 'Planet Ring');
-INSERT INTO `planetshop_db`.`product_type` (`type_id`, `name`) VALUES (6, 'Other');
-
-COMMIT;
-
--- -----------------------------------------------------
 -- Data for table `planetshop_db`.`product`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `planetshop_db`;
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (1, 1, 1, 'Terrestrial Planet N39482', 'A super planet for the planetary beginner!', NULL, 10000000.00, 3, 28);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (2, 1, 1, 'Desert Planet', 'The cheaper alternative', NULL, 6000000.00, 3, 5);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (3, 1, 1, 'Ice Planet', 'A planet where vegetation is not necessary', NULL, 8000000.00, 4, 12);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (4, 1, 1, 'Lava Planet', 'A hot planet!', NULL, 7000000.00, 3, 4);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (5, 1, 1, 'Ocean Planet', 'For everyone fond of dolphins', NULL, 12000000.00, 5, 3);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (6, 1, 1, 'Gas Planet', 'Something lighter...', NULL, 4000000.00, 3, 38);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (7, 1, 2, 'Planet #329-234-907', 'Used! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisl nulla, posuere nec nibh sed, vestibulum porttitor sed.', NULL, 2200000.00, 3, 1);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (9, 1, 2, 'Planet #808-837-666', 'Used!', NULL, 6660000.00, 3, 1);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (10, 1, 2, 'Planet #000-029-203', 'Used', NULL, 9600000.00, 3, 1);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (11, 2, 3, 'Custom terrestrial planet', 'The planet just for you!', NULL, NULL, 10, 100);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (12, 3, 3, 'Custom ocean planet', 'Made just for you!', NULL, NULL, 10, 100);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (13, 3, 3, 'Custom gas planet', 'Tailored', NULL, NULL, 10, 100);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (14, 6, 4, 'Regular moon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel hendrerit lorem. Cras malesuada, justo a ultrices ullamcorper, dui lorem tempor lacus, eu aliquet dui metus at diam. Nulla scelerisque ullamcorper hendrerit. Curabitur ante nisi, vehicula vitae tincidunt non, molestie convallis libero. Sed quis velit sapien. Sed pulvinar turpis vel turpis ornare vehicula. Nullam et ante vel magna pellentesque posuere. Maecenas lacus enim, facilisis at tincidunt in, lobortis eleifend neque. Aliquam massa libero, mattis vitae dui nec, tincidunt feugiat nisl.\n\nUt vel lobortis enim. Donec vehicula libero vitae libero congue, a imperdiet odio tempor. Morbi sagittis nulla in nisl vestibulum tempus ut sit amet elit. Vivamus feugiat tortor nisl. Suspendisse ornare viverra est tempus dictum. Duis nec purus mi. Aenean.', NULL, 2000000, 5, 10);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (15, 6, 4, 'Asteroid moon', 'An awesome asteroid moon. But to be honest, we do not exactly know the difference between this asteroid moon and the regular moon. We guess this one is just a little bit fancier or something. At least it costs a bit more...', NULL, 3000000, 4, 11);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (16, 6, 4, 'Ice moon', 'A really cold moon for those that like it cool.', NULL, 1500000, 5, 4);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (17, 6, 4, 'Trojan', 'Also with this one, we have no freaking idea what this is', NULL, 200000, 10, 10);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (18, 6, 5, 'Meteor field', 'A simple meteor field', NULL, 500000, 5, 16);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (19, 4, 5, 'Nebula', 'A nebulous nebula, available in multiple colors.', NULL, 15000000, 19, 2);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (20, 5, 5, 'Planet ring', 'Planetary rings available in multiple sizes', NULL, 1000000, 5, 10);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (21, 6, 5, 'Meteorite insurance', 'Insurance against meteorite showers', NULL, 50000000, 5, 1000);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (22, 6, 5, 'Supernova', 'Big Boom! But takes 5 weeks to deliver', NULL, 500000000, 25, 2);
-INSERT INTO `planetshop_db`.`product` (`product_id`, `product_type`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (23, 6, 5, 'Comet', 'A comet that may or may not stay within orbit around a planet', NULL, 100000, 2, 493);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (1, 1, 'Terrestrial Planet N39482', 'A super planet for the planetary beginner!', NULL, 10000000.00, 3, 28);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (2, 1, 'Desert Planet', 'The cheaper alternative', NULL, 6000000.00, 3, 5);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (3, 1, 'Ice Planet', 'A planet where vegetation is not necessary', NULL, 8000000.00, 4, 12);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (4, 1, 'Lava Planet', 'A hot planet!', NULL, 7000000.00, 3, 4);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (5, 1, 'Ocean Planet', 'For everyone fond of dolphins', NULL, 12000000.00, 5, 3);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (6, 1, 'Gas Planet', 'Something lighter...', NULL, 4000000.00, 3, 38);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (7, 2, 'Planet #329-234-907', 'Used! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisl nulla, posuere nec nibh sed, vestibulum porttitor sed.', NULL, 2200000.00, 3, 1);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (9, 2, 'Planet #808-837-666', 'Used!', NULL, 6660000.00, 3, 1);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (10, 2, 'Planet #000-029-203', 'Used', NULL, 9600000.00, 3, 1);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (11, 3, 'Custom terrestrial planet', 'The planet just for you!', NULL, NULL, 10, 100);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (12, 3, 'Custom ocean planet', 'Made just for you!', NULL, NULL, 10, 100);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (13, 3, 'Custom gas planet', 'Tailored', NULL, NULL, 10, 100);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (14, 4, 'Regular moon', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel hendrerit lorem. Cras malesuada, justo a ultrices ullamcorper, dui lorem tempor lacus, eu aliquet dui metus at diam. Nulla scelerisque ullamcorper hendrerit. Curabitur ante nisi, vehicula vitae tincidunt non, molestie convallis libero. Sed quis velit sapien. Sed pulvinar turpis vel turpis ornare vehicula. Nullam et ante vel magna pellentesque posuere. Maecenas lacus enim, facilisis at tincidunt in, lobortis eleifend neque. Aliquam massa libero, mattis vitae dui nec, tincidunt feugiat nisl.\n\nUt vel lobortis enim. Donec vehicula libero vitae libero congue, a imperdiet odio tempor. Morbi sagittis nulla in nisl vestibulum tempus ut sit amet elit. Vivamus feugiat tortor nisl. Suspendisse ornare viverra est tempus dictum. Duis nec purus mi. Aenean.', NULL, 2000000, 5, 10);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (15, 4, 'Asteroid moon', 'An awesome asteroid moon. But to be honest, we do not exactly know the difference between this asteroid moon and the regular moon. We guess this one is just a little bit fancier or something. At least it costs a bit more...', NULL, 3000000, 4, 11);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (16, 4, 'Ice moon', 'A really cold moon for those that like it cool.', NULL, 1500000, 5, 4);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (17, 4, 'Trojan', 'Also with this one, we have no freaking idea what this is', NULL, 200000, 10, 10);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (18, 5, 'Meteor field', 'A simple meteor field', NULL, 500000, 5, 16);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (19, 5, 'Nebula', 'A nebulous nebula, available in multiple colors.', NULL, 15000000, 19, 2);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (20, 5, 'Planet ring', 'Planetary rings available in multiple sizes', NULL, 1000000, 5, 10);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (21, 5, 'Meteorite insurance', 'Insurance against meteorite showers', NULL, 50000000, 5, 1000);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (22, 5, 'Supernova', 'Big Boom! But takes 5 weeks to deliver', NULL, 500000000, 25, 2);
+INSERT INTO `planetshop_db`.`product` (`product_id`, `product_category`, `name`, `description`, `product_picture`, `price`, `delivery_days`, `inventory_quantity`) VALUES (23, 5, 'Comet', 'A comet that may or may not stay within orbit around a planet', NULL, 100000, 2, 493);
 
 COMMIT;
 
@@ -339,22 +325,44 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `planetshop_db`;
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (1, 1, 'Radius', 'The radius of the planet', '1...10');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (2, 1, 'Surface', 'Surface type', 'Terrestrial (Ice), Terrestrial (Land), Terrestrial (Land/Water),Fluid,Gas,');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (3, 1, 'Mass', 'Mass of the planet', '10...100');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (4, 1, 'Axial tilt', 'The axial tilt in degrees', '0.1...10');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (5, 1, 'Average temperature', 'Temperature of the surface (determined by the distance from the next sun)', '-273...10000');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (6, 2, 'Radius', 'The radius of the planet', NULL);
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (7, 2, 'Surface', 'Surface type', 'Ice,Land,Land/Water');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (8, 2, 'Mass', 'Mass of the planet', '10...100');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (9, 2, 'Axial tilt', 'The axial tilt in degrees', '0.1...10');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (10, 2, 'Average temperature', 'Temperature of the surface (determined by the distance from the next sun)', '-273...10000');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (11, 3, 'Radius', 'The radius of the planet', NULL);
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (12, 3, 'Surface', 'Surface type', 'Water,Hydrogen,Helium');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (13, 3, 'Mass', 'Mass of the planet', '10...100');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (14, 3, 'Axial tilt', 'The axial tilt in degrees', '0.1...10');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (15, 3, 'Average temperature', 'Temperature of the surface (determined by the distance from the next sun)', '-273...10000');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (16, 4, 'Color', 'Color of the nebula', 'Multicolor,Red,Green,Yellow,Blue,Random');
-INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `product_type_id`, `name`, `description`, `value_range`) VALUES (17, 5, 'Ring size', 'Size of the planetary ring', 'Extra small,Small,Medium,Large,Extra Large');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (1, 'Radius', 'The radius of the planet', '1...10');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (2, 'Surface', 'Surface type', 'Terrestrial (Ice), Terrestrial (Land), Terrestrial (Land/Water),Fluid,Gas');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (3, 'Mass', 'Mass of the planet', '10...100');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (4, 'Axial tilt', 'The axial tilt in degrees', '0.1...10');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (5, 'Average temperature', 'Temperature of the surface (determined by the distance from the next sun)', '-273...10000');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (6, 'Color', 'Color of the nebula', 'Multicolor,Red,Green,Yellow,Blue,Random');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (7, 'Ring size', 'Size of the planetary ring', 'Extra small,Small,Medium,Large,Extra Large');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (8, 'Surface', 'Surface type', 'Terrestrial (Ice), Terrestrial (Land), Terrestrial (Land/Water)');
+INSERT INTO `planetshop_db`.`product_attribute` (`attribute_id`, `name`, `description`, `value_range`) VALUES (9, 'Debris size', 'Size of the rocks flying around your planet', 'Dust,Small,Medium,Large');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `planetshop_db`.`product_attribute_value`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `planetshop_db`;
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 1, 1, '6');
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 1, 2, 'Terrestrial (Land)');
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 1, 3, '70');
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 1, 4, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 19, 6, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 11, 1, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 11, 8, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 11, 3, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 11, 4, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 11, 5, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 12, 1, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 12, 2, 'Terrestrial (Water)');
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 12, 3, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 12, 4, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 12, 5, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 13, 1, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 13, 2, 'Gas');
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 13, 3, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 13, 4, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 13, 5, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 20, 1, NULL);
+INSERT INTO `planetshop_db`.`product_attribute_value` (`attribute_value_id`, `product_id`, `product_attribute_id`, `value`) VALUES (NULL, 20, 9, NULL);
 
 COMMIT;

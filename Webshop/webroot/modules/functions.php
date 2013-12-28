@@ -106,7 +106,7 @@ function require_lang() {
 	require_once('language.php');
 		
 	if (! isset ( $language )) {
-		$language = get_language(); // Fränzi: Replace me!
+		$language = get_language(); // Fr��nzi: Replace me!
 		// Further reading: Read browser agent language (optional)
 	}
 }
@@ -127,6 +127,22 @@ function breadcrumb($setCrumb=NULL, $addCrumb=NULL){
 }
 		
 		
+}
+
+function print_input_for_value_range($attr_id, $value_range) {
+	if(strpos($value_range, "...")) {
+		// Format is "<starting value>...<end value>"
+		$min_max = explode("...", $value_range);
+		echo "<input type=\"range\" name=\"attribute_$attr_id\" min=\"$min_max[0]\" max=\"$min_max[1]\">";
+	} else if(strpos($value_range, ",")) {
+		// Format is "option1,option2,option3"
+		$options = explode(",", $value_range);
+		echo "<select name=\"attribute_$attr_id\">";
+		foreach($options as $option) {
+			echo "<option value=\"$option\">$option</option>";
+		}
+		echo "</select>";
+	}
 }
 
 /**
