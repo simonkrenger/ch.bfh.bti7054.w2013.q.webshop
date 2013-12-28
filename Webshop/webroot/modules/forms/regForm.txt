@@ -9,3 +9,6 @@ planet,FORM_PLANET,text,50, 100
 galaxy,FORM_GALAXY,text,50,100
 email,FORM_EMAIL,email,50,100
 phone,FORM_PHONE,tel,4,15
+birthdate,FORM_BIRTHDATE,date,10,10
+username,FORM_USER,text,5,100
+password,FORM_PASS,password,5,100
