@@ -175,6 +175,14 @@ function removeURLParameter(url, parameter) {
     }
 }
 
+/**
+ * Function to update the "add to cart" link on a product detail page. The link
+ * is updated with the current value of the provided input element. The
+ * function adds a string in the form of "&<input.name>=<input.value" to the
+ * "add to cart" link.
+ * 
+ * @param input
+ */
 function updateCartHref(input) {
 	aElem = document.getElementById("addtocartlink");
 	

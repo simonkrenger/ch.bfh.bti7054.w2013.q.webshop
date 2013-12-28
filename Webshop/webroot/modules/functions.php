@@ -129,6 +129,14 @@ function breadcrumb($setCrumb=NULL, $addCrumb=NULL){
 		
 }
 
+/**
+ * This method prints out an interactive slider or a dropdown box to customise
+ * the given attribute. If the $attribute->value_range is a range (delimited by
+ * "..."), then a slider is printed. Otherwise, a list is expected (delimited
+ * by ",").
+ * 
+ * @param unknown $attribute
+ */
 function print_input_for_value_range($attribute) {
 	if(strpos($attribute->value_range, "...")) {
 		// Format is "<starting value>...<end value>"

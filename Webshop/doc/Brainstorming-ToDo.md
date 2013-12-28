@@ -20,7 +20,7 @@
  * Formulare "placeholder" anstatt "value" (loginform.php) [check]
  * SOAP current starTime,
  * Order confirmation as PDF
- * delete Breadcrumb
+ * delete Breadcrumb (DONE)
  * change order form for 
  * login form anpassen
  * Street and number in one filed
