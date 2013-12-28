@@ -129,17 +129,24 @@ function breadcrumb($setCrumb=NULL, $addCrumb=NULL){
 		
 }
 
-function print_input_for_value_range($attr_id, $value_range) {
-	if(strpos($value_range, "...")) {
+function print_input_for_value_range($attribute) {
+	if(strpos($attribute->value_range, "...")) {
 		// Format is "<starting value>...<end value>"
-		$min_max = explode("...", $value_range);
-		echo "<input type=\"range\" name=\"attribute_$attr_id\" min=\"$min_max[0]\" max=\"$min_max[1]\">";
-	} else if(strpos($value_range, ",")) {
+		$min_max = explode("...", $attribute->value_range);
+		echo "<div>";
+		echo "<input type=\"range\" class=\"custom_attribute\" name=\"attribute_$attribute->attribute_id\" value=\"$attribute->default_value\" min=\"$min_max[0]\" max=\"$min_max[1]\" onchange=\"updateSlider(this)\">";
+		echo "<span>$attribute->default_value</span>$attribute->value_unit</div>";
+	} else if(strpos($attribute->value_range, ",")) {
 		// Format is "option1,option2,option3"
-		$options = explode(",", $value_range);
-		echo "<select name=\"attribute_$attr_id\">";
+		$options = explode(",", $attribute->value_range);
+		echo "<select class=\"custom_attribute\" name=\"attribute_$attribute->attribute_id\" onchange=\"updateCartHref(this)\">";
 		foreach($options as $option) {
-			echo "<option value=\"$option\">$option</option>";
+			
+			echo "<option value=\"$option\"";
+			if($option == $attribute->default_value) {
+				echo "selected";
+			}
+			echo">$option</option>";
 		}
 		echo "</select>";
 	}
