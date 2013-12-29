@@ -9,7 +9,7 @@ if(file_exists('config.php')) {
 
 // This includes the most basic functions
 include('modules/functions.php');
-
+include('modules/fpdf.php');
 ?>
 
 <?php 

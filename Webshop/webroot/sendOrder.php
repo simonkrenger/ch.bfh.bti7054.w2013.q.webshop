@@ -1,3 +1,6 @@
+
+
+
 		<div id="content">
 			<div id="maincontent">
 			<div id="contentarea">
@@ -6,8 +9,7 @@
 
 $first = $_POST['firstname'];
 $last = $_POST['lastname'];
-$address = $_POST['address'];
-$number = $_POST['number'];
+$street = $_POST['street'];
 $areacode= $_POST['areacode'];
 $city= $_POST['city'];
 $state= $_POST['state'];
@@ -17,9 +19,16 @@ $galaxy= $_POST['galaxy'];
 $phone= $_POST['phone'];
 $email= $_POST['email'];
 
-echo "$first $last - $address $number $city $state $country $planet $galaxy $phone $email";
+echo "$first $last - $street $city $state $country $planet $galaxy $phone $email";
 ?>
 
+		<div>
+			  <a href="<?php
+                                $suffix = array();
+                                $suffix = array_merge($suffix,$_POST);
+                                echo get_href("printOrder", $suffix,true); ?>"
+                                >Print</a>
+		</div>
 
 
 			
