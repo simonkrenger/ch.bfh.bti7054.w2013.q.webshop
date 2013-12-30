@@ -90,7 +90,6 @@ function verifyOrderForm() {
 	}
 	
 	var add = document.getElementById("street").value;
-	alert(add);
 	if (!isStreet_Nr(add)) {
 		alert("The address must be 1-100 letters and the nr is separated by space");
 		document.getElementById("street").select();
