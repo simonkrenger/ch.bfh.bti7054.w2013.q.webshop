@@ -204,5 +204,17 @@ function add_param($url, $name, $value, $sep="&") {
 	return $new_url;
 }
 
+/**
+ * The Function to get all the attributes of a Product out of the DB
+ * @param unknown $id > is a Product ID
+ * @return Ambigous <NULL, multitype:>
+ */
+function getProductInformation($id){
+	global $shopdb;
+	$product_id = $shopdb->escape($id);
+	$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $product_id  );
+	return $shopdb->get_row( $query );
+}
+
 
 ?>

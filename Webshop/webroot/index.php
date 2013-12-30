@@ -9,11 +9,14 @@ if(file_exists('config.php')) {
 
 // This includes the most basic functions
 include('modules/functions.php');
+
+//This includes the pdf print module
 include('modules/fpdf.php');
 ?>
 
 <?php 
 
+// function to autoload classes if not specified elsewhere
 function __autoload($classname) {
 	$filename = $classname .".class.php";
 	include_once(ABSPATH . "modules/classes/" . $filename);

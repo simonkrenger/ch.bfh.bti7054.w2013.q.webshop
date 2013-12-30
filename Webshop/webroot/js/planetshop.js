@@ -49,9 +49,7 @@ function isLength(value, min, max){
 }
 
 function isStreet_Nr(value){
-	alert (value);
 	var pattern = RegExp("^.+");
-	alert (pattern.test(value));
 	return pattern.test(value);
 }
 
