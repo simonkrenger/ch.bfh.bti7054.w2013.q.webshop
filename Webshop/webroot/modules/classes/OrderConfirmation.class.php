@@ -44,15 +44,11 @@ class OrderConfirmation extends FPDF {
 		}
 	}
 	
-	private function getProduct() {
-		foreach ( $content as $key => $value ) {
-			if ($key == 'product_id') {
-				
-				$product_id = $shopdb->escape ( $key->$value );
-				$query = sprintf ( "SELECT product_id, name, product_picture, price, inventory_quantity FROM product WHERE product_id=%s", $product_id );
-				$product_info = $shopdb->get_row ( $query );
-			}
-		}
+	private function getProductInformation($id){
+		global $shopdb;
+		$product_id = $shopdb->escape($id);
+		$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $product_id  );
+		return $shopdb->get_row( $query );
 	}
 }
 

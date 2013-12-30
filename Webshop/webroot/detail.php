@@ -64,13 +64,17 @@ if (isset ( $_GET ['product_id'] )) {
 
 			<div class="box" id="planetButtons" >                        
                         
+
+                        		
+                        		
                         <a id="addtocartlink" href="<?php
                                 $suffix = array("product_id" => $product_id, "action" => "add");
-                                // Add custom attributes values
-                                $suffix = array_merge($suffix, $custom_attrs_suffix);
-                                echo get_href("shoppingCart", $suffix); ?>">Add to shopping Cart</a><br>
-                        
-                        
+                                
+                                // Add custom attributes values //TODO: seems not to work yet.
+                                //$suffix = array_merge($suffix, $custom_attrs_suffix);
+                                
+                                echo get_href("shoppingcart", $suffix); ?>">Add to shopping Cart</a><br>
+                                                		
                                 <a href="<?php
                                 $suffix = array("product_id" => $product_id);
                                 echo get_href("order", $suffix); ?>">Buy Now!</a>
