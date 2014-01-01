@@ -10,7 +10,7 @@
 			} else { ?>
 				<p><?php echo sprintf(get_translation("LOGIN_SUCCESSFUL"), $shopuser->first_name); ?></p>
 				<p><a href="<?php echo get_href("login", array("logout" => "true")); ?>">Logout</a></p>
-			<?php } ?>
+			<?php } ?>
 		</div>
 	<?php include('sidebar.php'); ?>
 	</div>
