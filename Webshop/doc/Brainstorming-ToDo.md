@@ -11,20 +11,21 @@
 ### Fränzi
  * CSS/ design alle seiten gleich [check]
  * detail.php und category.php design (ersetzten default.php) [check]
- * order Form, buy now, sendOrder, summary [check]
- * check order form with javascript. make generic. [check]
- * frontpage javascript buttons[check]
+ * order Form, buy now, sendOrder, summary [check] 
+ * check order form with javascript. make generic. [check] > could be improved
+ * frontpage javascript buttons[check] 
  * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
- * Task 9.1 Shopping Cart in OO [check]
- * Formular Benutzerregistration 
+ * Task 9.1 Shopping Cart in OO [check] > is not visible anymore [check] 
+ * Formular Benutzerregistration [check] > needs beautification > PRIO 2 !!!!
  * Formulare "placeholder" anstatt "value" (loginform.php) [check]
- * SOAP current starTime,
- * Order confirmation as PDF
+ * SOAP current starTime > PRIO 1 !!!!
+ * Order confirmation as PDF [check] > needs beautification and DB access [check] 
  * delete Breadcrumb (DONE)
- * change order form for 
- * login form anpassen
- * Street and number in one filed
-
+ * change order form for > [check]
+ * login form anpassen 
+ * Street and number in one filed [check]
+ * Review for logged in User; order Process, Shopping Cart etc. 
+ * delete values in Order Form > at the end.
  
 ### Simon ab Freitag 08.11.2013 behold
  *  Link zu detail.php mit übergabe ID (DONE) 
@@ -39,4 +40,5 @@
  *  Slider Custom Planet in AJAX (DONE) 
  *  complete Product details and products (DONE)
  *  checkout process
+ *  something is wrong with line 74 in detail.php ( //$suffix = array_merge($suffix, $custom_attrs_suffix);) PLEEZ CHECK :-)
 

@@ -111,23 +111,7 @@ function require_lang() {
 	}
 }
 
-function breadcrumb($setCrumb=NULL, $addCrumb=NULL){
-	/*if no crumb is set, set to empty string*/
-	if ($addCrumb == NULL) {
-		$addCrumb = "";
-	}
-	/*return breadcrumb according to actual breadCrumb*/
-	if ($setCrumb == NULL)
-		return $addCrumb;
-	else if (strpos($setCrumb, $addCrumb) !== false){
-		return strstr($setCrumb, $addCrumb, true).">" . $addCrumb;
-	}
-	else {
-		return $setCrumb.">".$addCrumb;
-}
-		
-		
-}
+
 
 /**
  * This method prints out an interactive slider or a dropdown box to customise
@@ -218,6 +202,18 @@ function get_param($name, $default) {
 function add_param($url, $name, $value, $sep="&") {
 	$new_url = $url.$sep.$name."=".urlencode($value);
 	return $new_url;
+}
+
+/**
+ * The Function to get all the attributes of a Product out of the DB
+ * @param unknown $id > is a Product ID
+ * @return Ambigous <NULL, multitype:>
+ */
+function getProductInformation($id){
+	global $shopdb;
+	$product_id = $shopdb->escape($id);
+	$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $product_id  );
+	return $shopdb->get_row( $query );
 }
 
 

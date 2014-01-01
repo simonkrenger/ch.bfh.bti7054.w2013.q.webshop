@@ -39,7 +39,7 @@ class ShoppingCart {
 			foreach ( $this->items as $art => $num ) {
 				$prod_info = $this->getProductInformation($art);
 				echo "<tr>";
-				echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
+				echo "<td class=\"cartField\">" . $prod_info->name . "</td>";
 				echo "<td class=\"cartField\">" . $prod_info->description . "</td>";
 				echo "<td class=\"cartField\">" . $prod_info->price . "</td>";
 				echo "<td class=\"cartField\">" . $num . "</td>";

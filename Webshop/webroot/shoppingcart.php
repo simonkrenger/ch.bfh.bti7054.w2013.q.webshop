@@ -10,7 +10,7 @@
                 <?php if( ! $_SESSION["cart"]->is_empty() ) { ?>
                         <a href="<?php
                                         $suffix = array( "action" => "clear");
-                                        echo get_href("shoppingCart", $suffix); ?>">
+                                        echo get_href("shoppingcart", $suffix); ?>">
                                         <?php echo get_translation("SHOPPINGCART_CLEAR_CART")?>
                         </a>
                 <?php } ?>

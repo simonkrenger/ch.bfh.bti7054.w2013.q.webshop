@@ -48,6 +48,11 @@ function isLength(value, min, max){
 	return (value.length >= min && value.length <= max);
 }
 
+function isStreet_Nr(value){
+	var pattern = RegExp("^.+");
+	return pattern.test(value);
+}
+
 function isName(value){
 	return(isAllLetters(value) && isLength(value, 1, 100));
 }
@@ -84,25 +89,13 @@ function verifyOrderForm() {
 		return false;
 	}
 	
-	var add = document.getElementById("address").value;
-	if (!isName(add)) {
-		alert("The address must be 1-100 letters");
-		document.getElementById("address").select();
+	var add = document.getElementById("street").value;
+	if (!isStreet_Nr(add)) {
+		alert("The address must be 1-100 letters and the nr is separated by space");
+		document.getElementById("street").select();
 		return false;
 	}
 	
-	var nr = document.getElementById("number").value;
-	if (!isAllNumbers(nr) && !isLength(nr,1,5)) {
-		alert("The house number must be a number from 1 - 99999");
-		document.getElementById("number").select();
-		return false;
-	}
-	var ac = document.getElementById("areacode").value;
-	if (!isAllNumbers(ac) && !isLength(ac,1,7)) {
-		alert("The area code must be a number from 1 - 9999999");
-		document.getElementById("areacode").select();
-		return false;
-	}
 	var city = document.getElementById("city").value;
 	if (!isName(city)) {
 		alert("The city name must be 1-100 letters");
@@ -141,7 +134,7 @@ function verifyOrderForm() {
 		return false;
 	}
 	
-	var mail = document.getElementById("mail").value;
+	var mail = document.getElementById("email").value;
 	if (!isEmail(mail) && !isLength(mail, 5, 254)) {
 		alert("Please enter a valid E-Mail address");
 		document.getElementById("mail").select();
