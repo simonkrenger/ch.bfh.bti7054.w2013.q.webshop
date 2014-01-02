@@ -86,10 +86,12 @@ body a:visited {
 	padding: 10px 5px 10px 5px;
 	margin-top: 30px;
 	margin-bottom: 75px;
+	overflow: auto;
 }
 
 #maincontent {
 		margin-bottom: 75px;
+		overflow: auto;
 }
 
 #marketing {
