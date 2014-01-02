@@ -63,7 +63,21 @@ function require_shoppingcart() {
 		switch ($_GET["action"]){
 			case "add":
 				if (isset ( $_GET ["product_id"] )){
-					$_SESSION ["cart"]->addItem ( $_GET ["product_id"],1);
+					
+					// Product ID is set
+					$prod = new ShoppingCartProduct($_GET["product_id"]);
+					
+					// Fill in custom attributes from $_GET
+					$custom_attrs = $prod->getNullAttributes();
+					foreach($custom_attrs as $key => $value) {
+						$get_key = "attribute_" . $value;
+						$prod->addCustomAttribute($value, $_GET[$get_key]);
+					}
+					// At this point, the product has all attributes and custom attributes set
+					
+					// Add to shopping cart
+					$_SESSION ["cart"]->addProduct($prod);
+					
 				}
 				break;
 			case "clear":
