@@ -19,7 +19,15 @@ if (isset ( $_GET ['product_id'] )) {
 			?>
 			<h2><?php  echo $product_info->name; ?></h2>
 
-			<div class="box" id="planetPicture">[picture of Planet]</div>
+			<div class="box" id="planetPicture">
+			<?php 
+				if($product_info->product_picture != NULL) {
+					echo '<img src="images/product_pictures/' . $product_info->product_picture . '" alt="Product picture" width="200" height="200" />';
+				} else {
+					echo '<img src="images/product_pictures/no_image.png" alt="Product picture" width="200" height="200" />';
+				}
+			?>
+			</div>
 
 			<div class="box" id="planetDescription">
 				<?php echo $product_info->description; ?>
@@ -70,8 +78,8 @@ if (isset ( $_GET ['product_id'] )) {
                         <a id="addtocartlink" href="<?php
                                 $suffix = array("product_id" => $product_id, "action" => "add");
                                 
-                                // Add custom attributes values //TODO: seems not to work yet.
-                                //$suffix = array_merge($suffix, $custom_attrs_suffix);
+                                // Add custom attributes values
+                                $suffix = array_merge($suffix, $custom_attrs_suffix);
                                 
                                 echo get_href("shoppingcart", $suffix); ?>">Add to shopping Cart</a><br>
                                                 		

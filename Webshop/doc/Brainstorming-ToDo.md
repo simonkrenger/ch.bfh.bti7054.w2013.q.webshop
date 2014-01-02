@@ -40,5 +40,5 @@
  *  Slider Custom Planet in AJAX (DONE) 
  *  complete Product details and products (DONE)
  *  checkout process
- *  something is wrong with line 74 in detail.php ( //$suffix = array_merge($suffix, $custom_attrs_suffix);) PLEEZ CHECK :-)
+ *  something is wrong with line 74 in detail.php ( //$suffix = array_merge($suffix, $custom_attrs_suffix);) PLEEZ CHECK :-) (WORKS AS EXPECTED)
 
