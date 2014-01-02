@@ -29,6 +29,5 @@ if (isset ( $_GET ['product_id'] )) {
 			<div class="box">Error: No product_id provided!</div>
 			<?php } ?>
 		</div>
-	</div>
+
 <?php include('sidebar.php'); ?>
-</div>

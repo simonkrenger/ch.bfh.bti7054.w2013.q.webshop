@@ -26,13 +26,13 @@ foreach ( $orderFormFile as $line ) {
 
 		<?php
 		foreach ( $orderForm as $entry ) {
-			echo "<div class=\"orderFormField\"> <label for =\"" . $entry [0] . "\">" . get_translation ( $entry [1] ) . "</label>
+			echo "<div class=\"formField\"> <label for =\"" . $entry [0] . "\">" . get_translation ( $entry [1] ) . "</label>
 			<input type=\"" . $entry [2] . "\" name=\"" . $entry [0] . "\" size=\"" . $entry [3] . "\" maxlength=\"" . $entry [4] . "\" id=\"" . $entry [0] . "\" placeholder =\"" . get_translation ( "$entry[1]" ) ."\" value =\"" . get_translation ( "$entry[1]" ) . "\" ></input></div>";
 		}
 		
 		?>
 	
-		<div>
+		<div class ="button">
 			<input type="button" name="submitted" value="Order now!"
 				onclick="verifyOrderForm()" />
 		</div>

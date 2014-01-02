@@ -72,4 +72,4 @@ if( is_logged_in()) {
 			</div>
 		<?php include('sidebar.php'); ?>
 		</div>
-	</div>
+				</div>

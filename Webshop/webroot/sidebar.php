@@ -1,3 +1,4 @@
+
 <div id="rightsidebar">
 	<div class="box">
 		<div class="boxtitle"><h4><?php echo get_translation("MENU_SHOPPINGCART"); ?></h4></div>
@@ -39,3 +40,6 @@
 		<?php }?>
 	</div>
 </div>
+</div>
+</div>
+

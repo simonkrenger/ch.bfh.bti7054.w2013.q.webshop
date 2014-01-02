@@ -37,3 +37,6 @@ FORM_BIRTHDATE,Geburtsdatum
 FORM_USER,Benutzername
 FORM_PASS,Passwort
 FORM_REG,Registrieren
+FOOT_DS, Lieferservice
+FOOT_CONT, Kontakt
+FOOT_TC, AGB
