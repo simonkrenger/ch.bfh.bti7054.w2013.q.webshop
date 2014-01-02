@@ -79,7 +79,7 @@ if (isset ( $_GET ['product_id'] )) {
                                 $suffix = array("product_id" => $product_id, "action" => "add");
                                 
                                 // Add custom attributes values
-                                //$suffix = array_merge($suffix, $custom_attrs_suffix);
+                                $suffix = array_merge($suffix, $custom_attrs_suffix);
                                 
                                 echo get_href("shoppingcart", $suffix); ?>">Add to shopping Cart</a><br>
                                                 		
