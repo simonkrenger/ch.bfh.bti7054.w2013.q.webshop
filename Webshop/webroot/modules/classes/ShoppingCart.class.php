@@ -59,9 +59,9 @@ class ShoppingCart {
 				$prod_info = $prod->getProductInfo();
 				echo "<tr>";
 				echo "<td class=\"cartField\">" . $prod_info->name . "</td>";
-				echo "<td class=\"cartField\">" . $prod_info->description . "<ul>";
+				echo "<td class=\"cartField\"><ul>";
 				foreach ($prod->attributes as $attr_id => $attr_value) {
-					echo "<li>" . $attr_id . ": " . $attr_value . "</li>";
+					echo "<li>" . $prod->getAttributeNameForId($attr_id) . ": " . urldecode($attr_value) . "</li>";
 				}
 				echo "</ul></td>";
 				echo "<td class=\"cartField\">" . $prod_info->price . "</td>";

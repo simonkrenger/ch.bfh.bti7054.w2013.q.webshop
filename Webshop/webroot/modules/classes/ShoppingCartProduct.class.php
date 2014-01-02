@@ -42,7 +42,7 @@ class ShoppingCartProduct {
 		global $shopdb;
 		
 		$clean_id = $shopdb->escape ( $attribute_id );
-		$query = sprintf ( "SELECT name FROM product_attribute WHERE attribute_id=%1", $clean_id );
+		$query = sprintf ( "SELECT name FROM product_attribute WHERE attribute_id=%s", $clean_id );
 		return $shopdb->get_var ( $query );
 	}
 	public function getProductInfo() {
