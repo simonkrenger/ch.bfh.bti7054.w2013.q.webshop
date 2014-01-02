@@ -24,8 +24,11 @@
  * change order form for > [check]
  * login form anpassen 
  * Street and number in one filed [check]
- * Review for logged in User; order Process, Shopping Cart etc. 
+ * Review for logged in User; order Process, Shopping Cart etc. [check]
  * delete values in Order Form > at the end.
+ * Checkout Prouess: PDF
+ * REST API ("Did you know?") (Fränzi)
+ * Beautification
  
 ### Simon ab Freitag 08.11.2013 behold
  *  Link zu detail.php mit übergabe ID (DONE) 
@@ -39,6 +42,10 @@
  *  Task 10.* Administration View (Done)
  *  Slider Custom Planet in AJAX (DONE) 
  *  complete Product details and products (DONE)
- *  checkout process
- *  something is wrong with line 74 in detail.php ( //$suffix = array_merge($suffix, $custom_attrs_suffix);) PLEEZ CHECK :-) (WORKS AS EXPECTED)
+ *  Checkout Process (+Mail)
+ *  Beautification
+ *  Update Developer Guide
 
+TODO Presentation
+- Screencast
+- Presentation (what and how?)
