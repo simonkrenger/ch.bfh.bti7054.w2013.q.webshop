@@ -11,7 +11,7 @@ if(file_exists('config.php')) {
 include('modules/functions.php');
 
 //This includes the pdf print module
-include('modules/fpdf.php');
+include('modules/fpdf/fpdf.php');
 ?>
 
 <?php 

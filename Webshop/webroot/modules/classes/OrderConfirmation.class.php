@@ -1,5 +1,5 @@
 <?php
-define ( 'FPDF_FONTPATH', '/usr/share/php/fpdf/font/' );
+define ( 'FPDF_FONTPATH', 'modules/fpdf/font/' );
 // require ('fpdf.php');
 class OrderConfirmation extends FPDF {
 	public $title = "Order Confirmation";
