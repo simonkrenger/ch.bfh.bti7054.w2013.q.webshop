@@ -174,11 +174,8 @@ CREATE  TABLE IF NOT EXISTS `planetshop_db`.`order_detail` (
   `order_id` INT NOT NULL AUTO_INCREMENT ,
   `product_id` INT NOT NULL ,
   `quantity` INT NULL ,
-  `custom_attribute_id` INT NULL ,
-  `custom_attribute_value` VARCHAR(45) NULL ,
   PRIMARY KEY (`order_id`, `product_id`) ,
   INDEX `fk_product_idx` (`product_id` ASC) ,
-  INDEX `fk_attr_id_idx` (`custom_attribute_id` ASC) ,
   CONSTRAINT `fk_product`
     FOREIGN KEY (`product_id` )
     REFERENCES `planetshop_db`.`product` (`product_id` )
@@ -187,11 +184,6 @@ CREATE  TABLE IF NOT EXISTS `planetshop_db`.`order_detail` (
   CONSTRAINT `fk_order`
     FOREIGN KEY (`order_id` )
     REFERENCES `planetshop_db`.`order` (`order_id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_attr_id`
-    FOREIGN KEY (`custom_attribute_id` )
-    REFERENCES `planetshop_db`.`product_attribute` (`attribute_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -204,7 +196,7 @@ CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product_attribute_value` (
   `attribute_value_id` INT NOT NULL AUTO_INCREMENT ,
   `product_id` INT NOT NULL ,
   `product_attribute_id` INT NOT NULL ,
-  `value` VARCHAR(50) NULL ,
+  `value` VARCHAR(100) NULL ,
   PRIMARY KEY (`attribute_value_id`) ,
   INDEX `fk_prod_attr_val_prod_idx` (`product_id` ASC) ,
   UNIQUE INDEX `uq_prod_attr` (`product_id` ASC, `product_attribute_id` ASC) ,
@@ -217,6 +209,30 @@ CREATE  TABLE IF NOT EXISTS `planetshop_db`.`product_attribute_value` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_prod_attr`
     FOREIGN KEY (`product_attribute_id` )
+    REFERENCES `planetshop_db`.`product_attribute` (`attribute_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `planetshop_db`.`order_detail_attributes`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `planetshop_db`.`order_detail_attributes` (
+  `order_id` INT NOT NULL ,
+  `product_id` INT NOT NULL ,
+  `attribute_id` INT NOT NULL ,
+  `attribute_value` VARCHAR(100) NULL ,
+  PRIMARY KEY (`order_id`, `product_id`, `attribute_id`) ,
+  INDEX `fk_order_id_idx` (`order_id` ASC, `product_id` ASC) ,
+  INDEX `fk_attribute_id_idx` (`attribute_id` ASC) ,
+  CONSTRAINT `fk_order_id`
+    FOREIGN KEY (`order_id` , `product_id` )
+    REFERENCES `planetshop_db`.`order_detail` (`order_id` , `product_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_attribute_id`
+    FOREIGN KEY (`attribute_id` )
     REFERENCES `planetshop_db`.`product_attribute` (`attribute_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

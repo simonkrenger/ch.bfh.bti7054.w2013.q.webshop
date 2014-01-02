@@ -1,6 +1,7 @@
 <?php
 class ShoppingCart {
 	
+	// Array containing (product_id=<prod_id>, product=<ShoppingCartProduct>, quantity=<quantity>))
 	private $items = array ();
 	
 	public function addItem($art, $num) {
@@ -10,7 +11,22 @@ class ShoppingCart {
 		$this->items [$art] += $num;
 	}
 	
-
+	public function addProduct(ShoppingCartProduct $s) {
+		if(! isset( $this->items[$s->product_id])) {
+			array_push($this->items, 
+			array(
+				"product_id" => $s->product_id,
+				"product" => $s,
+				"quantity" => 1
+			));
+		} else {
+			// TODO
+		}
+	}
+	
+	public function removeProduct(ShoppingCartProduct $s) {
+		// TODO
+	}
 	
 	public function removeItem($art, $num) {
 		if (isset ( $this->items [$art] ) && $this->items [$art] >= $num) {
@@ -36,14 +52,21 @@ class ShoppingCart {
 			echo '<th class="cartField">' . get_translation("SHOPPINGCART_TOTAL") . '</th>';
 			echo '</tr>';
 			
-			foreach ( $this->items as $art => $num ) {
-				$prod_info = $this->getProductInformation($art);
+			foreach ( $this->items as $product_array ) {
+				// This is a "ShoppingCartProduct"
+				$prod = $product_array["product"];
+				
+				$prod_info = $prod->getProductInfo();
 				echo "<tr>";
 				echo "<td class=\"cartField\">" . $prod_info->name . "</td>";
-				echo "<td class=\"cartField\">" . $prod_info->description . "</td>";
+				echo "<td class=\"cartField\">" . $prod_info->description . "<ul>";
+				foreach ($prod->attributes as $attr_id => $attr_value) {
+					echo "<li>" . $attr_id . ": " . $attr_value . "</li>";
+				}
+				echo "</ul></td>";
 				echo "<td class=\"cartField\">" . $prod_info->price . "</td>";
-				echo "<td class=\"cartField\">" . $num . "</td>";
-				echo "<td class=\"cartField\">" . $num * $prod_info->price . "</td>";
+				echo "<td class=\"cartField\">" . $product_array["quantity"] . "</td>";
+				echo "<td class=\"cartField\">" . $product_array["quantity"]*$prod_info->price . "</td>";
 				echo "</tr>";
 			}
 			
@@ -60,12 +83,12 @@ class ShoppingCart {
 		
 		if (!empty($this->items)){
 			echo "<ul>";
-			foreach ( $this->items as $art => $num ) {
-				$prod_info = $this->getProductInformation($art);
-				echo "<tr><li>";
-				echo "<td class=\"cartField\">" . $num . "x </td>";
-				echo "<td class=\"cartField\">" .  $prod_info->name . "</td>";
-				echo "</li></tr>";
+		foreach ( $this->items as $product_array ) {
+				// This is a "ShoppingCartProduct"
+				$prod = $product_array["product"];
+				$prod_info = $prod->getProductInfo();
+				$quant = $product_array["quantity"];
+				echo "<li>" . $quant ."x " . $prod_info->name . "</li>";
 			}
 			echo "</ul>";
 		} else {
