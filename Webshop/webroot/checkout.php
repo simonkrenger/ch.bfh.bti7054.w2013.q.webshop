@@ -165,6 +165,7 @@ if( is_logged_in()) {
 			if($success) {
 				echo "Successfully placed order (Order ID $order_id)!";
 				
+				
 				print_order($order_id);
 				$shoppingcart->clear();
 				
