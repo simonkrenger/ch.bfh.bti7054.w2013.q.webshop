@@ -48,7 +48,7 @@
 			</table>
 			
 
-				
+			
 
 			Copyleft 2013, Fränzi u Simu
 		</div>

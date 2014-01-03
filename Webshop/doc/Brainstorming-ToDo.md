@@ -18,7 +18,7 @@
  * Task 9.1 Shopping Cart in OO [check] > is not visible anymore [check] 
  * Formular Benutzerregistration [check] > needs beautification > PRIO 2 !!!!
  * Formulare "placeholder" anstatt "value" (loginform.php) [check]
- * SOAP current starTime > PRIO 1 !!!!
+ * SOAP current starTime > PRIO 1 !!!![check]
  * Order confirmation as PDF [check] > needs beautification and DB access [check] 
  * delete Breadcrumb (DONE)
  * change order form for > [check]
@@ -27,7 +27,7 @@
  * Review for logged in User; order Process, Shopping Cart etc. [check]
  * delete values in Order Form > at the end.
  * Checkout Prouess: PDF
- * REST API ("Did you know?") (Fränzi)
+ * REST API ("Did you know?") (Fränzi) [check]
  * Beautification
  
 ### Simon ab Freitag 08.11.2013 behold
