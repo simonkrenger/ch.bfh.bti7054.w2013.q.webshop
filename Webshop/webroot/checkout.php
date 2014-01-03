@@ -68,7 +68,7 @@ if( is_logged_in()) {
 } else {
 	echo "You are not logged in. Please log in:";
 	include(ABSPATH . '/modules/login/loginform.php');
-	echo "<br/>Don't have an account? <a href=\"" . get_href("reg") . "\">Register Here</a>";
+	echo "<br/>Don't have an account? <a href=\"" . get_href("register") . "\">Register Here</a>";
 }
 
 ?>

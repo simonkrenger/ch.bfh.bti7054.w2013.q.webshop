@@ -58,21 +58,24 @@ function isName(value){
 }
 
 
-function verifyForm() {
+function verifyRegistrationForm() {
 	
 	var inputs, index;
 
-	inputs = document.getElementsByTagName('input');
+	form = document.getElementById("registrationForm");
+	inputs = form.getElementsByTagName("input");
 	for (index = 0; index < inputs.length; ++index) {
-	    if (inputs[index].type == text ) {
-	    	 if (!isAlphanumeric(inputs[index].value) && isLength(value, 1, 100))
-	    		 alert(inputs[index].name + "must be alphanumeric");
+	    if (inputs[index].type == "text" ) {
+	    	 if (!isAlphanumeric(inputs[index].value) && !isLength(inputs[index].value, 1, 100)) {
+	    		alert("The field '" + inputs[index].name + "' must be alphanumeric, is currently '" + inputs[index].value + "'");
 	    	 	inputs[index].select();
+	    	 	return false;
+	    	 }
 	    }
-	    
-		
 	}
+	document.getElementById("registrationForm").submit();
 }
+
 function verifyOrderForm() {
 	
 	var first = document.getElementById("firstname").value;

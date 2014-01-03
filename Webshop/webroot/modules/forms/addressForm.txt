@@ -1,0 +1,6 @@
+street,FORM_STREET,text,50,100
+zipcode,FORM_AREACODE,number,5,10
+city,FORM_CITY,text,50,100
+country,FORM_COUNTRY,text,50,100
+planet,FORM_PLANET,text,50, 100
+galaxy,FORM_GALAXY,text,50,100
