@@ -46,7 +46,7 @@ if (isset ( $_GET ['product_id'] )) {
 					echo "<li><strong>$attribute->name: </strong>";
 					if ($attribute->value != NULL) {
 						// The attribute has a preset value for this product
-						echo $attribute->value;
+						echo $attribute->value . $attribute->value_unit;
 					} else {
 						// The attribute is customizable
 						// Display a slider or dropdown

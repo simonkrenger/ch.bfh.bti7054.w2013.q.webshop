@@ -8,6 +8,10 @@
 
                 <div class="separator"></div>
                 <?php if( ! $_SESSION["cart"]->is_empty() ) { ?>
+                		<a href="<?php echo get_href("checkout") ?>">
+							<?php echo get_translation("SHOPPINGCART_CHECKOUT"); ?>
+						</a>
+                		<br/>
                         <a href="<?php
                                         $suffix = array( "action" => "clear");
                                         echo get_href("shoppingcart", $suffix); ?>">

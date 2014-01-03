@@ -80,6 +80,11 @@ function require_shoppingcart() {
 					
 				}
 				break;
+			case "delete":
+				if (isset ( $_GET ["product_id"] )){
+					$_SESSION["cart"]->removeProduct($_GET["product_id"]);
+				}
+				break;
 			case "clear":
 				$_SESSION ["cart"]->clear();
 				break;

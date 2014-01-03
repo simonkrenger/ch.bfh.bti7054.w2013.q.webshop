@@ -35,6 +35,9 @@ if( is_logged_in()) {
 		break;
 	case 2:
 		echo "<h1>Checkout - Address</h1>";
+		
+		global $shopdb;
+		
 		echo "TODO: Confirm address here";
 		// Idea: SELECT address from db
 		// If there is an address for this user, show a dropdown containing these
