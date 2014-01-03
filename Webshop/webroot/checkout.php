@@ -68,18 +68,7 @@ if( is_logged_in()) {
 		if($address_id != NULL) {
 			echo "<p>Your current address is set to:</p>";
 						
-			$query = sprintf("SELECT a.street, a.zipcode, a.city, a.country, p.name AS pname, g.name AS gname FROM address a JOIN planet p ON a.planet_id = p.planet_id JOIN galaxy g ON a.galaxy_id = g.galaxy_id WHERE a.address_id=%s LIMIT 1", $address_id);
-			$address = $shopdb->get_row($query);
-			
-			echo "<ul>";
-				echo "<li>First Name, Last Name: $shopuser->first_name, $shopuser->last_name</li>";
-				echo "<li>Street: $address->street</li>";
-				echo "<li>Postal code: $address->zipcode</li>";
-				echo "<li>City: $address->city</li>";
-				echo "<li>Country: $address->country</li>";
-				echo "<li>Planet: $address->pname</li>";
-				echo "<li>Galaxy: $address->gname</li>";
-			echo "</ul>";
+			print_address($address_id);
 
 			echo "<p>Continue with this address: <a href=\"" . get_href("checkout", array("step" => 3)) . "\">Step 3</a></p>";
 			echo "<p><a href=\"" . get_href("checkout", array("step" => 2, "action" => "resetaddress")) . "\">Change address</a></p>";
@@ -104,27 +93,89 @@ if( is_logged_in()) {
 		break;
 	case 3:
 		echo "<h1>Checkout - Review your order</h1>";
-		// TODO: Add alert to notify user that he is entering a binding contract!
-		// TODO: Display address
-		$_SESSION["cart"]->displayFull();
+		echo "<p>This is your order:</p>";
+		$shoppingcart = $_SESSION["cart"];
+		$shoppingcart->displayFull();
+		
+		echo "<p>We will contact you using this address:</p>";
+		
+		$query = sprintf("SELECT address_id FROM user WHERE user_id=%s", $shopuser->user_id);
+		$address_id = $shopdb->get_var($query);
+		print_address($address_id);
+		
+		echo "<p>Please review your order and click the button below to place your order!</p>";
 		
 		?>
 		
+		
 		<form id="formcheckoutreview" action="<?php echo get_href("checkout", array("step" => 4)); ?>"
-			method="post" onsubmit="submitOrderForm()">
+			method="post" >
 			<input type="hidden" name="reviewconfirm" value="true" />
-			<input type="button" value="Order!" />
+			<input type="button" value="Order!" onclick="displayOrderConfirmation('formcheckoutreview')"/>
 		</form>
 		
 		<?php
-		
-		echo "Continue here: <a href=\"" . get_href("checkout", array("step" => 4)) . "\">Step 4</a>";
 		break;
 	case 4:
 		echo "<h1>Checkout - Confirmation</h1>";
 		
+		if(isset($_POST["reviewconfirm"]) && $_POST["reviewconfirm"] == "true") {
 		
-		
+			// Create order
+			$query = sprintf("SELECT address_id FROM user WHERE user_id=%s", $shopuser->user_id);
+			$address_id = $shopdb->get_var($query);
+			$order_id = db_insert_order($shopuser->user_id, $address_id);
+			
+			// Create order positions
+			$shoppingcart = $_SESSION["cart"];
+			$items = $shoppingcart->getAllItems();
+			$quantities = $shoppingcart->getQuantities();
+			
+			$success = true;
+			
+			// Iterate over all items in the cart
+			foreach($items as $item) {
+
+				$prod_info = $item->getProductInfo();
+
+				// For each item, add an order position
+				if(db_insert_order_detail($order_id, $prod_info->product_id, 
+					$quantities[$prod_info->product_id])) {
+					// Ok, now add the custom attributes to these positions
+					
+					// First, find out which custom attributes this product has
+					// Do this by creating a vanilla product and check for NULL values
+					$p = new ShopProduct($prod_info->product_id);
+					$custom_attrs = $p->getNullAttributes();
+					
+					// These are the attributes that can be customized, add these to the DB
+					foreach($custom_attrs as $key => $value) {
+						if(db_insert_order_detail_attribute($order_id, $prod_info->product_id, 
+							$value, $item->attributes[$value])) {
+						} else {
+							$success = false;
+						}
+					}
+					
+				} else {
+					$success = false;
+				}
+			}
+			
+			if($success) {
+				echo "Successfully placed order (Order ID $order_id)!";
+				
+				print_order($order_id);
+				$shoppingcart->clear();
+				
+				echo "<a href=\"" . get_href("printorder") . "\">Print order</a>";
+			} else {
+				echo "There was an error placing the order, please retry!";
+			}
+
+		} else {
+			echo "<p>You did not confirm your order, aborting. Please try again</p>";
+		}
 		break;
 	default:
 		echo "<h1>Checkout - Error</h1>";

@@ -2,10 +2,10 @@
  * PlanetShop JavaScript
  */
 
-function displayOrderConfirmation() {
+function displayOrderConfirmation(formname) {
 
 	if (window.confirm("You are about to enter a binding contract. Proceed?")) {
-		document.getElementById("orderForm").submit();
+		document.getElementById(formname).submit();
 	} else {
 		// Do nothing
 	}
@@ -144,7 +144,7 @@ function verifyOrderForm() {
 		return false;
 	}
 
-	displayOrderConfirmation();
+	displayOrderConfirmation('orderForm');
 }
 
 function removeURLParameter(url, parameter) {

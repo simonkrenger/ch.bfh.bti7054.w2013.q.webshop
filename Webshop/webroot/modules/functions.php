@@ -65,7 +65,7 @@ function require_shoppingcart() {
 				if (isset ( $_GET ["product_id"] )){
 					
 					// Product ID is set
-					$prod = new ShoppingCartProduct($_GET["product_id"]);
+					$prod = new ShopProduct($_GET["product_id"]);
 					
 					// Fill in custom attributes from $_GET
 					$custom_attrs = $prod->getNullAttributes();
@@ -260,6 +260,81 @@ function print_form_fields($form_file) {
 	}
 }
 
+function print_address($address_id) {
+	global $shopdb;
+	
+	$query = sprintf("SELECT a.street, a.zipcode, a.city, a.country, p.name AS pname, g.name AS gname FROM address a JOIN planet p ON a.planet_id = p.planet_id JOIN galaxy g ON a.galaxy_id = g.galaxy_id WHERE a.address_id=%s LIMIT 1", $address_id);
+	$address = $shopdb->get_row($query);
+		
+	echo "<ul>";
+	echo "<li><strong>First Name, Last Name:</strong> $shopuser->first_name, $shopuser->last_name</li>";
+	echo "<li><strong>Street:</strong> $address->street</li>";
+	echo "<li><strong>Postal code:</strong> $address->zipcode</li>";
+	echo "<li><strong>City:</strong> $address->city</li>";
+	echo "<li><strong>Country:</strong> $address->country</li>";
+	echo "<li><strong>Planet:</strong> $address->pname</li>";
+	echo "<li><strong>Galaxy:</strong> $address->gname</li>";
+	echo "</ul>";
+}
+
+function print_order($order_id) {
+	global $shopdb;
+	
+	echo "<h3>Shipping address:</h3>";
+	
+	$query = sprintf("SELECT o.order_id, o.order_date, o.shipping_date, o.shipping_address, u.first_name, u.last_name FROM `order` o JOIN user u ON o.customer_id = u.user_id WHERE o.order_id=%s", $order_id);
+	$order_attributes = $shopdb->get_row($query);
+	
+	print_address($order_attributes->shipping_address);
+	
+	echo "<h3>Order Details</h3>";
+	echo "<ul>";
+	echo "<li><strong>Order ID:</strong> $order_attributes->order_id</li>";
+	echo "<li><strong>Order Date:</strong> $order_attributes->order_date</li>";
+	echo "<li><strong>Shipping Date:</strong> $order_attributes->shipping_date</li>";
+	echo "<li><strong>Name on address:</strong> $order_attributes->first_name $order_attributes->last_name</li>";
+	echo "</ul>";
+	
+	echo "<h3>Order Positions</h3>";
+	echo "<table>";
+	echo "<tr><th>Quantity</th><th>Product</th><th>Price</th></tr>";
+	
+	$query = sprintf("SELECT od.quantity, od.product_id, p.name, p.price FROM order_detail od JOIN product p ON od.product_id = p.product_id WHERE od.order_id=%s;",
+				$order_attributes->order_id);
+	$order_positions = $shopdb->get_results($query);
+	
+	$total_price = 0;
+	foreach($order_positions as $position) {
+			$p = new ShopProduct($position->product_id);
+		
+			echo "<tr><td>$position->quantity</td>";
+			echo "<td><strong>$position->name</strong><br/>";
+			
+			// Here, get the custom attributes
+			$query = sprintf("SELECT attribute_id, attribute_value FROM order_detail_attributes WHERE order_id=%s AND product_id=%s",
+						$order_attributes->order_id, $position->product_id);
+			$custom_attributes = $shopdb->get_results($query);
+			if($custom_attributes != NULL) {
+				echo "You chose the following custom attributes:";
+				echo "<ul>";
+				foreach($custom_attributes as $attribute) {
+					$attribute_name = $p->getAttributeNameForId($attribute->attribute_id);
+					echo "<li>$attribute_name: $attribute->attribute_value</li>";
+				}
+				echo "</ul>";
+			} else {
+				echo "This product has no custom attributes";
+			}
+			
+			$position_price = $position->quantity * $position->price;
+			echo "</td><td>$position_price</td></tr>";
+			
+			$total_price += $position_price;
+	}
+	echo "<tr><td>Total price</td><td></td><td>$total_price</td></tr>";
+	echo "</table>";
+}
+
 function db_insert_galaxy($name) {
 	global $shopdb;
 	
@@ -327,6 +402,59 @@ function db_insert_address($street, $zipcode, $city, $country, $planet_id, $gala
 		return null;
 	}
 	
+}
+
+function db_insert_order($customer_id, $shipping_address) {
+	global $shopdb;
+	
+	$address_name = 'addr_' . time();
+	
+	$clean_cust_id = $shopdb->escape($customer_id);
+	$clean_shipping_addr = $shopdb->escape($shipping_address);
+	
+	$query = sprintf("INSERT INTO `order` (customer_id, order_date, shipping_date, shipping_address) VALUES (%s, NOW(), NOW(), %s);",
+				$clean_cust_id, $clean_shipping_addr);
+	
+	$result = $shopdb->query($query);
+	if($result) {
+		$query = sprintf("SELECT order_id FROM `order` WHERE customer_id=%s AND shipping_address=%s ORDER BY order_date DESC LIMIT 1;",
+					$clean_cust_id, $clean_shipping_addr);
+		$order_id = $shopdb->get_var($query);
+		return $order_id;
+	} else {
+		$shopdb->debug();
+		return null;
+	}
+}
+
+function db_insert_order_detail($order_id, $product_id, $quantity) {
+	global $shopdb;
+
+	$query = sprintf("INSERT INTO order_detail (order_id, product_id, quantity) VALUES (%s, %s, %s);",
+				$order_id, $product_id, $quantity);
+	
+	$result = $shopdb->query($query);
+	if($result) {
+		return true;
+	} else {
+		$shopdb->debug();
+		return false;
+	}
+}
+
+function db_insert_order_detail_attribute($order_id, $product_id, $attribute_id, $attribute_value) {
+	global $shopdb;
+
+	$query = sprintf("INSERT INTO order_detail_attributes (order_id, product_id, attribute_id, attribute_value) VALUES (%s, %s, %s, '%s');",
+				$order_id, $product_id, $attribute_id, $attribute_value);
+
+	$result = $shopdb->query($query);
+	if($result) {
+		return true;
+	} else {
+		$shopdb->debug();
+		return false;
+	}
 }
 
 ?>

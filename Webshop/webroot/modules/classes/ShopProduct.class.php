@@ -1,10 +1,10 @@
 <?php
-class ShoppingCartProduct {
+class ShopProduct {
 	public $product_id;
 	
 	// Array to hold the attributes ($attibute_id => $attribute_value)
 	public $attributes = array ();
-	public function ShoppingCartProduct($p_id) {
+	public function ShopProduct($p_id) {
 		global $shopdb;
 		
 		$this->product_id = $shopdb->escape ( $p_id );

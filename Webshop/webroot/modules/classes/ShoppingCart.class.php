@@ -1,10 +1,10 @@
 <?php
 class ShoppingCart {
 	
-	// Array containing (<ShoppingCartProduct>))
+	// Array containing (<ShopProduct>))
 	private $items = array ();
 	
-	public function addProduct(ShoppingCartProduct $s) {
+	public function addProduct(ShopProduct $s) {
 		array_push($this->items, $s);
 	}
 	
@@ -12,6 +12,7 @@ class ShoppingCart {
 		foreach ($this->items as $itemkey => $item) {
 			if($item->product_id == $prod_id) {
 				unset($this->items[$itemkey]);
+				return;
 			}
 		}
 	}
@@ -57,16 +58,7 @@ class ShoppingCart {
 		require_lang();
 		
 		if (!empty($this->items)){
-			$overview = array();
-			
-			// Aggregate
-			foreach ($this->items as $item) {
-				if($overview[$item->product_id] == NULL) {
-					$overview[$item->product_id] = 1;
-				} else {
-					$overview[$item->product_id]++;
-				}
-			}
+			$overview = $this->getQuantities();
 			
 			// Show aggregated values
 			echo "<ul>";
@@ -79,6 +71,21 @@ class ShoppingCart {
 		} else {
 			echo get_translation("SHOPPINGCART_EMPTY");
 		}
+	}
+	
+	public function getQuantities() {
+		$overview = array();
+			
+		// Aggregate
+		foreach ($this->items as $item) {
+			if($overview[$item->product_id] == NULL) {
+				$overview[$item->product_id] = 1;
+			} else {
+				$overview[$item->product_id]++;
+			}
+		}
+		
+		return $overview;
 	}
 	
 	private function getProductInformation($id){
@@ -95,6 +102,10 @@ class ShoppingCart {
 	
 	public function is_empty() {
 		return empty($this->items);
+	}
+	
+	public function getAllItems() {
+		return $this->items;
 	}
 }
 ?>
