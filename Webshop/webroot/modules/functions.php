@@ -302,6 +302,7 @@ function print_form_fields($form_file) {
  */
 function print_address($address_id) {
 	global $shopdb;
+	global $shopuser;
 	
 	$query = sprintf("SELECT a.street, a.zipcode, a.city, a.country, p.name AS pname, g.name AS gname FROM address a JOIN planet p ON a.planet_id = p.planet_id JOIN galaxy g ON a.galaxy_id = g.galaxy_id WHERE a.address_id=%s LIMIT 1", $address_id);
 	$address = $shopdb->get_row($query);
@@ -519,6 +520,18 @@ function db_insert_order($customer_id, $shipping_address) {
 function db_insert_order_detail($order_id, $product_id, $quantity) {
 	global $shopdb;
 
+	if($quantity > 1) {
+		// Hack: If quantity is already > 1, we might not need to INSERT (has already been done)
+		$query = sprintf("SELECT COUNT(*) FROM order_detail WHERE order_id=%s AND product_id=%s AND quantity=%s",
+				$order_id, $product_id, $quantity);
+		$result = $shopdb->get_var($query);
+		if($result >= 1) {
+			// Was already inserted, return TRUE
+			return true;
+		}
+	}
+	
+	
 	$query = sprintf("INSERT INTO order_detail (order_id, product_id, quantity) VALUES (%s, %s, %s);",
 				$order_id, $product_id, $quantity);
 	

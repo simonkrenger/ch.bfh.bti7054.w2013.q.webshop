@@ -1,7 +1,7 @@
 <?php
 
 function admin_get_types() {
-	return array("user", "product_category", "product", "planet", "galaxy");
+	return array("user", "product_category", "product", "planet", "galaxy", "`order`");
 }
 
 function admin_list($type=null) {
