@@ -12,6 +12,10 @@
 * Copy "config-sample.php" to "config.php" and enter your database settings
 * Enjoy!
 
+## Developer Guide
+
+A developer guide is available [here](Webshop/doc/DEVELOPER_GUIDE.md)
+
 ## Contributors
 
 Franziska Corradi, Simon Krenger
