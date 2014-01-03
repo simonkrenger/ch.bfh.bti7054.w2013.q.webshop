@@ -71,12 +71,36 @@ The result will be something like this:
 ## Howto: Query the database
 PlanetShop  uses the well-known ezSQL library to handle database queries. The supporting files can be found in `webroot/modules/db/`. ezSQL uses the "mysqli" library to connect to the database and allows the developer to quickly query a database and retrieve the results as a PHP object.
 
+You can find the full ER model of the database in `doc/task10/eer_model.mwb` (MySQL Workbench format).
+
+For example, if you want to query the database and list all users with their first and last name, this can be accomplished as follows:
+
+```php
+<?php
+	// Include global variable shopdb
+	global $shopdb;
+
+	// Query the database
+	$users = $shopdb->get_results("SELECT first_name, last_name FROM user ORDER BY user_id DESC");
+
+	// Loop over the result
+	foreach($users as $user) {
+		echo "First name: $user->first_name <br/>";
+		echo "Last name: $user->last_name <br/>";
+	}
+?>
+```
+
+More examples can be found in the code itself or on the ezSQL site (see references below).
+
 ## Howto: Print a form
 
 PlanetShop features an unique way to define and display forms on the site. To create a new form and include it in the site, you'll need to do perform the following two steps:
 
 * Create "form file", that contains the form definition in `webroot/modules/forms/`.
 * Call the function `print_form_fields` to print the form fields. 
+
+Note that you will need to print the `<form>` tag yourself, as this differs from form to form. Using the above function, one can generate reusable forms.
 
 ## Other references
 
