@@ -10,7 +10,7 @@
 
 			</div>
 			<div id="maincontent">
-			
+			<div id="category">
 			<?php 
 			
 			$categories = $shopdb->get_results ( "SELECT category_id,translation_string FROM product_category ORDER BY category_id" );
@@ -22,10 +22,9 @@
 			
 			?>
 			</div>
-			
-			<div id="dYk">
-			<?php include ('modules/rest/did_you_know.php'); ?>
 			</div>
+			
+			<?php include ('modules/rest/did_you_know.php'); ?>
 			
 		</div>
 			
