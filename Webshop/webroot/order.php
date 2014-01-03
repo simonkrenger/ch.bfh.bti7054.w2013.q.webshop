@@ -21,7 +21,24 @@ if (isset ( $_GET ['product_id'] )) {
 			<div id="orderFormDiv">
 
 				<div id="heading">order form</div>
-				<?php include(ABSPATH . 'orderForm.php'); ?>
+				
+					<form class="form" name="orderForm" id="orderForm"
+						action="<?php
+						$suffix = array ();
+						echo get_href ( "sendOrder", $suffix, true );
+						?>"
+						method="post" onsubmit="submitOrderForm()" onreset="resetOrderForm()">
+					
+					<div class="form">
+					
+							<?php print_form_fields("modules/forms/orderForm.txt"); ?>
+						
+							<div class ="button">
+								<input type="button" name="submitted" value="Order now!"
+									onclick="verifyOrderForm()" />
+							</div>
+						</div>
+					</form>
 				
 			</div>
 

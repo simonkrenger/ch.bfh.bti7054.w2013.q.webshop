@@ -235,5 +235,21 @@ function getProductInformation($id){
 	return $shopdb->get_row( $query );
 }
 
+function print_form_fields($form_file) {
+	global $language;
+	
+	$form = file ( ABSPATH . $form_file );
+	
+	$formfields = array ();
+	foreach ( $form as $line ) {
+		array_push ( $formfields, explode ( ',', $line ) );
+	}
+	
+	foreach ( $formfields as $entry ) {
+		echo "<div class=\"formField\"> <label for =\"" . $entry [0] . "\">" . get_translation ( $entry [1] ) . "</label>
+			<input type=\"" . $entry [2] . "\" name=\"" . $entry [0] . "\" size=\"" . $entry [3] . "\" maxlength=\"" . $entry [4] . "\" id=\"" . $entry [0] . "\" placeholder =\"" . get_translation ( "$entry[1]" ) ."\" value =\"" . get_translation ( "$entry[1]" ) . "\" ></input></div>";
+	}
+}
+
 
 ?>

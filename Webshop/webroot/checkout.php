@@ -38,6 +38,8 @@ if( is_logged_in()) {
 		
 		global $shopdb;
 		
+		
+		
 		echo "TODO: Confirm address here";
 		// Idea: SELECT address from db
 		// If there is an address for this user, show a dropdown containing these
