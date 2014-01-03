@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+/* . > class, # > id*/
+
 * {
 	/* for easier margin and padding*/
 	-webkit-box-sizing: border-box;
@@ -82,7 +84,7 @@ body a:visited {
 
 #content {
 	display: compact;
-	padding: 10px 5px 10px 5px;
+padding: 10px 5px 10px 5px; 
 	margin-top: 30px;
 	margin-bottom: 75px;
 	overflow: hidden;
@@ -91,6 +93,8 @@ body a:visited {
 #maincontent {
 	margin-bottom: 25px;
 	overflow: hidden;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.6);
 }
 
 #marketing {
@@ -105,15 +109,18 @@ body a:visited {
 	display: inline;
 	font-size: 20px;
 	font-weight: bold;
+	margin-left: 20px;
 }
 
-#dYk {
-	display: inline;
-	font-size: 15px;
+#dYK {
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-size: 17px;
 	height: auto;
 	word-wrap: break-word;
-	padding: 10px;
 	vertical-align: bottom;
+	
 }
 
 .marketing-text {
@@ -127,17 +134,14 @@ body a:visited {
 	font-size: 12pt;
 }
 
-#category {
-	text-align: center;
-	vertical-align: middle;
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
-}
+
 
 .categorytile {
 	display: inline-block;
-	border: 1px solid;
+	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	border: 2px solid;
 	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
 	border-radius: 10px;
@@ -151,10 +155,10 @@ body a:visited {
 	text-align: center;
 	word-wrap: break-word;
 	vertical-align: inherit;
-	position: relative;
 	height: 0;
 	padding-top: 5%;
 	padding-bottom: 7%;
+	margin-top: 20px;
 }
 
 .categorytile:HOVER {
@@ -165,9 +169,13 @@ body a:visited {
 	background-color: white;
 }
 
-#shoppingcart {
-	/*to be implemented*/
-	
+#category {
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	right: auto;
+	left: auto;
+
 }
 
 .cartFull {

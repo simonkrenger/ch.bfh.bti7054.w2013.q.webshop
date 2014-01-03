@@ -22,6 +22,7 @@ $mass = $results ["properties"] ["mass"];
 $description = $results["description"];
 
 echo "<div id=\"dYK_head\"> Did you know that, </div>";
+echo "<div id=\"dYK\">";
 if (! $name) {
 	echo "we don't know either!";
 } else {
@@ -50,6 +51,6 @@ if (! $name) {
 		echo "$description";
 	}
 }
-
+echo "</div>";
 ?>
 
