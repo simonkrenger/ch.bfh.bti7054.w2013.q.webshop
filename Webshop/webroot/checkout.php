@@ -165,9 +165,10 @@ if( is_logged_in()) {
 			if($success) {
 				echo "Successfully placed order (Order ID $order_id)!";
 				
-				
 				print_order($order_id);
 				$shoppingcart->clear();
+				
+				// TODO: Generate e-mail and send out
 				
 				echo "<a href=\"" . get_href("printorder") . "\">Print order</a>";
 			} else {
@@ -190,8 +191,6 @@ if( is_logged_in()) {
 }
 
 ?>
-			
-			
 			</div>
 		<?php include('sidebar.php'); ?>
 		</div>

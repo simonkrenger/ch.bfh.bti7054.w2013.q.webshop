@@ -1,3 +1,9 @@
+<?php 
+/**
+ * Login page. Shows a login form or basic user information
+ */
+
+?>
 <div id="content">
 	<div id="maincontent">
 		<div id="contentarea">
