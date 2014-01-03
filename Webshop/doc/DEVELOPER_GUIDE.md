@@ -4,17 +4,31 @@ This document contains guidelines and references to working with the PlanetShop 
 
 ## Basic concepts
 
-A site 
+A site is always called through `index.php`. The `index.php` file then performs security checks and routing to the correct file using the `mapping.txt` file also found in the `webroot/` folder. A site is then build using the following process:
 
-### require_ Functions
-At the top of the file `index.php`, you will find function calls to functions like `require_db()` or `require_lang()`. These functions provide means to establish a consistent and properly defined variable environment for the application. This means that after calling `require_db()` for example, all variables and environment settings are guaranteed to be set correctly (such as `$shopdb`).
+1. Include configuration and functions (`config.php` and `modules/functions.php`)
+2. Set all global variables and correctly set the environment for the site (see below for details)
+3. Include the header (`header.php`)
+4. Perform routing based on `mapping.txt`
+5. Include the sidebar and footer
 
+Please note that the first two steps are always performed without printing a single line. This allows us to set the correct environment, including all `$_SESSION` variables and the like.
 
-
+### Environment setup: require_ Functions
+At the top of the file `index.php`, you will find function calls to functions like `require_db()` or `require_lang()`. These functions provide means to establish a consistent and properly defined variable environment for the application. This means that after calling `require_db()` for example, all variables and environment settings are guaranteed to be set correctly (such as `$shopdb`). See the global variables table below for more information.
 
 ## Function Reference
 
-The files of PlanetShop define many useful PHP functions. Most of them are only used to provide core functionality, however there are some more complicated functions available. This section lists most of the core functions. In addition to this information, all functions are thoroughly documented in PHP.
+The files of PlanetShop define many useful PHP functions. Most of them are only used to provide core functionality, however there are some more complicated functions available to be used by the developer. This section lists most of the core functions. In addition to this information, all functions are thoroughly documented in PHP.
+
+
+Function name | Description
+--- | ---
+`is_logged_in` | Function to determine if a user is logged in. Returns `TRUE` if the user is logged in.
+`is_admin_user` | Function to determine if a user is an "admin user". Returns `TRUE` if the user is indeed an "admin user".
+`get_href` | Function used to generate a hyperlink within the site. See below for an example
+`get_safe_content_include` | Routing function used in `index.php` 
+TODO | TODO
 
 ## Global variables
 
@@ -26,8 +40,7 @@ Variable name | `require_` function | Description
 `$language` | require_lang | Represents the language set for the application.
 `$shopdb` | require_db | ez_sql database object to handle database queries.
 `$shopuser` | require_user | User object that is set when the user is logged in.
-TODO | TODO | TODO
-
+`$_SESSION["cart"]` | require_shoppingcart | Shopping cart object
 
 ## Howto: Add a new page
 
@@ -56,10 +69,16 @@ The result will be something like this:
 ```
 
 ## Howto: Query the database
-
+PlanetShop  uses the well-known ezSQL library to handle database queries. The supporting files can be found in `webroot/modules/db/`. ezSQL uses the "mysqli" library to connect to the database and allows the developer to quickly query a database and retrieve the results as a PHP object.
 
 ## Howto: Print a form
 
+PlanetShop features an unique way to define and display forms on the site. To create a new form and include it in the site, you'll need to do perform the following two steps:
+
+* Create "form file", that contains the form definition in `webroot/modules/forms/`.
+* Call the function `print_form_fields` to print the form fields. 
+
 ## Other references
 
-
+[Justin Vincents ezSQL library](http://justinvincent.com/ezsql)
+[FPDF library](http://www.fpdf.org)
