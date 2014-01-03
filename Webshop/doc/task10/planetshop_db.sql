@@ -146,7 +146,7 @@ ENGINE = InnoDB;
 -- Table `planetshop_db`.`order`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `planetshop_db`.`order` (
-  `order_id` INT NOT NULL ,
+  `order_id` INT NOT NULL AUTO_INCREMENT ,
   `customer_id` INT NOT NULL ,
   `order_date` DATETIME NULL ,
   `shipping_date` DATETIME NULL ,
