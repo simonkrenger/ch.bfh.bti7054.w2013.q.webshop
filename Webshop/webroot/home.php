@@ -1,11 +1,13 @@
 		<div id="content">
 			<div id="marketing">
+			
 				<div class="marketing-text">
 					<?php echo get_translation("MARKETING_CLAIM_BIG"); ?>
 					<div class="marketing-subtext">
 						<?php echo get_translation("MARKETING_CLAIM_SUBTEXT"); ?> <a href="<?php echo get_href("products",array("category" => 2)) ?>"><?php echo get_translation("MARKETING_FIND_OUT_MORE"); ?></a>
 					</div>
 				</div>
+
 			</div>
 			<div id="maincontent">
 			
@@ -19,6 +21,10 @@
 			}
 			
 			?>
+			</div>
+			
+			<div id="dYk">
+			<?php include ('modules/rest/did_you_know.php'); ?>
 			</div>
 			
 		</div>

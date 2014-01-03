@@ -35,7 +35,6 @@ if(isset($_GET['category'])) {
 			<?php include('sidebar.php'); ?>
 	
 		
-</div>
-</div>
+
 
 		
