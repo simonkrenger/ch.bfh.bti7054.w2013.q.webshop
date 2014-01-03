@@ -26,12 +26,11 @@
 				<p><?php 
 				global $shopuser;
 				echo "Welcome back " . $shopuser->first_name . "!";
-				echo "<br/>Debug: " . $shopuser->address->city;
 				?></p>
 				
 				<?php if(is_admin_user()) {
 					// If user is an admin, display admin link
-					echo '<p><a href="' . get_href("admin") .'">Admin</a></p>';
+					echo '<p><a href="' . get_href("admin") .'">Admin Area</a></p>';
 				}
 				?>
 				

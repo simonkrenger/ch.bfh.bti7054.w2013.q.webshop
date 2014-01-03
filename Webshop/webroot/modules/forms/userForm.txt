@@ -1,0 +1,7 @@
+firstname,FORM_FIRSTNAME,text,50,100
+lastname,FORM_LASTNAME,text,50, 100
+email,FORM_EMAIL,email,50,100
+phone,FORM_PHONE,tel,4,15
+birthdate,FORM_BIRTHDATE,date,10,10
+registration_username,FORM_USER,text,5,100
+registration_password,FORM_PASS,password,5,100

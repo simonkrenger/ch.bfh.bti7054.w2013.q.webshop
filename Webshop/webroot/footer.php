@@ -6,7 +6,7 @@
 			<td class="tbl">
 			<?php 
 			
-			echo "<a href=\"" . get_href('reg') . "\">" . get_translation("FORM_REG") . "</a>"
+			echo "<a href=\"" . get_href('register') . "\">" . get_translation("FORM_REG") . "</a>"
 			
 			?>
 			</td>
