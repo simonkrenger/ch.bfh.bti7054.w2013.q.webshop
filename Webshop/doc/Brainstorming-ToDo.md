@@ -12,7 +12,6 @@
  * CSS/ design alle seiten gleich [check]
  * detail.php und category.php design (ersetzten default.php) [check]
  * order Form, buy now, sendOrder, summary [check] 
- * check order form with javascript. make generic. [check] > could be improved
  * frontpage javascript buttons[check] 
  * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
  * Task 9.1 Shopping Cart in OO [check] > is not visible anymore [check] 
@@ -22,13 +21,15 @@
  * Order confirmation as PDF [check] > needs beautification and DB access [check] 
  * delete Breadcrumb (DONE)
  * change order form for > [check]
- * login form anpassen 
  * Street and number in one filed [check]
  * Review for logged in User; order Process, Shopping Cart etc. [check]
- * delete values in Order Form > at the end.
- * Checkout Prouess: PDF
  * REST API ("Did you know?") (Fränzi) [check]
+---
+ * check order form with javascript. make generic. [check] > could be improved
  * Beautification
+ * login form anpassen 
+ * Checkout Prouess: PDF
+ * delete values in Order Form > at the end.
  
 ### Simon ab Freitag 08.11.2013 behold
  *  Link zu detail.php mit übergabe ID (DONE) 
