@@ -45,7 +45,8 @@
  *  Checkout Process (+Mail) [Mostly done - still needs work!]
  *  Beautification (Done)
  *  Update Developer Guide and documentation
+ *  Maybe add new "add product page?"
 
 TODO Presentation
-- Screencast
-- Presentation (what and how?)
+ * Screencast
+ * Presentation (what and how?)

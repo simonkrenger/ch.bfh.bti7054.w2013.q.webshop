@@ -31,10 +31,34 @@ TODO | TODO | TODO
 
 ## Howto: Add a new page
 
+Let us say we want to add a new page "My site". To add a new site, you must perform the following steps:
+
+1. Define a "site ID" for your site. This must be a short, to-the-point variable name like `mysite`. We prefer to use one or two words, no spaces or special characters.
+2. Copy `minimal.php` to `mysite.php` or something similar. Place the file in the `webroot/` folder. The filename does not need to match the "site ID", but often it does.
+3. The mapping between the "site ID" and the filename to be included is defined in the `mapping.txt` file. Add your site in the following comma-separated form: `<site ID>,<filename>`
+4. If you want to link to your new site, add a link like so:
+
+```php
+<?php echo '<a href="' . get_href('mysite') . '">My Site</a>'; ?>
+```
+
+### Optional: Add GET variables to your link
+Above you saw how you can link to a site within PlanetShop.
+You can easily add GET variables to your link using the `get_href` function. The following example will add the GET variable `action` with the value `delete` and an ID to your link:
+
+```php
+<?php echo '<a href="' . get_href('mysite', array('action' => 'delete', 'id' => 12)) . '">My Site</a>'; ?>
+```
+
+The result will be something like this:
+```html
+<a href="index.php?site=mysite&action=delete&id=12">My Site</a>
+```
+
 ## Howto: Query the database
 
 
-## Howto: TODO
+## Howto: Print a form
 
 ## Other references
 
