@@ -5,56 +5,16 @@ if(isset($_GET["action"])) {
 		global $shopdb;
 		
 		// Register planet
-		$clean_planet_name = trim($shopdb->escape($_POST["planet"]));
-		$query = sprintf("SELECT planet_id FROM planet WHERE lower(name)=lower('%s') LIMIT 1;", $clean_planet_name);
-		$planet_id = $shopdb->get_var($query);
-		if($planet_id == NULL) {
-			// Planet does not yet exist, insert it
-			$query = sprintf("INSERT INTO planet (name) VALUES ('%s');", $clean_planet_name);
-			$result = $shopdb->query($query);
-			if($result) {
-				$output .= "Planet '$clean_planet_name' entered.<br/>";
-				$query = sprintf("SELECT planet_id FROM planet WHERE lower(name)=lower('%s') LIMIT 1;", $clean_planet_name);
-				$planet_id = $shopdb->get_var($query);
-			}
-		}
+		$planet_id = db_insert_planet($_POST["planet"]);
+		
 		
 		// Register galaxy
-		$clean_galaxy_name = trim($shopdb->escape($_POST["galaxy"]));
-		$query = sprintf("SELECT galaxy_id FROM galaxy WHERE lower(name)=lower('%s') LIMIT 1;", $clean_galaxy_name);
-		$galaxy_id = $shopdb->get_var($query);
-		if($galaxy_id == NULL) {
-			// Galaxy does not yet exist, insert it
-			$query = sprintf("INSERT INTO galaxy (name) VALUES ('%s');", $clean_galaxy_name);
-			$result = $shopdb->query($query);
-			if($result) {
-				$output .= "You are the first visitor from galaxy '$clean_galaxy_name', welcome!<br/>";
-				$query = sprintf("SELECT galaxy_id FROM galaxy WHERE lower(name)=lower('%s') LIMIT 1;", $clean_galaxy_name);
-				$galaxy_id = $shopdb->get_var($query);
-			}
-		}
+		$galaxy_id = db_insert_galaxy($_POST["galaxy"]);
 		
 		// Register address
-		$address_name = 'addr_' . time();
-		
-		$clean_street_name = $shopdb->escape($_POST["street"]);
-		$clean_zipcode = $shopdb->escape($_POST["zipcode"]);
-		$clean_city = $shopdb->escape($_POST["city"]);
-		$clean_country = $shopdb->escape($_POST["country"]);
-		
-		$query = sprintf("INSERT INTO address (address_name, street, zipcode, city, country, galaxy_id, planet_id) VALUES ('%s','%s','%s','%s','%s',%s,%s);", 
-				$address_name, $clean_street_name, $clean_zipcode, $clean_city, $clean_country, $galaxy_id, $planet_id);
-		
-		$result = $shopdb->query($query);
-		if($result) {
-			$query = sprintf("SELECT address_id FROM address WHERE address_name='%s' LIMIT 1;", $address_name);
-			$address_id = $shopdb->get_var($query);
-			$output .= "Address entered, ID is $address_id.<br/>";
-		}
-		
+		$address_id = db_insert_address($_POST["street"], $_POST["zipcode"], $_POST["city"], $_POST["country"], $planet_id, $galaxy_id);
 		
 		// Register user
-		
 		$clean_username = $shopdb->escape($_POST["registration_username"]);
 		$hashed_password =  md5($_POST["registration_password"]);
 		$clean_email = $shopdb->escape($_POST["email"]);
@@ -68,7 +28,9 @@ if(isset($_GET["action"])) {
 		if($result) {
 			$query = sprintf("SELECT user_id FROM user WHERE username = '%s'", $clean_username);
 			$user_id = $shopdb->get_var($query);
-			$output .= "User successfully registered, ID is $user_id.<br/>";
+			$output .= "User successfully registered, User ID is $user_id.<br/>";
+		} else {
+			$shopdb->debug();
 		}
 	}
 }

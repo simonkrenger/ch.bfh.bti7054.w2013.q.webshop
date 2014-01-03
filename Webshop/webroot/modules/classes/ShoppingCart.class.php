@@ -10,9 +10,8 @@ class ShoppingCart {
 	
 	public function removeProduct($prod_id) {
 		foreach ($this->items as $itemkey => $item) {
-			if($item->product_id = $prod_id) {
+			if($item->product_id == $prod_id) {
 				unset($this->items[$itemkey]);
-				return;
 			}
 		}
 	}

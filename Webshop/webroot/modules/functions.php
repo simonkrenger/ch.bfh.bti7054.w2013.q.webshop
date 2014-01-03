@@ -246,10 +246,87 @@ function print_form_fields($form_file) {
 	}
 	
 	foreach ( $formfields as $entry ) {
+		
+		// If the $_POST variable has an entry for this, go for it!
+		if(isset($_POST[$entry[0]])) {
+			$preset_value = $_POST[$entry[0]];
+		} else {
+			// Else, fall back to translation
+			$preset_value = get_translation ($entry[1]);
+		}
+		
 		echo "<div class=\"formField\"> <label for =\"" . $entry [0] . "\">" . get_translation ( $entry [1] ) . "</label>
-			<input type=\"" . $entry [2] . "\" name=\"" . $entry [0] . "\" size=\"" . $entry [3] . "\" maxlength=\"" . $entry [4] . "\" id=\"" . $entry [0] . "\" placeholder =\"" . get_translation ( "$entry[1]" ) ."\" value =\"" . get_translation ( "$entry[1]" ) . "\" ></input></div>";
+			<input type=\"" . $entry [2] . "\" name=\"" . $entry [0] . "\" size=\"" . $entry [3] . "\" maxlength=\"" . $entry [4] . "\" id=\"" . $entry [0] . "\" placeholder =\"" . get_translation ( "$entry[1]" ) ."\" value =\"" . $preset_value . "\" ></input></div>";
 	}
 }
 
+function db_insert_galaxy($name) {
+	global $shopdb;
+	
+	// Register galaxy
+	$clean_galaxy_name = trim($shopdb->escape($name));
+	$query = sprintf("SELECT galaxy_id FROM galaxy WHERE lower(name)=lower('%s') LIMIT 1;", $clean_galaxy_name);
+	$galaxy_id = $shopdb->get_var($query);
+	if($galaxy_id == NULL) {
+		// Galaxy does not yet exist, insert it
+		$query = sprintf("INSERT INTO galaxy (name) VALUES ('%s');", $clean_galaxy_name);
+		$result = $shopdb->query($query);
+		if($result) {
+			$query = sprintf("SELECT galaxy_id FROM galaxy WHERE lower(name)=lower('%s') LIMIT 1;", $clean_galaxy_name);
+			$galaxy_id = $shopdb->get_var($query);
+		} else {
+			$shopdb->debug();
+			return null;
+		}
+	}
+	return $galaxy_id;
+}
+
+function db_insert_planet($name) {
+	global $shopdb;
+	
+	// Register planet
+	$clean_planet_name = trim($shopdb->escape($name));
+	$query = sprintf("SELECT planet_id FROM planet WHERE lower(name)=lower('%s') LIMIT 1;", $clean_planet_name);
+	$planet_id = $shopdb->get_var($query);
+	if($planet_id == NULL) {
+		// Planet does not yet exist, insert it
+		$query = sprintf("INSERT INTO planet (name) VALUES ('%s');", $clean_planet_name);
+		$result = $shopdb->query($query);
+		if($result) {
+			$query = sprintf("SELECT planet_id FROM planet WHERE lower(name)=lower('%s') LIMIT 1;", $clean_planet_name);
+			$planet_id = $shopdb->get_var($query);
+		} else {
+			$shopdb->debug();
+			return null;
+		}
+	}
+	return $planet_id;
+}
+
+function db_insert_address($street, $zipcode, $city, $country, $planet_id, $galaxy_id) {
+	global $shopdb;
+	
+	$address_name = 'addr_' . time();
+	
+	$clean_street_name = $shopdb->escape($street);
+	$clean_zipcode = $shopdb->escape($zipcode);
+	$clean_city = $shopdb->escape($city);
+	$clean_country = $shopdb->escape($country);
+	
+	$query = sprintf("INSERT INTO address (address_name, street, zipcode, city, country, galaxy_id, planet_id) VALUES ('%s','%s','%s','%s','%s',%s,%s);",
+			$address_name, $clean_street_name, $clean_zipcode, $clean_city, $clean_country, $galaxy_id, $planet_id);
+	
+	$result = $shopdb->query($query);
+	if($result) {
+		$query = sprintf("SELECT address_id FROM address WHERE address_name='%s' LIMIT 1;", $address_name);
+		$address_id = $shopdb->get_var($query);
+		return $address_id;
+	} else {
+		$shopdb->debug();
+		return null;
+	}
+	
+}
 
 ?>
