@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 /* . > class, # > id*/
-
 * {
 	/* for easier margin and padding*/
 	-webkit-box-sizing: border-box;
@@ -26,6 +25,10 @@ body a {
 	text-decoration: none;
 }
 
+body a:HOVER{
+	color: rgb(0, 0, 0);
+}
+
 body a:visited {
 	color: rgb(255, 255, 255);
 }
@@ -35,8 +38,8 @@ body a:visited {
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.6);
 	width: 80%;
+	height: inherit;
 	margin: 0 auto;
-	/* 	padding: 10px; */
 	border-radius: 20px;
 }
 
@@ -46,53 +49,58 @@ body a:visited {
 	top: 0;
 }
 
-#navigation {
-	/* surrounds logo, language,search and menu*/
-	
-}
 
 #logo {
 	width: 50%;
 	padding: 10px 5px 10px 5px;
 }
 
-#language {
+.language {
 	float: right;
-	position: top;
-	padding: 10px 5px 10px 5px;
+	width: auto;
+	margin: 0 auto;
+	text-align: center;
+	height: inherit;
+	display: inline;
+	text-transform: uppercase;
+	vertical-align: middle;
 }
 
-#language a:HOVER {
+
+.language  a {
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.language a:HOVER {
 	color: rgb(0, 0, 0);
-	background-color: white;
+	background-color: rgb(255, 255, 255);
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 #menu {
-	vertical-align: middle;
-	position: relative;
-	right: auto;
-	left: auto;
-	padding: 10px 5px 10px 5px;
-	border-radius: 5px;
-	background-color: rgba(35, 35, 35);
-	background-color: rgba(35, 35, 35, 0.6);
+	width:100%;
+	padding: 5px 10px 5px 10px;
+	background-color: rgba(45, 45, 45);
+	background-color: rgba(45, 45, 45, 0.6);
 }
 
 .menuentry {
-	display: inline;
-	padding: 5px 10px 5px 0px;
+	width: auto;
+	height: 30px;
+	margin: 0 auto;
 	text-align: center;
-	margin-left:auto;
-	margin-right:auto;
-	left: auto;
-	right: auto;
+	display: inline;
+	padding: 5px 10px 5px 10px;
 	text-transform: uppercase;
+	vertical-align: middle;
 }
-.menuentry a{
+
+.menuentry a {
 	display: inline-block;
-	margin: 0px;
+	margin: 0 auto;
 }
-	
+
 .menuentry:HOVER {
 	color: rgb(0, 0, 0);
 	background-color: rgb(255, 255, 255);
@@ -106,7 +114,7 @@ body a:visited {
 
 #content {
 	display: compact;
-padding: 10px 5px 10px 5px; 
+	padding: 10px 5px 10px 5px;
 	margin-top: 30px;
 	margin-bottom: 75px;
 	overflow: hidden;
@@ -142,7 +150,6 @@ padding: 10px 5px 10px 5px;
 	height: auto;
 	word-wrap: break-word;
 	vertical-align: bottom;
-	
 }
 
 .marketing-text {
@@ -162,14 +169,13 @@ padding: 10px 5px 10px 5px;
 	position: relative;
 	right: auto;
 	left: auto;
-
 }
 
 .categorytile {
 	display: inline-block;
 	position: relative;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	border: 2px solid;
 	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
@@ -197,8 +203,6 @@ padding: 10px 5px 10px 5px;
 	background-color: white;
 }
 
-
-
 .cartFull {
 	border: 2px solid;
 	border-color: rgb(255, 255, 255);
@@ -218,8 +222,6 @@ padding: 10px 5px 10px 5px;
 	padding: 10px 10px 10px 10px;
 	background-color: rgb(0, 0, 0);
 }
-
-
 
 .planetlist {
 	display: inline-block;
@@ -269,15 +271,12 @@ padding: 10px 5px 10px 5px;
 
 .box {
 	position: relative;
-/* 	border: 2px solid; */
-/* 	border-color: rgb(255, 255, 255); */
-/* 	border-color: rgba(255, 255, 255, 0.6); */
-	background-color: rgba(35, 35, 35);
-	background-color: rgba(35, 35, 35, 0.6);
+	background-color: rgba(45, 45, 45);
+	background-color: rgba(45, 45, 45, 0.6);
 	border-radius: 10px;
 	margin-bottom: 20px;
 	padding: 10px 10px 10px 10px;
-/* 	background-color: rgb(0, 0, 0); */
+	/* 	background-color: rgb(0, 0, 0); */
 }
 
 .boxtitle {
@@ -288,7 +287,6 @@ padding: 10px 5px 10px 5px;
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-	
 }
 
 .separator {
@@ -300,10 +298,9 @@ padding: 10px 5px 10px 5px;
 }
 
 #footer {
-	background-color: rgba(35, 35, 35);
-	background-color: rgba(35, 35, 35, 0.6);
+	background-color: rgba(45, 45, 45);
+	background-color: rgba(45, 45, 45, 0.6);
 	margin-top: 50px;
-	border-radius: 10px;
 	clear: both;
 	padding: 10px 5px 10px 5px;
 }
@@ -321,12 +318,6 @@ padding: 10px 5px 10px 5px;
 #orderForm {
 	margin-left: 20px
 }
-
-/* #heading { */
-/* 	margin-bottom: 30px; */
-/* 	font-size: 20px; */
-/* 	text-transform: uppercase; */
-/* } */
 
 .formField {
 	display: table-row;
