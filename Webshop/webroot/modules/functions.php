@@ -1,4 +1,10 @@
 <?php
+/**
+ * Main functions file for PlanetShop
+ * 
+ * This file contains most of the functions globally defined and used.
+ */
+
 function require_db() {
 	global $shopdb;
 	
@@ -100,6 +106,25 @@ function require_user() {
 	}
 }
 
+function require_lang() {
+
+	global $language;
+
+	require_once('language.php');
+
+	if (! isset ( $language )) {
+		$language = get_language(); // Fränzi: Replace me!
+		// Further reading: Read browser agent language (optional)
+	}
+}
+
+
+/**
+ * Function to determine if a user is logged in
+ * 
+ * @return boolean Returns TRUE if the user is logged in and FALSE if the user
+ * is not logged in.
+ */
 function is_logged_in() {
 	if (isset($_SESSION["logged_in"]) && isset($_SESSION["user_id"])) {
 		return true;
@@ -107,6 +132,11 @@ function is_logged_in() {
 	return false;
 }
 
+/**
+ * Checks if the current user is an admin user (has a "role_id" of "1").
+ * @return boolean Returns TRUE if the current user is an admin user, else this
+ * function returns FALSE.
+ */
 function is_admin_user() {
 	require_user();
 	
@@ -117,20 +147,6 @@ function is_admin_user() {
 	}
 	return false;
 }
-
-function require_lang() {
-
-	global $language;
-
-	require_once('language.php');
-		
-	if (! isset ( $language )) {
-		$language = get_language(); // Fr��nzi: Replace me!
-		// Further reading: Read browser agent language (optional)
-	}
-}
-
-
 
 /**
  * This method prints out an interactive slider or a dropdown box to customise
@@ -166,8 +182,8 @@ function print_input_for_value_range($attribute) {
 /**
  * Function to check if requested $_GET['site'] is an allowed site.
  *
- * @param unknown $site_id        	
- * @return string
+ * @param string $site_id This is a site ID (defined in "mapping.txt")
+ * @return string returns the PHP file to be included
  */
 function get_safe_content_include($site_id) {
 	$DEFAULT_SITE = 'home.php';
@@ -184,6 +200,21 @@ function get_safe_content_include($site_id) {
 	return $DEFAULT_SITE;
 }
 
+/**
+ * Method to get a correct link to navigate within the site. Use this method to
+ * generate a valid link on this site. Returns a hyperlink in the form of
+ * "index.php?site=<site-id>&<optional-arguments>".
+ * 
+ * @param string $site The site ID of the site you wish to link to. The ID must
+ * be included in the "mapping.txt" file. 
+ * @param string $suffix An associative array of all additional GET arguments
+ * you wish to add. For example, use <code>array("action" => "add")</code> to
+ * add the "&action=add" parameter to the URL returned by this function.
+ * @param boolean $preserve Optional boolean flag to define if the current GET
+ * variables should be preserved in the new URL. Default is FALSE.
+ * @return string Returns a hyperlink in the form
+ * "index.php?site=<site-id>&<optional-arguments>".
+ */
 function get_href($site, $suffix=array(), $preserve=false) {
 	$params = $suffix;
 	
@@ -235,6 +266,10 @@ function getProductInformation($id){
 	return $shopdb->get_row( $query );
 }
 
+/**
+ * Function to print a form file.
+ * @param unknown $form_file Form file to be printed
+ */
 function print_form_fields($form_file) {
 	global $language;
 	
@@ -260,8 +295,14 @@ function print_form_fields($form_file) {
 	}
 }
 
+/**
+ * Print an address stored in the database (table "address") based on an ID.
+ * 
+ * @param integer $address_id The ID of the address to be printed.
+ */
 function print_address($address_id) {
 	global $shopdb;
+	global $shopuser;
 	
 	$query = sprintf("SELECT a.street, a.zipcode, a.city, a.country, p.name AS pname, g.name AS gname FROM address a JOIN planet p ON a.planet_id = p.planet_id JOIN galaxy g ON a.galaxy_id = g.galaxy_id WHERE a.address_id=%s LIMIT 1", $address_id);
 	$address = $shopdb->get_row($query);
@@ -277,6 +318,13 @@ function print_address($address_id) {
 	echo "</ul>";
 }
 
+/**
+ * Function to print a complete order summary. This function prints the
+ * shipping address, the order overview and all positions of an order. The
+ * function expects an order ID.
+ * 
+ * @param integer $order_id ID of the order you want to print out.
+ */
 function print_order($order_id) {
 	global $shopdb;
 	
@@ -335,6 +383,12 @@ function print_order($order_id) {
 	echo "</table>";
 }
 
+/**
+ * Function to add a galaxy to the database (used in the registration process)
+ * @param string $name Name of the galaxy
+ * @return Returns the ID of the just inserted galaxy (or NULL if there was
+ * an error)
+ */
 function db_insert_galaxy($name) {
 	global $shopdb;
 	
@@ -357,6 +411,12 @@ function db_insert_galaxy($name) {
 	return $galaxy_id;
 }
 
+/**
+ * Function to add a planet to the database (used in the registration process)
+ * @param string $name Name of the planet
+ * @return Returns the ID of the just inserted plaet (or NULL if there was an
+ * error).
+ */
 function db_insert_planet($name) {
 	global $shopdb;
 	
@@ -379,6 +439,17 @@ function db_insert_planet($name) {
 	return $planet_id;
 }
 
+/**
+ * Function to add an address to the database (used in the registration process)
+ * @param string $street Street name and street number
+ * @param string $zipcode Zip code of the city
+ * @param string $city City name
+ * @param string $country Country name
+ * @param integer $planet_id ID of the planet
+ * @param integer $galaxy_id ID of the galaxy
+ * @return Returns the address ID of the just entered addressor NULL
+ * if there was an error
+ */
 function db_insert_address($street, $zipcode, $city, $country, $planet_id, $galaxy_id) {
 	global $shopdb;
 	
@@ -404,6 +475,15 @@ function db_insert_address($street, $zipcode, $city, $country, $planet_id, $gala
 	
 }
 
+/**
+ * Function to enter an order into the database (used in the checkout process).
+ * Note that this only creates the order itself, you might need to enter
+ * addition order details (use "db_insert_order_detail") to create a complete
+ * order.
+ * @param integer $customer_id ID of the customer placing the order
+ * @param integer $shipping_address ID of the customer address 
+ * @return Returns an order ID or NULL if there was an error
+ */
 function db_insert_order($customer_id, $shipping_address) {
 	global $shopdb;
 	
@@ -427,9 +507,31 @@ function db_insert_order($customer_id, $shipping_address) {
 	}
 }
 
+/**
+ * Function to add order details to an order. Typically, one would use
+ * the "db_insert_order" function to create an order and add products using
+ * this function here.  
+ * @param integer $order_id Order ID (usually generated with *db_insert_order")
+ * @param integer $product_id Product to be added to this order
+ * @param integer $quantity How many products are added
+ * @return boolean Returns TRUE if the entry was successful and FALSE if there
+ * was an error.
+ */
 function db_insert_order_detail($order_id, $product_id, $quantity) {
 	global $shopdb;
 
+	if($quantity > 1) {
+		// Hack: If quantity is already > 1, we might not need to INSERT (has already been done)
+		$query = sprintf("SELECT COUNT(*) FROM order_detail WHERE order_id=%s AND product_id=%s AND quantity=%s",
+				$order_id, $product_id, $quantity);
+		$result = $shopdb->get_var($query);
+		if($result >= 1) {
+			// Was already inserted, return TRUE
+			return true;
+		}
+	}
+	
+	
 	$query = sprintf("INSERT INTO order_detail (order_id, product_id, quantity) VALUES (%s, %s, %s);",
 				$order_id, $product_id, $quantity);
 	
@@ -442,6 +544,16 @@ function db_insert_order_detail($order_id, $product_id, $quantity) {
 	}
 }
 
+/**
+ * Add custom attributes to an order detail. Typically, this is called after
+ * adding order details to an order with the "db_insert_order_detail" function.
+ * @param integer $order_id Order ID (usually generated with "db_insert_order")
+ * @param integer $product_id Product ID
+ * @param integer $attribute_id ID of the attribute to be defined in the order
+ * @param string $attribute_value Value of the attribute
+ * @return boolean Returns TRUE if the entry was successful and FALSE if there
+ * was an error.
+ */
 function db_insert_order_detail_attribute($order_id, $product_id, $attribute_id, $attribute_value) {
 	global $shopdb;
 

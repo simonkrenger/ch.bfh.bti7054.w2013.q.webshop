@@ -1,4 +1,9 @@
+<?php 
+/**
+ * Minimal template for a site
+ */
 
+?>
 		<div id="content">
 			<div id="maincontent">
 			<div id="contentarea">

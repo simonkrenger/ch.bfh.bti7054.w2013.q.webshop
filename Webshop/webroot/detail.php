@@ -1,10 +1,13 @@
 <?php
 if (isset ( $_GET ['product_id'] )) {
+	// Clean product ID
 	$product_id = $shopdb->escape ( $_GET ['product_id'] );
 	
+	// Get basic product information
 	$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $product_id );
 	$product_info = $shopdb->get_row ( $query );
 	
+	// Get all attributes for product
 	$query = sprintf ( "SELECT pa.attribute_id, pa.name, pav.attribute_value_id, pa.description, pav.value, pa.value_range, pa.value_unit, pa.default_value FROM product p LEFT JOIN product_attribute_value pav ON pav.product_id = p.product_id RIGHT JOIN product_attribute pa ON pav.product_attribute_id = pa.attribute_id WHERE pav.product_id=%s", $product_id );
 	$product_attrs = $shopdb->get_results ( $query );
 }
@@ -24,6 +27,7 @@ if (isset ( $_GET ['product_id'] )) {
 				if($product_info->product_picture != NULL) {
 					echo '<img src="images/product_pictures/' . $product_info->product_picture . '" alt="Product picture" width="200" height="200" />';
 				} else {
+					// Fallback when there is no image defined (field is NULL)
 					echo '<img src="images/product_pictures/no_image.png" alt="Product picture" width="200" height="200" />';
 				}
 			?>
@@ -41,24 +45,24 @@ if (isset ( $_GET ['product_id'] )) {
 						// Array to hold the values of any custom attributes
 						$custom_attrs_suffix = array();
 				
-				foreach ( $product_attrs as $attribute ) {
-					// Loop through each attribute
-					echo "<li><strong>$attribute->name: </strong>";
-					if ($attribute->value != NULL) {
-						// The attribute has a preset value for this product
-						echo $attribute->value . $attribute->value_unit;
-					} else {
-						// The attribute is customizable
-						// Display a slider or dropdown
-						print_input_for_value_range ( $attribute );
-						
-						// Since these are custom attributes, add the initial value of those to the "add to cart" link
-						$custom_attrs_suffix = array_merge ( $custom_attrs_suffix, array (
-								"attribute_$attribute->attribute_id" => urlencode($attribute->default_value)
-						) );
-					}
-					echo "<br/>$attribute->description</li>";
-				}
+						foreach ( $product_attrs as $attribute ) {
+							// Loop through each attribute
+							echo "<li><strong>$attribute->name: </strong>";
+							if ($attribute->value != NULL) {
+								// The attribute has a preset value for this product
+								echo $attribute->value . $attribute->value_unit;
+							} else {
+								// The attribute is customizable
+								// Display a slider or dropdown
+								print_input_for_value_range ( $attribute );
+								
+								// Since these are custom attributes, add the initial value of those to the "add to cart" link
+								$custom_attrs_suffix = array_merge ( $custom_attrs_suffix, array (
+										"attribute_$attribute->attribute_id" => urlencode($attribute->default_value)
+								) );
+							}
+							echo "<br/>$attribute->description</li>";
+						}
 				?>
 						</ul>
 				</form>
@@ -71,24 +75,15 @@ if (isset ( $_GET ['product_id'] )) {
 			</div>
 
 			<div class="box" id="planetButtons" >                        
-                        
 
-                        		
-                        		
                         <a id="addtocartlink" href="<?php
                                 $suffix = array("product_id" => $product_id, "action" => "add");
                                 
                                 // Add custom attributes values
                                 $suffix = array_merge($suffix, $custom_attrs_suffix);
                                 
-                                echo get_href("shoppingcart", $suffix); ?>">Add to shopping Cart</a><br>
-                                                		
-                                <a href="<?php
-                                $suffix = array("product_id" => $product_id);
-                                echo get_href("order", $suffix); ?>">Buy Now!</a>
-
+                                echo get_href("shoppingcart", $suffix); ?>">Add to shopping Cart</a><br/>
                         </div>
-			
 		<?php
 		} else {
 			?>

@@ -1,12 +1,15 @@
 <?php 
-
+/**
+ * Registration page
+ * 
+ */
 if(isset($_GET["action"])) {
 	if($_GET["action"] == "doregister") {
+		// Action is set (variables in POST)
 		global $shopdb;
 		
 		// Register planet
 		$planet_id = db_insert_planet($_POST["planet"]);
-		
 		
 		// Register galaxy
 		$galaxy_id = db_insert_galaxy($_POST["galaxy"]);
@@ -34,8 +37,6 @@ if(isset($_GET["action"])) {
 		}
 	}
 }
-
-
 ?>
 
 <div id="content">

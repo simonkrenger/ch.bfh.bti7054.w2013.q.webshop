@@ -20,7 +20,7 @@ ENGINE = InnoDB;
 -- Table `planetshop_db`.`galaxy`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `planetshop_db`.`galaxy` (
-  `galaxy_id` INT NOT NULL AUTO_INCREMENT COMMENT '		' ,
+  `galaxy_id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NULL ,
   PRIMARY KEY (`galaxy_id`) )
 ENGINE = InnoDB;

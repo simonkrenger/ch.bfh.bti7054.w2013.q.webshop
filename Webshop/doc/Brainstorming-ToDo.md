@@ -43,10 +43,11 @@
  *  Task 10.* Administration View (Done)
  *  Slider Custom Planet in AJAX (DONE) 
  *  complete Product details and products (DONE)
- *  Checkout Process (+Mail)
- *  Beautification
- *  Update Developer Guide
+ *  Checkout Process (+Mail) [Mostly done - still needs work!]
+ *  Beautification (Done)
+ *  Update Developer Guide and documentation
+ *  Maybe add new "add product page?"
 
 TODO Presentation
-- Screencast
-- Presentation (what and how?)
+ * Screencast
+ * Presentation (what and how?)

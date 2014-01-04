@@ -1,7 +1,7 @@
 <?php 
 
-// Query data here
 if(isset($_GET['category'])) {
+	// If the category is set, get all products of that category
 	$category = $shopdb->escape($_GET['category']);
 	$query = sprintf("SELECT product_id, name, product_picture, price, inventory_quantity FROM product WHERE product_category=%s", $category);
 	$products = $shopdb->get_results($query);
@@ -10,6 +10,7 @@ if(isset($_GET['category'])) {
 	$category_title = get_translation($shopdb->get_row($query)->translation_string);
 		
 } else {
+	// If category is not set, get all products
 	$products = $shopdb->get_results("SELECT product_id, name, product_picture, price, inventory_quantity FROM product");
 	$category_title = get_translation("ALL_PRODUCTS");
 }
