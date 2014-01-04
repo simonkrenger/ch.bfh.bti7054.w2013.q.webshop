@@ -15,7 +15,7 @@
  * frontpage javascript buttons[check] 
  * Task 8.1 (Language with cookies) - Modify require_lang(), functions.php [check]
  * Task 9.1 Shopping Cart in OO [check] > is not visible anymore [check] 
- * Formular Benutzerregistration [check] > needs beautification > PRIO 2 !!!!
+ * Formular Benutzerregistration [check] > needs beautification > PRIO 2 !!!![check]
  * Formulare "placeholder" anstatt "value" (loginform.php) [check]
  * SOAP current starTime > PRIO 1 !!!![check]
  * Order confirmation as PDF [check] > needs beautification and DB access [check] 
@@ -24,11 +24,11 @@
  * Street and number in one filed [check]
  * Review for logged in User; order Process, Shopping Cart etc. [check]
  * REST API ("Did you know?") (Fränzi) [check]
+ * login form anpassen [check]
 ---
  * check order form with javascript. make generic. [check] > could be improved
- * Beautification
- * login form anpassen 
  * Checkout Prouess: PDF
+ * Beautification
  * delete values in Order Form > at the end.
  
 ### Simon ab Freitag 08.11.2013 behold

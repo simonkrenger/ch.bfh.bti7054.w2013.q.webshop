@@ -1,4 +1,4 @@
-<div id="menu">
+
 				<?php
 
 				global $shopdb;

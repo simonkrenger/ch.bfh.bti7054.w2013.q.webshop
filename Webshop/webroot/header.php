@@ -20,8 +20,9 @@
 				</div>
 
 			</div>
+			<div id="menu">
 
-			<div id="language">
+			<div class="language">
 			
 			<?php
 			
