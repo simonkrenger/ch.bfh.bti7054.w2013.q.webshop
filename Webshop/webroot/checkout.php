@@ -166,11 +166,10 @@ if( is_logged_in()) {
 				echo "Successfully placed order (Order ID $order_id)!";
 				
 				print_order($order_id);
-				$shoppingcart->clear();
 				
 				// TODO: Generate e-mail and send out
 				
-				echo "<a href=\"" . get_href("printorder") . "\">Print order</a>";
+				echo "<a href=\"" . get_href("printorder", array("order_id" => $order_id)) . "\">Print order</a>";
 			} else {
 				echo "There was an error placing the order, please retry!";
 			}

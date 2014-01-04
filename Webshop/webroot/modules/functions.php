@@ -327,7 +327,8 @@ function print_order($order_id) {
 				echo "<ul>";
 				foreach($custom_attributes as $attribute) {
 					$attribute_name = $p->getAttributeNameForId($attribute->attribute_id);
-					echo "<li>$attribute_name: $attribute->attribute_value</li>";
+					$attribute_value = urldecode($attribute->attribute_value);
+					echo "<li>$attribute_name: $attribute_value</li>";
 				}
 				echo "</ul>";
 			} else {

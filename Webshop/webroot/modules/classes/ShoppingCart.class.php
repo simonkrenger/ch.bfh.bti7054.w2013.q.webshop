@@ -63,7 +63,8 @@ class ShoppingCart {
 			// Show aggregated values
 			echo "<ul>";
 			foreach ($overview as $prod_id => $no_of_items) {
-				$prod_info = $this->getProductInformation($prod_id);
+				$p = new ShopProduct($prod_id);
+				$prod_info = $p->getProductInfo();
 				echo "<li>" . $no_of_items . "x " . $prod_info->name . "</li>";
 			}
 			echo "</ul>";
