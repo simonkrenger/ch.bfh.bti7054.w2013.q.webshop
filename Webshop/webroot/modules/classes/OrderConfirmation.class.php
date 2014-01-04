@@ -54,7 +54,7 @@ class OrderConfirmation extends FPDF {
 		
 		if ($_SESSION ['cart']) {
 			foreach ( $_SESSION ['cart'] as $key => $value ) {
-				$prod_info = getProductInformation ( $key );
+				$prod_info = getProductInformation ( $key ); // TODO: Fix this
 				$this->SetFont ( 'Arial', 'B', 10 );
 				$this->Cell ( 0, 10, 'Order Details:', 0, 1, 'L' );
 				$this->SetFont ( 'Arial', '', 10 );
@@ -69,7 +69,7 @@ class OrderConfirmation extends FPDF {
 		}
 		
 		if ($_SESSION ['buy_now_prod_id']) {
-			$prod_info = getProductInformation ( $_SESSION ['buy_now_prod_id'] );
+			$prod_info = getProductInformation ( $_SESSION ['buy_now_prod_id'] ); // TODO: Fix this
 			$this->SetFont ( 'Arial', 'B', 10 );
 			$this->Cell ( 0, 10, 'Order Details:', 0, 1, 'L' );
 			$this->SetFont ( 'Arial', '', 10 );
