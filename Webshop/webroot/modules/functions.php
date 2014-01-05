@@ -227,46 +227,6 @@ function get_href($site, $suffix=array(), $preserve=false) {
 }
 
 /**
- * Function to get a Parameter form $_GET Array.
- * @param unknown $name
- * @param unknown $default
- * @return string|unknown
- */
-function get_param($name, $default) {
-	if (isset($_GET[$name])) {
-		return urldecode($_GET[$name]);
-	}
-	else{
-		return $default;
-	}
-}
-
-/**
- * Function to add a parameter to $_GET Array
- * @param unknown $url
- * @param unknown $name
- * @param unknown $value
- * @param string $sep
- * @return string
- */
-function add_param($url, $name, $value, $sep="&") {
-	$new_url = $url.$sep.$name."=".urlencode($value);
-	return $new_url;
-}
-
-/**
- * The Function to get all the attributes of a Product out of the DB
- * @param unknown $id > is a Product ID
- * @return Ambigous <NULL, multitype:>
- */
-function getProductInformation($id){
-	global $shopdb;
-	$product_id = $shopdb->escape($id);
-	$query = sprintf ( "SELECT product_id, name, product_picture, description, price, inventory_quantity FROM product WHERE product_id=%s", $product_id  );
-	return $shopdb->get_row( $query );
-}
-
-/**
  * Function to print a form file.
  * @param unknown $form_file Form file to be printed
  */
@@ -367,7 +327,8 @@ function print_order($order_id) {
 				echo "<ul>";
 				foreach($custom_attributes as $attribute) {
 					$attribute_name = $p->getAttributeNameForId($attribute->attribute_id);
-					echo "<li>$attribute_name: $attribute->attribute_value</li>";
+					$attribute_value = urldecode($attribute->attribute_value);
+					echo "<li>$attribute_name: $attribute_value</li>";
 				}
 				echo "</ul>";
 			} else {

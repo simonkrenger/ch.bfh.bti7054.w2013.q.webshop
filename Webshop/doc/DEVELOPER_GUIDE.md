@@ -17,7 +17,7 @@ Please note that the first two steps are always performed without printing anyth
 ### Environment setup: require_ Functions
 At the top of the file `index.php`, you will find function calls to functions like `require_db()` or `require_lang()`. These functions provide means to establish a consistent and properly defined variable environment for the application. This means that after calling `require_db()` for example, all variables and environment settings are guaranteed to be set correctly (such as `$shopdb`). See the global variables table below for more information.
 
-## Function Reference
+## Function Reference (functions.php)
 
 The files of PlanetShop define many useful PHP functions. Most of them are only used to provide core functionality, however there are some more complicated functions available to be used by the developer. This section lists most of the core functions. In addition to this information, all functions are thoroughly documented in PHP.
 
@@ -26,9 +26,18 @@ Function name | Description
 --- | ---
 `is_logged_in` | Function to determine if a user is logged in. Returns `TRUE` if the user is logged in.
 `is_admin_user` | Function to determine if a user is an "admin user". Returns `TRUE` if the user is indeed an "admin user".
-`get_href` | Function used to generate a hyperlink within the site. See "Howto: Add a new page" for an example.
+`get_href` | Function used to generate a hyperlink within the site. See "Howto: Add a new page" below for an example.
 `get_safe_content_include` | Routing function used in `index.php` 
-TODO | TODO
+`print_form_fields` | Function used to generate forms, based on a "form file". See "Howto: Print a form" below for an example.
+`print_address` | Function to print an address stored in the database based on the given ID.
+`print_order` | Function to print an entire order (including shipping address and all positions). Use this to generate an order summary
+`db_insert_galaxy` | Function used to insert a galaxy into the database. Note that this is not a galaxy product but part of an address. Returns the ID of the newly inserted galaxy (or the existing ID, if the galaxy is already in the database).
+`db_insert_planet` | Function used to insert a planet into the database. Note that this is not a planet product but part of an address. Returns the ID of the newly inserted planet (or the existing ID, if the planet is already in the database).
+`db_insert_address` | Function used to insert a new address into the database. Returns the ID of the newly inserted address if all went well. Requires the ID of a planet and an ID of a galaxy (see functions `db_insert_planet` and `db_insert_galaxy` respectively.
+`db_insert_order` | Function to enter a new order into the database. Used in the checkout process.
+`db_insert_order_detail` | Function to enter a new position to an existing order (typically created with `db_insert_order`).
+`db_insert_order_detail_attribute` | Function to enter a new attribute to an existing order position on an existing order (see functions above).
+
 
 ## Global variables
 
@@ -39,12 +48,21 @@ Variable name | `require_` function | Description
 --- | --- | ---
 `$language` | require_lang | Represents the language set for the application.
 `$shopdb` | require_db | ez_sql database object to handle database queries.
-`$shopuser` | require_user | User object that is set when the user is logged in.
-`$_SESSION["cart"]` | require_shoppingcart | Shopping cart object
+`$shopuser` | require_user | User object that is set when the user is logged in (see class `ShopUser`)
+`$_SESSION["cart"]` | require_shoppingcart | Shopping cart object (see class `ShoppingCart`)
+
 
 ## Classes
 
-TODO
+Class | Attributes | methods | Description
+--- | --- | --- | ---
+ShoppingCart | `items` | `addProduct`, `removeProduct`, `clear`, `is_empty`, `getAllItems`, `displayFull`, `displaySmall`, `getQuantities` | This class represents the shopping cart of the user. Stores all items internally as `ShopProduct` objects. Features methods to add products to the shopping cart, remove products from the shopping cart, methods to clear the shopping cart, methods to get all items and helper functions to get product information.
+ShopProduct | `product_id`, `attributes` | `ShopProduct`, `getNullAttributes`, `addCustomAttribute`, `getAttributeNameForId`, `getProductInfo` | Class to represent a product from the webshop. Used only in context of the shoppingcart (see class above) and checkout process. 
+ShopUser | Dynamic (see description) | `ShopUser` | Class to represent a shop user. The user has an address (`ShopUserAddress`) and dynamically generated attributes. See the implementation of the class to see which attributes are available (usually `first_name`, `last_name`, `email` and the like...)
+ShopUserAddress | Dynamic (see description) | `ShopUserAddress` | Class to represent a shop users address. The attributes of the class are dynamically generated. See the implementation of the class to see which attribtues are available
+
+
+All classes can be found in `webroot/modules/classes/`.
 
 ## Database model
 
@@ -129,7 +147,7 @@ The result will be something like this:
 ### Howto: Query the database
 PlanetShop  uses the well-known ezSQL library to handle database queries. The supporting files can be found in `webroot/modules/db/`. ezSQL uses the "mysqli" library to connect to the database and allows the developer to quickly query a database and retrieve the results as a PHP object.
 
-You can find the full ER model of the database in `doc/task10/eer_model.mwb` (MySQL Workbench format).
+You can find the full ER model of the database in `doc/task10/eer_model.mwb` (MySQL Workbench format) or in `doc/task10/planetshop_db.pdf` (PDF).
 
 For example, if you want to query the database and list all users with their first and last name, this can be accomplished as follows:
 
@@ -162,5 +180,5 @@ Note that you will need to print the `<form>` tag yourself, as this differs from
 
 ## Other references
 
-[Justin Vincents ezSQL library](http://justinvincent.com/ezsql)
-[FPDF library](http://www.fpdf.org)
+* [Justin Vincents ezSQL library](http://justinvincent.com/ezsql)
+* [FPDF library](http://www.fpdf.org)

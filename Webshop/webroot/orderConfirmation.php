@@ -9,7 +9,7 @@ printConfirmation();
 <?php
 function printConfirmation() {
 	$pdf = new OrderConfirmation('P','mm','A4');
-	$pdf->printOc();
+	$pdf->printOc($_GET["order_id"]);
 	ob_end_clean();
 	$pdf->Output ();
 }
