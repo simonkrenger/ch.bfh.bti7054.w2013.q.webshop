@@ -251,6 +251,15 @@ body a:visited {
 	float: left;
 }
 
+#contentarea-fullwidth {
+	border-color: rgb(255, 255, 255);
+	border-color: rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	background-color: rgb(0, 0, 0);
+	height: 100%;
+	padding: 5px 5px 5px 5px;
+}
+
 #planetPicture {
 	width: 49%;
 	display: inline-block;

@@ -39,9 +39,7 @@ if (is_logged_in () && is_admin_user ()) {
 }
 
 ?>
-		
 		</div>
-	<?php include('sidebar.php'); ?>
-	
-</div>
+		<?php include('sidebar.php'); ?>
+	</div>
 </div>

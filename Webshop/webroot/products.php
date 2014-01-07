@@ -32,10 +32,7 @@ if(isset($_GET['category'])) {
 				}
 				?>
 				
+				</div>
+				<?php include('sidebar.php'); ?>
 			</div>
-			<?php include('sidebar.php'); ?>
-	
-		
-
-
-		
+		</div>

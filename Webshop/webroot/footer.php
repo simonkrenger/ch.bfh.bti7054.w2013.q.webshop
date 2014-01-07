@@ -46,15 +46,8 @@
 			</tr>
 			
 			</table>
-			
-
-			
 			Copyleft 2013, Fränzi u Simu
-		</div>
-	</div>
-</div>
+		</div> <!-- closing tag for footer -->
+	</div> <!-- closing tag for container -->
 </body>
 </html>
-
-
-

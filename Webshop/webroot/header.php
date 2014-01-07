@@ -8,8 +8,10 @@
 </head>
 <body>
 	<noscript>This site needs JavaScript!</noscript>
+	<!-- container div is closed in footer -->
 	<div id="container">
 		<!-- Header: on every Page -->
+		<!-- container div is closed in footer -->
 		<div id="navigation">
 			<div id="logo">
 				<div id="companyname">
@@ -18,26 +20,26 @@
 			</div>
 			<div id="menu">
 
-			<div class="language">
-			
-			<?php
-			
-			if(isset($_GET["site"])) {
-				$cur_site = $_GET["site"];
-			} else {
-				$cur_site = "home";
-			}
-			
-			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "de"), true) . "\" >DE</a> |";
-			echo "<a href=\"". get_href($cur_site, array("switch_lang" => "en"), true) . "\" >EN</a>";
-			
-			?>
-			
-			</div>
+				<div class="language">
+				
+				<?php
+				
+				if(isset($_GET["site"])) {
+					$cur_site = $_GET["site"];
+				} else {
+					$cur_site = "home";
+				}
+				
+				echo "<a href=\"". get_href($cur_site, array("switch_lang" => "de"), true) . "\" >DE</a> |";
+				echo "<a href=\"". get_href($cur_site, array("switch_lang" => "en"), true) . "\" >EN</a>";
+				
+				?>
+				
+				</div>
 			
 				<?php include('menu.php'); ?>
 
+			</div>
 		</div>
-		
 		
 

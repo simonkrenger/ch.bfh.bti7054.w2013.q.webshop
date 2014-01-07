@@ -6,11 +6,9 @@
 ?>
 		<div id="content">
 			<div id="maincontent">
-			<div id="contentarea">
-			
-				Content
-			</div>
-			
+				<div id="contentarea">
+					Content
+				</div>
 			<?php include('sidebar.php'); ?>
 			</div>
 		</div>

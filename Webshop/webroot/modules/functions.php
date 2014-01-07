@@ -171,7 +171,7 @@ function print_input_for_value_range($attribute) {
 			
 			echo "<option value=\"$option\"";
 			if($option == $attribute->default_value) {
-				echo "selected";
+				echo " selected";
 			}
 			echo">$option</option>";
 		}

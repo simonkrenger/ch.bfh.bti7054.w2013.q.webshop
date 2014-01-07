@@ -21,4 +21,3 @@
 					echo "<div class=\"menuentry\" id=\"Menu_login\"><a href=\"". get_href("login") . "\">" . get_translation ( "MENU_LOGIN" ) . "</a></div>";
 				}
 				?>
-			</div>
