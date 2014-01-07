@@ -279,33 +279,34 @@ function print_address($address_id) {
 }
 
 /**
- * Function to print a complete order summary. This function prints the
+ * Function to generate a complete order summary. This function generates the
  * shipping address, the order overview and all positions of an order. The
  * function expects an order ID.
  * 
  * @param integer $order_id ID of the order you want to print out.
+ * @return string The complete order summary HTML
  */
 function print_order($order_id) {
 	global $shopdb;
 	
-	echo "<h3>Shipping address:</h3>";
+	$output = "<h3>Shipping address:</h3>";
 	
 	$query = sprintf("SELECT o.order_id, o.order_date, o.shipping_date, o.shipping_address, u.first_name, u.last_name FROM `order` o JOIN user u ON o.customer_id = u.user_id WHERE o.order_id=%s", $order_id);
 	$order_attributes = $shopdb->get_row($query);
 	
 	print_address($order_attributes->shipping_address);
 	
-	echo "<h3>Order Details</h3>";
-	echo "<ul>";
-	echo "<li><strong>Order ID:</strong> $order_attributes->order_id</li>";
-	echo "<li><strong>Order Date:</strong> $order_attributes->order_date</li>";
-	echo "<li><strong>Shipping Date:</strong> $order_attributes->shipping_date</li>";
-	echo "<li><strong>Name on address:</strong> $order_attributes->first_name $order_attributes->last_name</li>";
-	echo "</ul>";
+	$output .= "<h3>Order Details</h3>";
+	$output .= "<ul>";
+	$output .= "<li><strong>Order ID:</strong> $order_attributes->order_id</li>";
+	$output .= "<li><strong>Order Date:</strong> $order_attributes->order_date</li>";
+	$output .= "<li><strong>Shipping Date:</strong> $order_attributes->shipping_date</li>";
+	$output .= "<li><strong>Name on address:</strong> $order_attributes->first_name $order_attributes->last_name</li>";
+	$output .= "</ul>";
 	
-	echo "<h3>Order Positions</h3>";
-	echo "<table>";
-	echo "<tr><th>Quantity</th><th>Product</th><th>Price</th></tr>";
+	$output .= "<h3>Order Positions</h3>";
+	$output .= "<table>";
+	$output .= "<tr><th>Quantity</th><th>Product</th><th>Price</th></tr>";
 	
 	$query = sprintf("SELECT od.quantity, od.product_id, p.name, p.price FROM order_detail od JOIN product p ON od.product_id = p.product_id WHERE od.order_id=%s;",
 				$order_attributes->order_id);
@@ -315,33 +316,34 @@ function print_order($order_id) {
 	foreach($order_positions as $position) {
 			$p = new ShopProduct($position->product_id);
 		
-			echo "<tr><td>$position->quantity</td>";
-			echo "<td><strong>$position->name</strong><br/>";
+			$output .= "<tr><td>$position->quantity</td>";
+			$output .= "<td><strong>$position->name</strong><br/>";
 			
 			// Here, get the custom attributes
 			$query = sprintf("SELECT attribute_id, attribute_value FROM order_detail_attributes WHERE order_id=%s AND product_id=%s",
 						$order_attributes->order_id, $position->product_id);
 			$custom_attributes = $shopdb->get_results($query);
 			if($custom_attributes != NULL) {
-				echo "You chose the following custom attributes:";
-				echo "<ul>";
+				$output .= "You chose the following custom attributes:";
+				$output .= "<ul>";
 				foreach($custom_attributes as $attribute) {
 					$attribute_name = $p->getAttributeNameForId($attribute->attribute_id);
 					$attribute_value = urldecode($attribute->attribute_value);
-					echo "<li>$attribute_name: $attribute_value</li>";
+					$output .= "<li>$attribute_name: $attribute_value</li>";
 				}
-				echo "</ul>";
+				$output .= "</ul>";
 			} else {
-				echo "This product has no custom attributes";
+				$output .= "This product has no custom attributes";
 			}
 			
 			$position_price = $position->quantity * $position->price;
-			echo "</td><td>$position_price</td></tr>";
+			$output .= "</td><td>$position_price</td></tr>";
 			
 			$total_price += $position_price;
 	}
-	echo "<tr><td>Total price</td><td></td><td>$total_price</td></tr>";
-	echo "</table>";
+	$output .= "<tr><td>Total price</td><td></td><td>$total_price</td></tr>";
+	$output .= "</table>";
+	return $output;
 }
 
 /**

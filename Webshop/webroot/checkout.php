@@ -163,11 +163,22 @@ if( is_logged_in()) {
 			}
 			
 			if($success) {
+				
+				
+				// Get the order summary
+				$order_summary = print_order($order_id);
+				
 				echo "Successfully placed order (Order ID $order_id)!";
 				
-				print_order($order_id);
+				// Send the order summary as an e-mail
+				$mail_message = "<html><head><title>Order Summary</title><head><body><h1>Thank you for your order!</h1>$order_summary</body></html>";
+				$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+				if(mail($shopuser->email, "PlanetShop: Order Confirmation", $mail_message, $headers)) {
+					echo "<br/>Sent confirmation e-mail to $shopuser->email<br/>";
+				}
 				
-				// TODO: Generate e-mail and send out
+				// Print the order summary
+				echo $order_summary;
 				
 				echo "<a href=\"" . get_href("printorder", array("order_id" => $order_id)) . "\">Print order</a>";
 			} else {
