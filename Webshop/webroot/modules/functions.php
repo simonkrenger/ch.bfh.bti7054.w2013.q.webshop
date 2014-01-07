@@ -223,7 +223,7 @@ function get_href($site, $suffix=array(), $preserve=false) {
 	}
 	
 	$params = array_replace($params, array("site" => strtolower($site)));
-	return "index.php?" . http_build_query($params);
+	return "index.php?" . str_replace('&', '&amp;', http_build_query($params));
 }
 
 /**

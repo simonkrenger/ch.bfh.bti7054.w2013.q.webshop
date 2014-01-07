@@ -54,6 +54,7 @@ Variable name | `require_` function | Description
 
 ## Classes
 
+
 Class | Attributes | methods | Description
 --- | --- | --- | ---
 ShoppingCart | `items` | `addProduct`, `removeProduct`, `clear`, `is_empty`, `getAllItems`, `displayFull`, `displaySmall`, `getQuantities` | This class represents the shopping cart of the user. Stores all items internally as `ShopProduct` objects. Features methods to add products to the shopping cart, remove products from the shopping cart, methods to clear the shopping cart, methods to get all items and helper functions to get product information.
@@ -67,6 +68,7 @@ All classes can be found in `webroot/modules/classes/`.
 ## Database model
 
 In this section, we would like to provide some insight into the database design of the PlanetShop. To see the actual design, please refer to the full ER model of the database in `doc/task10/eer_model.mwb` (MySQL Workbench format) or in `doc/task10/planetshop_db.pdf` (PDF).
+
 
 Table name | Description
 --- | ---

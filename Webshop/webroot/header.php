@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?php global $language; echo $language; ?>">
 <head>
 <meta charset="UTF-8">
 <title>PlanetShop</title>
 <link rel="stylesheet" type="text/css" href="style/planetshop.css" />
 <script type="text/javascript" src="/js/planetshop.js"></script>
-<noscript>This site needs JavaScript!</noscript>
 </head>
 <body>
-
+	<noscript>This site needs JavaScript!</noscript>
 	<div id="container">
-
 		<!-- Header: on every Page -->
 		<div id="navigation">
-
 			<div id="logo">
 				<div id="companyname">
 					<a href="<?php echo get_href("home", array()); ?>"><img src="images/logo-white.png" alt="Logo" /></a>
 				</div>
-
 			</div>
 			<div id="menu">
 

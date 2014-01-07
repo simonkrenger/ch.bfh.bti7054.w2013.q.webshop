@@ -19,10 +19,10 @@
 	<div class="box">
 		<div class="boxtitle"><h4><?php echo get_translation("MENU_LOGIN"); ?></h4></div>
 		<?php if(!is_logged_in()) { ?>
-			<div id="login"><?php include(ABSPATH . '/modules/login/loginform.php'); ?></div>
+			<div id="loginbox"><?php include(ABSPATH . '/modules/login/loginform.php'); ?></div>
 		<?php } else {
 			?>
-			<div id="login">
+			<div id="loginbox">
 				<p><?php 
 				global $shopuser;
 				echo "Welcome back " . $shopuser->first_name . "!";

@@ -17,7 +17,7 @@
 			foreach ( $categories as $category ) {
 
 				
-				echo  "<button class = \" categorytile\" type = \" button \" onclick=\"". "visitPage('" . get_href("products", array("category" => $category->category_id)). "')" ."\"> "  . get_translation ( $category->translation_string ) . "</button>";
+				echo  "<button class = \" categorytile\" onclick=\"". "visitPage('" . get_href("products", array("category" => $category->category_id)). "')" ."\"> "  . get_translation ( $category->translation_string ) . "</button>";
 			}
 			
 			?>

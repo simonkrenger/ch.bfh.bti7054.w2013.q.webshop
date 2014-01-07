@@ -49,10 +49,9 @@
 			
 
 			
-
 			Copyleft 2013, Fränzi u Simu
 		</div>
-		
+	</div>
 </div>
 </body>
 </html>
