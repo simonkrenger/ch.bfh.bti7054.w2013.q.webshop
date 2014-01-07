@@ -54,6 +54,8 @@ Variable name | `require_` function | Description
 
 ## Classes
 
+PlanetShop implements multiple classes to handle some of its functionality in an object-oriented way:
+
 
 Class | Attributes | methods | Description
 --- | --- | --- | ---
