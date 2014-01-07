@@ -30,7 +30,7 @@
  * Checkout Prouess: PDF
  * Beautification
  * delete values in Order Form > at the end.
- 
+ * merge commit
 ### Simon ab Freitag 08.11.2013 behold
  *  Link zu detail.php mit übergabe ID (DONE) 
  *  anpassen default.php mit werten db (DONE)
