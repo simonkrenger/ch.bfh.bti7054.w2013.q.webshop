@@ -58,7 +58,7 @@ PlanetShop implements multiple classes to handle some of its functionality in an
 
 
 Class | Attributes | methods | Description
---- | --- | --- | ---
+--- | --- | --- | ---
 ShoppingCart | `items` | `addProduct`, `removeProduct`, `clear`, `is_empty`, `getAllItems`, `displayFull`, `displaySmall`, `getQuantities` | This class represents the shopping cart of the user. Stores all items internally as `ShopProduct` objects. Features methods to add products to the shopping cart, remove products from the shopping cart, methods to clear the shopping cart, methods to get all items and helper functions to get product information.
 ShopProduct | `product_id`, `attributes` | `ShopProduct`, `getNullAttributes`, `addCustomAttribute`, `getAttributeNameForId`, `getProductInfo` | Class to represent a product from the webshop. Used only in context of the shoppingcart (see class above) and checkout process. 
 ShopUser | Dynamic (see description) | `ShopUser` | Class to represent a shop user. The user has an address (`ShopUserAddress`) and dynamically generated attributes. See the implementation of the class to see which attributes are available (usually `first_name`, `last_name`, `email` and the like...)
