@@ -70,7 +70,7 @@ if (isset ( $_GET ['product_id'] )) {
 			<?php } ?>
 			
 			<div class="box">
-				<strong>Inventory quantity:</strong> <?php echo $product_info->inventory_quantity; ?><br />
+				<strong>Inventory quantity:</strong> <?php echo $product_info->inventory_quantity; ?><br/><br>
 				<strong>Price:</strong> <?php echo $product_info->price; ?> credits
 			</div>
 

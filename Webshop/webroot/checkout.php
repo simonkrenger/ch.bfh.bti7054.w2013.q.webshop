@@ -33,9 +33,13 @@ if( is_logged_in()) {
 		echo "<h1>Checkout</h1>";
 		
 		echo "Would you like to proceed to order as $shopuser->first_name?<br/><br/>";
-
+		
+		echo "<div class=\"box\" id=\"planetButtons\">";
 		echo "<a href=\"" . get_href("checkout", array("step" => 2)) . "\">Yes, proceed</a><br/>";
+		echo "</div>";
+		echo "<div class=\"box\" id=\"planetButtons\">";
 		echo "<a href=\"" . get_href("checkout", array("logout" => "true")) . "\">No, log me out</a><br/>";
+		echo "</div>";
 		break;
 	case 2:
 		// In this step, we want to get the users address
@@ -69,10 +73,13 @@ if( is_logged_in()) {
 			echo "<p>Your current address is set to:</p>";
 						
 			print_address($address_id);
-
-			echo "<p>Continue with this address: <a href=\"" . get_href("checkout", array("step" => 3)) . "\">Step 3</a></p>";
-			echo "<p><a href=\"" . get_href("checkout", array("step" => 2, "action" => "resetaddress")) . "\">Change address</a></p>";
-	
+			echo "<div class=\"box\" id=\"planetButtons\">";
+			echo "<a href=\"" . get_href("checkout", array("step" => 3)) . "\">Continue with this address</a>";
+			echo "</div>";
+			echo "<div class=\"box\" id=\"planetButtons\">";
+			echo "<a href=\"" . get_href("checkout", array("step" => 2, "action" => "resetaddress")) . "\">Change address</a>";
+			echo "</div>";
+			
 		} else {
 			?>
 			<p>Please provide your address</p>
@@ -170,6 +177,9 @@ if( is_logged_in()) {
 				
 				echo "Successfully placed order (Order ID $order_id)!";
 				
+				//clear cart
+				$shoppingcart->clear();
+				
 				// Send the order summary as an e-mail
 				$mail_message = "<html><head><title>Order Summary</title><head><body><h1>Thank you for your order!</h1>$order_summary</body></html>";
 				$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -179,8 +189,10 @@ if( is_logged_in()) {
 				
 				// Print the order summary
 				echo $order_summary;
-				
+				echo "<div class=\"separator\"></div>";
+				echo "<div class=\"box\" id=\"planetButtons\">";
 				echo "<a href=\"" . get_href("printorder", array("order_id" => $order_id)) . "\">Print order</a>";
+				echo "</div>";
 			} else {
 				echo "There was an error placing the order, please retry!";
 			}
