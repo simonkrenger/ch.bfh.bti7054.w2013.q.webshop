@@ -1,51 +1,42 @@
 
 		<div id="footer">
 
-		<table class="tbl">
-			<tr class="tbl">
-			<td class="tbl">
+		<p class="footerlink">
 			<?php 
 			
 			echo "<a href=\"" . get_href('register') . "\">" . get_translation("FORM_REG") . "</a>"
 			
 			?>
-			</td>
+			</p>
 
-			<td class="tbl">
+				<p class="footerlink">
 					<?php 
 			
 			echo "<a href=\"" . get_href('home') . "\">" . get_translation("FOOT_TC") . "</a>"
 			
 			?>
-			</td>
-			</tr>
+			</p>
 			
 			
-			<tr class="tbl">
-			<td class="tbl">
+			
+		
+			<p class="footerlink">
 						<?php 
 			
 			echo "<a href=\"" . get_href('home') . "\">" . get_translation("FOOT_DS") . "</a>"
 			
 			?>
-			</td>
+			</p>
 			
-			<td class="tbl">
+			<p class="footerlink">
 						<?php 
 			
 			echo "<a href=\"" . get_href('home') . "\">" . get_translation("FOOT_CONT") . "</a>"
 			
 			?>
-			</td>
-			</tr>
-			
-			<tr class="tbl">
-			<td class="tbl">
-				<br>
-			</td>
-			</tr>
-			
-			</table>
+			</p>
+
+			<br></br>
 			Copyleft 2013, Fränzi u Simu
 		</div> <!-- closing tag for footer -->
 	</div> <!-- closing tag for container -->

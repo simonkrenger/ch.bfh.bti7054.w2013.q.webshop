@@ -245,11 +245,7 @@ function print_form_fields($form_file) {
 		// If the $_POST variable has an entry for this, go for it!
 		if(isset($_POST[$entry[0]])) {
 			$preset_value = $_POST[$entry[0]];
-		} else {
-			// Else, fall back to translation
-			$preset_value = get_translation ($entry[1]);
-		}
-		
+		} 
 		echo "<div class=\"formField\"> <label for =\"" . $entry [0] . "\">" . get_translation ( $entry [1] ) . "</label>
 			<input type=\"" . $entry [2] . "\" name=\"" . $entry [0] . "\" size=\"" . $entry [3] . "\" maxlength=\"" . $entry [4] . "\" id=\"" . $entry [0] . "\" placeholder =\"" . get_translation ( "$entry[1]" ) ."\" value =\"" . $preset_value . "\" ></input></div>";
 	}

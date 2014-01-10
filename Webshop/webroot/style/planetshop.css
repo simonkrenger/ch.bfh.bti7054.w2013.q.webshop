@@ -35,7 +35,6 @@ body a:visited {
 }
 
 #container {
-	/* surrounds all content*/
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.6);
 	width: 80%;
@@ -71,6 +70,7 @@ body a:visited {
 .language  a {
 	display: inline-block;
 	margin: 0 auto;
+	text-decoration: none;
 }
 
 .language a:HOVER {
@@ -79,6 +79,9 @@ body a:visited {
 	background-color: rgba(255, 255, 255, 0.9);
 }
 
+.product-listing-header a {
+	text-decoration: none;
+}
 .product-listing-header:HOVER{
 	background-color: rgb(45, 45, 45);
 	background-color: rgba(45, 45, 45, 0.6);
@@ -90,7 +93,12 @@ body a:visited {
 	
 }
 
+#planetButtons a{
+	text-decoration: none;
+	}
+	
 #planetButtons:HOVER{
+	text-decoration: none;
 	color: rgb(0,0,0);
 	background-color: rgb(255, 255, 255);
 	background-color: rgba(255, 255, 255, 0.9);
@@ -121,6 +129,7 @@ body a:visited {
 .menuentry a {
 	display: inline-block;
 	margin: 0 auto;
+	text-decoration: none;
 }
 
 .menuentry:HOVER {
@@ -226,12 +235,10 @@ body a:visited {
 }
 
 .cartFull {
-/* 	border: 2px solid; */
 	display: table;
 	width: 100%;
 	border-color: rgb(255, 255, 255);
 	border-color: rgba(255, 255, 255, 0.6);
-/* 	border-radius: 10px; */
 	margin-bottom: 20px;
 	padding: 10px 10px 10px 10px;
 	background-color: rgb(0, 0, 0);
@@ -321,11 +328,6 @@ body a:visited {
 	border-radius: 10px;
 	margin-bottom: 20px;
 	padding: 10px 10px 10px 10px;
-	/* 	background-color: rgb(0, 0, 0); */
-}
-
-.boxtitle {
-	
 }
 
 #login {
@@ -403,6 +405,10 @@ body a:visited {
 
 .tbl tr {
 	width: 100%;
+	padding-right: 20px;
+	max-width: 15%;
+	width: 300px;
+	text-align: left;
 }
 
 .tbl td {
@@ -410,4 +416,9 @@ body a:visited {
 	max-width: 15%;
 	width: 300px;
 	text-align: left;
+}
+
+.footerlink li a{
+	list-style: none;
+	
 }
