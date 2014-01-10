@@ -22,7 +22,8 @@ body {
 
 body a {
 	color: rgb(255, 255, 255);
-	text-decoration: none;
+	text-decoration: underline;
+	
 }
 
 body a:HOVER{
