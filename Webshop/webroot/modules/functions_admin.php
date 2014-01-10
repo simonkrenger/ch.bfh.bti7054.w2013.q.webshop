@@ -21,12 +21,17 @@ function admin_list_print_type($typename) {
 	$all_items = $shopdb->get_results("SELECT * FROM $shopdb->escape($typename)");
 	$attributes = $shopdb->get_col_info("name");
 	
+	// Remove certain columns (readability, security)
+	$exclude_cols = array("password", "last_login", "description");
+	$attributes = array_diff($attributes, $exclude_cols);
+	
 	$id_attribute_name = get_id($attributes);
-		
+	
 	// Print header
+	echo "<h3>$typename</h3>";
 	echo "<table><tr>";
 	foreach ( $attributes as $attribute_name ) {
-		echo "<th>$attribute_name</th>";
+			echo "<th>$attribute_name</th>";
 	}
 	echo "<th>Action</th>";
 	echo "</tr>";
@@ -140,11 +145,14 @@ function admin_add($type) {
 		// Fix syntax
 		$query = str_replace("(,", "(", $query);
 		
-		$shopdb->query($query);
-		// TODO: Error handling
-		
-		echo $type . ' inserted.';
-		
+		if($shopdb->query($query)) {
+			// Query successful
+			echo $type . ' inserted.';
+		} else {
+			// Query failed
+			echo 'Something went wrong, please try again.';
+			$shopdb->debug();
+		}		
 	} else {
 		echo "Error: No type provided";
 	}
@@ -165,7 +173,14 @@ function admin_update($type=null, $id=null) {
 		
 		foreach ( $attributes as $attribute_name ) {
 			if(! ($attribute_name == $id_attribute_name)) {
-				$query .= $attribute_name . "='" . $shopdb->escape($_POST[$attribute_name]) . "',";
+				$value = null;
+				if($_POST[$attribute_name] == '' || $_POST[$attribute_name] == null) {
+					// set "NULL" as value
+					$value = "NULL";
+				} else {
+					$value = "'" . $shopdb->escape($_POST[$attribute_name]) . "'";
+				}
+				$query .= $attribute_name . "=" . $value . ",";
 			}
 		}
 		
@@ -174,11 +189,14 @@ function admin_update($type=null, $id=null) {
 		// Fix syntax (remove last comma)
 		$query = str_replace(",WHERE", " WHERE", $query);
 		
-		$shopdb->query($query);
-		// TODO: Error handling
-		
-		echo 'Updated ' . $type . ' with ID ' . $id . '.';
-		
+		if($shopdb->query($query)) {
+			// Query successful
+			echo 'Updated ' . $type . ' with ID ' . $id . '.';
+		} else {
+			// Query failed
+			echo 'Something went wrong, please try again.';
+			$shopdb->debug();
+		}
 	} else {
 		echo "Error: No type or id provided";
 	}
@@ -199,11 +217,14 @@ function admin_delete($type) {
 		$query .= " WHERE $id_attribute_name = ";
 		$query .= $shopdb->escape($_POST['delete_id']);
 		
-		$shopdb->query($query);
-		// TODO: Error handling
-		
-		echo 'Deleted ' . $type . ' with ID ' . $_POST["delete_id"];
-		
+		if($shopdb->query($query)) {
+			// Query successful
+			echo 'Deleted ' . $type . ' with ID ' . $_POST["delete_id"];
+		} else {
+			// Query failed
+			echo 'Something went wrong, please try again.';
+			$shopdb->debug();
+		}
 	} else {
 		echo "Error: No type or DELETE_ID set";
 	}

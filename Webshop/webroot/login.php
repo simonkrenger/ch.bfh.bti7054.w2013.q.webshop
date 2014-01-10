@@ -13,6 +13,8 @@
 					echo '<div id="warn">' . get_translation("LOGIN_FAILED") . '</div>';
 				}
 				include(ABSPATH . '/modules/login/loginform.php');
+				echo "<br/>";
+				echo '<div class="box" id="planetButtons"><a href="' . get_href('register') . '">' . get_translation('FORM_REG') . '</a></div>';
 			} else { ?>
 				<p><?php echo sprintf(get_translation("LOGIN_SUCCESSFUL"), $shopuser->first_name); ?></p>
 				<p><a href="<?php echo get_href("login", array("logout" => "true")); ?>">Logout</a></p>

@@ -1,6 +1,6 @@
 <div id="content">
 	<div id="maincontent">
-		<div id="contentarea">
+		<div id="contentarea-fullwidth">
 
 			<h2>Administration</h2>
 <?php
@@ -40,6 +40,5 @@ if (is_logged_in () && is_admin_user ()) {
 
 ?>
 		</div>
-		<?php include('sidebar.php'); ?>
 	</div>
 </div>
