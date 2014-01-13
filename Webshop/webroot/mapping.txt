@@ -15,3 +15,4 @@ admin,admin.php
 register, registration.php
 checkout,checkout.php
 printorder,orderConfirmation.php
+orderhistory,order_history.php

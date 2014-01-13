@@ -28,12 +28,11 @@
 		<?php } else {
 			?>
 			<div id="loginbox">
-				<p><?php 
+				<?php 
 				global $shopuser;
-				echo "Welcome back " . $shopuser->first_name . "!";
-				?></p>
-				
-				<?php if(is_admin_user()) {
+				echo "<p>Welcome back " . $shopuser->first_name . "!</p>";
+				echo '<p><a href="' . get_href("orderhistory") . '">Order History</a></p>';
+				if(is_admin_user()) {
 					// If user is an admin, display admin link
 					echo '<p><a href="' . get_href("admin") .'">Admin Area</a></p>';
 				}

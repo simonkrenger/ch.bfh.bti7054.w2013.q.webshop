@@ -190,3 +190,35 @@ function updateSlider(slider) {
 	slider.nextElementSibling.innerHTML = slider.value;
 	updateCartHref(slider);
 }
+
+function orderhistory_update(source, total) {
+	var pagesize = 10;
+	currentOffset = document.getElementById("currentPosition");
+	
+	var xmlhttp;
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	} else {
+		// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			document.getElementById("ajax_div").innerHTML=xmlhttp.responseText;
+		}
+	};
+	cur = parseInt(currentOffset.value);
+	if(source.id == "nextbutton") {
+		// Upper bound
+		currentOffset.value = (cur + 10 > total) ? cur : (cur + 10);
+	} else if(source.id == "prevbutton") {
+		// Lower bound
+		currentOffset.value = (cur - pagesize < 0) ? 0 : (cur - pagesize);
+	}
+	url = "/modules/order/order-history.php?offset=" + currentOffset.value;
+	
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+}
