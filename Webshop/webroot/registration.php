@@ -31,7 +31,7 @@ if(isset($_GET["action"])) {
 		if($result) {
 			$query = sprintf("SELECT user_id FROM user WHERE username = '%s'", $clean_username);
 			$user_id = $shopdb->get_var($query);
-			$output .= "User successfully registered, User ID is $user_id.<br/>";
+			$output .= sprintf(get_translation("REGISTRATION_COMPLETE_MSG"), $user_id) . "<br/>";
 		} else {
 			$shopdb->debug();
 		}
@@ -54,10 +54,10 @@ if(isset($_GET["action"])) {
 				<div class="form">
 
 					<?php
-						echo "<h2>User Details</h2>";
+						echo "<h2>" . get_translation("REGISTRATION_USER_DETAILS") . "</h2>";
 						print_form_fields ( "modules/forms/userForm.txt" );
 						
-						echo "<h2>Address Details</h2>";
+						echo "<h2>" . get_translation("REGISTRATION_ADDRESS_DETAILS") . "</h2>";
 						print_form_fields ( "modules/forms/addressForm.txt" )
 					?>
 	
@@ -73,13 +73,12 @@ if(isset($_GET["action"])) {
 			} else {
 				// Action was set, so output from above
 				if(isset($address_id) && isset($planet_id) && isset($galaxy_id) && isset($user_id)) {
-					echo "<h1>Registration successful</h1>";
-					echo "<p><a href=\"" . get_href("login") . "\">Click here</a> to log in</p>";
+					echo "<h1>" . get_translation("REGISTRATION_COMPLETE") . "</h1>";
+					echo "<p><a href=\"" . get_href("login") . "\">" . get_translation("REGISTRATION_CLICK_HERE") . "</a> " . get_translation("REGISTRATION_TO_LOG_IN") . "</p>";
 				} else {
-					echo "<h1>Registration failed</h1>";
-					echo "<p>Please review the output below</p>";
+					echo "<h1>" . get_translation("REGISTRATION_FAILED") . "</h1>";
+					echo "<p>" . get_translation("REGISTRATION_INFORMATION") . "</p>";
 				}
-				echo "Additional information:<br/>";
 				echo "<p>$output</p>";
 			}
 		?>

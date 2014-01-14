@@ -70,8 +70,8 @@ if (isset ( $_GET ['product_id'] )) {
 			<?php } ?>
 			
 			<div class="box">
-				<strong>Inventory quantity:</strong> <?php echo $product_info->inventory_quantity; ?><br/><br>
-				<strong>Price:</strong> <?php echo $product_info->price; ?> credits
+				<strong><?php echo get_translation("DETAIL_INVENTORY"); ?>:</strong> <?php echo $product_info->inventory_quantity; ?><br/><br>
+				<strong><?php echo get_translation("DETAIL_PRICE"); ?>:</strong> <?php echo $product_info->price; ?> credits
 			</div>
 
 			<div class="box" id="planetButtons" >                        
@@ -82,7 +82,7 @@ if (isset ( $_GET ['product_id'] )) {
                                 // Add custom attributes values
                                 $suffix = array_merge($suffix, $custom_attrs_suffix);
                                 
-                                echo get_href("shoppingcart", $suffix); ?>">Add to shopping Cart</a><br/>
+                                echo get_href("shoppingcart", $suffix); ?>"><?php echo get_translation("DETAIL_ADD_TO_CART"); ?></a><br/>
                         </div>
 		<?php
 		} else {

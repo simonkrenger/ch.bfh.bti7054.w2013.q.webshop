@@ -26,7 +26,7 @@ class ShoppingCart {
 			echo '<th class="cartField">' . get_translation("SHOPPINGCART_NAME") . '</th>';
 			echo '<th class="cartField">' . get_translation("SHOPPINGCART_DESCRIPTION") . '</th>';
 			echo '<th class="cartField">' . get_translation("SHOPPINGCART_PRICE") . '</th>';
-			echo '<th class="cartField"> Actions </th>';
+			echo '<th class="cartField">' . get_translation("SHOPPINGCART_ACTIONS") . '</th>';
 			echo '</tr>';
 			
 			$total_price = 0;
@@ -42,7 +42,7 @@ class ShoppingCart {
 				echo "</ul></td>";
 				echo "<td class=\"cartField\">" . $prod_info->price . "</td>";
 				$total_price += $prod_info->price;
-				echo "<td class=\"cartField\"><a href=\"" . get_href("shoppingcart", array("action" => "delete", "product_id" => $prod_info->product_id)) . "\">Remove</a></td>";
+				echo "<td class=\"cartField\"><a href=\"" . get_href("shoppingcart", array("action" => "delete", "product_id" => $prod_info->product_id)) . "\">" . get_translation("SHOPPINGCART_ACTIONS_DELETE") . "</a></td>";
 				echo "</tr>";
 			}
 			

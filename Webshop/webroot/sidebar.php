@@ -30,15 +30,15 @@
 			<div id="loginbox">
 				<?php 
 				global $shopuser;
-				echo "<p>Welcome back " . $shopuser->first_name . "!</p>";
-				echo '<p><a href="' . get_href("orderhistory") . '">Order History</a></p>';
+				echo "<p>" . get_translation("SIDEBAR_WELCOMEBACK") . " " . $shopuser->first_name . "!</p>";
+				echo '<p><a href="' . get_href("orderhistory") . '">' . get_translation("ORDER_HIST") . '</a></p>';
 				if(is_admin_user()) {
 					// If user is an admin, display admin link
 					echo '<p><a href="' . get_href("admin") .'">Admin Area</a></p>';
 				}
 				?>
 				
-				<p><a href="<?php echo get_href($_GET["site"] , array("logout" => "true"), true); ?>">Logout</a></p>
+				<p><a href="<?php echo get_href($_GET["site"] , array("logout" => "true"), true); ?>"><?php echo get_translation("MENU_LOGOUT"); ?></a></p>
 			</div>
 		<?php }?>
 	</div>

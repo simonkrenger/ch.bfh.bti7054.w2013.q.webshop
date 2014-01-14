@@ -12,7 +12,6 @@ MARKETING_CLAIM_SUBTEXT,... wüu se niemer het wöue.
 MARKETING_FIND_OUT_MORE,Hie klickä
 ALL_PRODUCTS,Aui Produkt
 LOGIN_FAILED,Iilogge isch nid gange!
-LOGIN_SUCCESSFUL,Iilogge isch guet gange, willkomme zrügg!
 LOGIN_SUCCESSFUL,Iilogge isch guet gange, willkomme zrügg %s!
 SHOPPINGCART_NAME,Produktnamä
 SHOPPINGCART_DESCRIPTION,Beschribig
@@ -22,6 +21,9 @@ SHOPPINGCART_TOTAL,Totau
 SHOPPINGCART_CLEAR_CART,Chörbli lääre
 SHOPPINGCART_EMPTY,Ds Chörbli isch läär
 SHOPPINGCART_CHECKOUT,Tscheggout
+SHOPPINGCART_ACTIONS,Aktionä
+SHOPPINGCART_ACTIONS_DELETE,Löschä
+FORM_NAME,Name
 FORM_FIRSTNAME,Vorname
 FORM_LASTNAME,Nachname
 FORM_STREET,Strasse/Nr.
@@ -40,3 +42,31 @@ FORM_REG,Registrieren
 FOOT_DS, Lieferservice
 FOOT_CONT, Kontakt
 FOOT_TC, AGB
+ACCESS_DENIED,Zugriff verweigert, nid ihgloggt oder ke Adminischtrator
+CHECKOUT_PROCEED_AS,Möchtet dr witerfahre als %s?
+CHECKOUT_YES,Ja, witerfahre
+CHECKOUT_NO,Nei, ig wott uslogge
+CHECKOUT_ADDRESS,Tscheggout - Adrässe
+CHECKOUT_CUR_ADDRESS,Di aktuelli addrässe isch:
+CHECKOUT_CONTINUE_ADDR,Witerfahre mit derä addrässe
+CHECKOUT_CHANGE_ADDR,Adrässe ändere
+CHECKOUT_PROVIDE_ADDR,Bitte d addrässe ahgäh
+CHECKOUT_REVIEW_ORDER,Tscheggout - Bstellig kontrolliere
+CHECKOUT_REVIEW_THIS,Hie d bstellig, bitte nomau kontrolliere:
+CHECKOUT_CONTACT_ADDR,Mir kontaktiere öich mit dere adrässe:
+CHECKOUT_REVIEW_CONFIRM,Bitte nomau d bstellig kontrolliere u när dr Chnopf unger drücke, dass d Bstellig usglöst wird!
+CHECKOUT_ORDER_BUTTON,Bestellä!
+CHECKOUT_CONFIRMATION,Tscheggout - Bestätigung
+REGISTRATION_USER_DETAILS,Benutzerdetails
+REGISTRATION_ADDRESS_DETAILS,Adresse
+REGISTRATION_COMPLETE,Registration het klappet
+REGISTRATION_COMPLETE_MSG,Benutzer isch registriert, Benutzernummer isch %s.
+REGISTRATION_CLICK_HERE,Hiä klickä
+REGISTRATION_TO_LOG_IN,zum ihloggä
+REGISTRATION_FAILED,Registration isch nid guet gange!
+REGISTRATION_INFORMATION,Bitte d Informatione unger ahluege:
+ORDER_HIST,Auftragshistorie
+DETAIL_INVENTORY,Verfügbare Menge
+DETAIL_PRICE,Priis
+DETAIL_ADD_TO_CART,Is chörbli lege
+SIDEBAR_WELCOMEBACK,Willkommen zurück

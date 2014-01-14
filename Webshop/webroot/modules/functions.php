@@ -264,13 +264,13 @@ function print_address($address_id) {
 	$address = $shopdb->get_row($query);
 		
 	echo "<ul>";
-	echo "<li><strong>First Name, Last Name:</strong> $shopuser->first_name, $shopuser->last_name</li>";
-	echo "<li><strong>Street:</strong> $address->street</li>";
-	echo "<li><strong>Postal code:</strong> $address->zipcode</li>";
-	echo "<li><strong>City:</strong> $address->city</li>";
-	echo "<li><strong>Country:</strong> $address->country</li>";
-	echo "<li><strong>Planet:</strong> $address->pname</li>";
-	echo "<li><strong>Galaxy:</strong> $address->gname</li>";
+	echo "<li><strong>" . get_translation("FORM_NAME") . ":</strong> $shopuser->first_name $shopuser->last_name</li>";
+	echo "<li><strong>" . get_translation("FORM_STREET") . ":</strong> $address->street</li>";
+	echo "<li><strong>" . get_translation("FORM_AREACODE") . ":</strong> $address->zipcode</li>";
+	echo "<li><strong>" . get_translation("FORM_CITY") . ":</strong> $address->city</li>";
+	echo "<li><strong>" . get_translation("FORM_COUNTRY") . ":</strong> $address->country</li>";
+	echo "<li><strong>" . get_translation("FORM_PLANET") . ":</strong> $address->pname</li>";
+	echo "<li><strong>" . get_translation("FORM_GALAXY") . ":</strong> $address->gname</li>";
 	echo "</ul>";
 }
 
@@ -481,8 +481,8 @@ function db_insert_order_detail($order_id, $product_id, $quantity) {
 
 	if($quantity > 1) {
 		// Hack: If quantity is already > 1, we might not need to INSERT (has already been done)
-		$query = sprintf("SELECT COUNT(*) FROM order_detail WHERE order_id=%s AND product_id=%s AND quantity=%s",
-				$order_id, $product_id, $quantity);
+		$query = sprintf("SELECT COUNT(*) FROM order_detail WHERE order_id=%s AND product_id=%s",
+				$order_id, $product_id);
 		$result = $shopdb->get_var($query);
 		if($result >= 1) {
 			// Was already inserted, return TRUE

@@ -35,7 +35,7 @@ if (is_logged_in () && is_admin_user ()) {
 			break;
 	}
 } else {
-	echo "Access denied: Not logged in or no admin user.";
+	echo get_translation("ACCESS_DENIED");
 }
 
 ?>

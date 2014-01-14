@@ -30,20 +30,20 @@ if( is_logged_in()) {
 	
 	switch($checkout_step) {
 	case 1:
-		echo "<h1>Checkout</h1>";
+		echo "<h1>" . get_translation("SHOPPINGCART_CHECKOUT") . "</h1>";
 		
-		echo "Would you like to proceed to order as $shopuser->first_name?<br/><br/>";
+		echo sprintf(get_translation("CHECKOUT_PROCEED_AS"), $shopuser->first_name). "<br/><br/>";
 		
 		echo "<div class=\"box\" id=\"planetButtons\">";
-		echo "<a href=\"" . get_href("checkout", array("step" => 2)) . "\">Yes, proceed</a><br/>";
+		echo "<a href=\"" . get_href("checkout", array("step" => 2)) . "\">" . get_translation("CHECKOUT_YES") . "</a><br/>";
 		echo "</div>";
 		echo "<div class=\"box\" id=\"planetButtons\">";
-		echo "<a href=\"" . get_href("checkout", array("logout" => "true")) . "\">No, log me out</a><br/>";
+		echo "<a href=\"" . get_href("checkout", array("logout" => "true")) . "\">" . get_translation("CHECKOUT_NO") . "</a><br/>";
 		echo "</div>";
 		break;
 	case 2:
 		// In this step, we want to get the users address
-		echo "<h1>Checkout - Address</h1>";
+		echo "<h1>" . get_translation("CHECKOUT_ADDRESS") . "</h1>";
 		
 		if(isset($_GET["action"])) {
 			// User either reset his address or submitted a form
@@ -70,19 +70,19 @@ if( is_logged_in()) {
 		$query = sprintf("SELECT address_id FROM user WHERE user_id=%s", $shopuser->user_id);
 		$address_id = $shopdb->get_var($query);
 		if($address_id != NULL) {
-			echo "<p>Your current address is set to:</p>";
+			echo "<p>" . get_translation("CHECKOUT_CUR_ADDRESS") . "</p>";
 						
 			print_address($address_id);
 			echo "<div class=\"box\" id=\"planetButtons\">";
-			echo "<a href=\"" . get_href("checkout", array("step" => 3)) . "\">Continue with this address</a>";
+			echo "<a href=\"" . get_href("checkout", array("step" => 3)) . "\">" . get_translation("CHECKOUT_CONTINUE_ADDR") . "</a>";
 			echo "</div>";
 			echo "<div class=\"box\" id=\"planetButtons\">";
-			echo "<a href=\"" . get_href("checkout", array("step" => 2, "action" => "resetaddress")) . "\">Change address</a>";
+			echo "<a href=\"" . get_href("checkout", array("step" => 2, "action" => "resetaddress")) . "\">" . get_translation("CHECKOUT_CHANGE_ADDR") . "</a>";
 			echo "</div>";
 			
 		} else {
 			?>
-			<p>Please provide your address</p>
+			<p><?php echo get_translation("CHECKOUT_PROVIDE_ADDR"); ?></p>
 			<form class="form" name="registrationForm" id="registrationForm"
 					action="<?php echo get_href("checkout", array("step" => 2, "action" => "doeditaddress")); ?>" method="post"
 							onreset="resetForm()">
@@ -99,18 +99,18 @@ if( is_logged_in()) {
 		}
 		break;
 	case 3:
-		echo "<h1>Checkout - Review your order</h1>";
-		echo "<p>This is your order:</p>";
+		echo "<h1>" . get_translation("CHECKOUT_REVIEW_ORDER") . "</h1>";
+		echo "<p>" . get_translation("CHECKOUT_REVIEW_THIS") . "</p>";
 		$shoppingcart = $_SESSION["cart"];
 		$shoppingcart->displayFull();
 		
-		echo "<p>We will contact you using this address:</p>";
+		echo "<p>" . get_translation("CHECKOUT_CONTACT_ADDR") . "</p>";
 		
 		$query = sprintf("SELECT address_id FROM user WHERE user_id=%s", $shopuser->user_id);
 		$address_id = $shopdb->get_var($query);
 		print_address($address_id);
 		
-		echo "<p>Please review your order and click the button below to place your order!</p>";
+		echo "<p>" . get_translation("CHECKOUT_REVIEW_CONFIRM") . "</p>";
 		
 		?>
 		
@@ -118,13 +118,13 @@ if( is_logged_in()) {
 		<form id="formcheckoutreview" action="<?php echo get_href("checkout", array("step" => 4)); ?>"
 			method="post" >
 			<input type="hidden" name="reviewconfirm" value="true" />
-			<input type="button" value="Order!" onclick="displayOrderConfirmation('formcheckoutreview')"/>
+			<input type="button" value="<?php echo get_translation("CHECKOUT_ORDER_BUTTON"); ?>" onclick="displayOrderConfirmation('formcheckoutreview')"/>
 		</form>
 		
 		<?php
 		break;
 	case 4:
-		echo "<h1>Checkout - Confirmation</h1>";
+		echo "<h1>" . get_translation("CHECKOUT_CONFIRMATION") . "</h1>";
 		
 		if(isset($_POST["reviewconfirm"]) && $_POST["reviewconfirm"] == "true") {
 		

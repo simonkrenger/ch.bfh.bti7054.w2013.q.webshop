@@ -12,7 +12,6 @@ MARKETING_CLAIM_SUBTEXT,... because noone else wanted them.
 MARKETING_FIND_OUT_MORE,Find out more
 ALL_PRODUCTS,All products
 LOGIN_FAILED,Login failed
-LOGIN_SUCCESSFUL,Login successful
 LOGIN_SUCCESSFUL,Login successful, welcome back %s!
 SHOPPINGCART_NAME,Product name
 SHOPPINGCART_DESCRIPTION,Description
@@ -22,6 +21,9 @@ SHOPPINGCART_TOTAL,Total
 SHOPPINGCART_CLEAR_CART,Clear cart
 SHOPPINGCART_EMPTY,Cart is empty
 SHOPPINGCART_CHECKOUT,Checkout
+SHOPPINGCART_ACTIONS,Actions
+SHOPPINGCART_ACTIONS_DELETE,Remove
+FORM_NAME,Name
 FORM_FIRSTNAME,Firstname
 FORM_LASTNAME,Lastname
 FORM_STREET,Street/Nr.
@@ -30,7 +32,7 @@ FORM_STATE,State
 FORM_CITY,City
 FORM_COUNTRY,Country
 FORM_PLANET,Planet
-FORM_GALAXY,Galaxie
+FORM_GALAXY,Galaxy
 FORM_EMAIL,Email
 FORM_PHONE,Telephone
 FORM_BIRTHDATE,Birthdate
@@ -40,3 +42,31 @@ FORM_REG,Register
 FOOT_DS, Delivery Service
 FOOT_CONT, Contact
 FOOT_TC, Terms
+ACCESS_DENIED,Access denied: Not logged in or no admin user.
+CHECKOUT_PROCEED_AS,Would you like to proceed to order as %s?
+CHECKOUT_YES,Yes, proceed
+CHECKOUT_NO,No, I want to log out
+CHECKOUT_ADDRESS,Checkout - Address
+CHECKOUT_CUR_ADDRESS,Your current address is set to:
+CHECKOUT_CONTINUE_ADDR,Continue with this address
+CHECKOUT_CHANGE_ADDR,Change address
+CHECKOUT_PROVIDE_ADDR,Please provide your address
+CHECKOUT_REVIEW_ORDER,Checkout - Review your order
+CHECKOUT_REVIEW_THIS,This is your order:
+CHECKOUT_CONTACT_ADDR,We will contact you using this address:
+CHECKOUT_REVIEW_CONFIRM,Please review your order and click the button below to place your order!
+CHECKOUT_ORDER_BUTTON,Order!
+CHECKOUT_CONFIRMATION,Checkout - Confirmation
+REGISTRATION_USER_DETAILS,User Details
+REGISTRATION_ADDRESS_DETAILS,Address Details
+REGISTRATION_COMPLETE,Registration successful
+REGISTRATION_COMPLETE_MSG,User successfully registered, User ID is %s.
+REGISTRATION_CLICK_HERE,Click here
+REGISTRATION_TO_LOG_IN,to log in
+REGISTRATION_FAILED,Registration failed
+REGISTRATION_INFORMATION,Please review the information below
+ORDER_HIST,Order History
+DETAIL_INVENTORY,Inventory quantity
+DETAIL_PRICE,Price
+DETAIL_ADD_TO_CART,Add to shopping cart
+SIDEBAR_WELCOMEBACK,Welcome back
