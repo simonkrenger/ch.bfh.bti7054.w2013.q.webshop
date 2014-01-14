@@ -16,6 +16,10 @@
 
 A developer guide is available [here](Webshop/doc/DEVELOPER_GUIDE.md)
 
+## Screencast
+
+A YouTube screencast is available [here](https://www.youtube.com/watch?v=noSKJLRyyBY)
+
 ## Contributors
 
 Franziska Corradi, Simon Krenger
