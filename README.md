@@ -20,6 +20,10 @@ A developer guide is available [here](Webshop/doc/DEVELOPER_GUIDE.md)
 
 A YouTube screencast is available [here](https://www.youtube.com/watch?v=noSKJLRyyBY)
 
+## Live-Demo
+
+Find an already installed webshop read to test at (http://planetshop.krenger.ch)
+
 ## Contributors
 
 Franziska Corradi, Simon Krenger
