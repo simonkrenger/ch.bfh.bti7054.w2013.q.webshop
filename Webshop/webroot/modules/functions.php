@@ -515,7 +515,16 @@ function db_insert_order_detail($order_id, $product_id, $quantity) {
  */
 function db_insert_order_detail_attribute($order_id, $product_id, $attribute_id, $attribute_value) {
 	global $shopdb;
-
+	
+	// Hack: If there is already such a position
+	$query = sprintf("SELECT COUNT(*) FROM order_detail_attributes WHERE order_id=%s AND product_id=%s AND attribute_id=%s",
+			$order_id, $product_id, $attribute_id);
+	$result = $shopdb->get_var($query);
+	if($result >= 1) {
+		// Was already inserted, return TRUE
+		return true;
+	}
+	
 	$query = sprintf("INSERT INTO order_detail_attributes (order_id, product_id, attribute_id, attribute_value) VALUES (%s, %s, %s, '%s');",
 				$order_id, $product_id, $attribute_id, $attribute_value);
 
